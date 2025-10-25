@@ -1,34 +1,29 @@
 import markdown, re
 from bs4 import BeautifulSoup
+import gdoc
 
 bs4_parser = 'html.parser'
+md_content_file = 'md/content.md'
+html_template_file = 'templates/main.html'
 
 preserve_whitespace_tags = ["p", "h1", "h2", "h3", "li", "span", "em", "b", "i", "strong"]
 
 # Open and read template file
-with open('templates/main.html', encoding='utf-8') as template_file:
-    template_html = template_file.read()
-
-# Open and read Markdown file (with the content)
-with open('md/content.md', encoding='utf-8') as md_file:
-    md_content = md_file.read()
-
-# Make a Beautiful soup of the template
-main_soup = BeautifulSoup(template_html, bs4_parser)
-
-# Convert Markdown to HTML
-content_html = markdown.markdown(md_content, extensions=['fenced_code', 'tables'])
+main_soup = gdoc.html_file_to_soup(html_template_file)
 
 # Make a Beautiful soup of the content
-content_soup = BeautifulSoup(content_html, bs4_parser)
+content_soup = gdoc.md_file_to_soup(md_content_file)
 
 # Remove any strong-tags inside of headings
-for header in content_soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
-    for strong in header.find_all("strong"):
-        strong.unwrap()
-    # and removes empty headings
-    if not header.get_text(strip=True):
-        header.decompose()
+content_soup = gdoc.clean_up_headers(content_soup)
+
+# Create sections
+content_soup = gdoc.create_sections(content_soup)
+
+# Create article
+content_soup = gdoc.create_articles(content_soup)
+
+toc = gdoc.create_toc(content_soup)
 
 # Append the content to <main> of the template 
 main_soup.main.append(content_soup)

@@ -1,18 +1,6 @@
-# Grunderna i Python
+# Grunderna i Python2
 
-[Variabler och datatyper](#variabler-och-datatyper)
-
-[Output \- print-funktionen och strängar](#output---print-funktionen-och-strängar)
-
-[Input från användaren](#input-från-användaren)
-
-[Listor](#listor)
-
-[Villkor \- if-satser](#villkor---if-satser)
-
-## 
-
-## **Variabler och datatyper** {#variabler-och-datatyper}
+## **Variabler och datatyper**
 
 Variabler används för att lagra enskilda värden. Variabler kan vara av olika **datatyper** beroende på vilken typ av data som lagras.
 
@@ -83,7 +71,7 @@ y -= 3
 
 ### 
 
-## **Output \- print-funktionen och strängar** {#output---print-funktionen-och-strängar}
+## **Output \- print-funktionen och strängar**
 
 ### **Skriva ut text**
 
@@ -153,7 +141,7 @@ new_name = name.strip()
 # → 'Markus'
 ```
 
-## **Input från användaren** {#input-från-användaren}
+## **Input från användaren**
 
 Funktionen **`input()`** pausar programmet och väntar på text-input från användaren. Den input-data man får från användaren lagrar man ofta i en variabel. Input-datan är alltid en textsträng/**`str`**.
 
@@ -173,7 +161,7 @@ age = int(input('Hur gammal är du?'))
 
 ## 
 
-## **Listor** {#listor}
+## **Listor**
 
 Listor används för att lagra flera värden som hör samman med varandra. En lista skapar man som en variabel med värden separerade med kommatecken. Listans värden ramas in i klammerparenteser **`[]`**.
 
@@ -267,7 +255,7 @@ food_string = ','.join(food_list)
 # → 'kebab, pizza, sushi, meatballs'
 ```
 
-## **Villkor \- if-satser** {#villkor---if-satser}
+## **Villkor \- if-satser**
 
 If-satser används för att programmet ska utföra viss kod endast då ett visst villkor är uppfyllt. Det kodblock som ska utföras har 4 mellanslags indrag. (*Indentering*)
 
