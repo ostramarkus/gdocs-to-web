@@ -708,13 +708,6 @@ with open('names.txt') as file:
         print(line.strip())
 ```
 
-### **Öppna och läs en textfil rad för rad**
-
-```py
-with open('names.txt') as file:
-    for line in file:
-        print(line)
-```
 
 ### **Öppna och läs in en textfil till en lista**
 

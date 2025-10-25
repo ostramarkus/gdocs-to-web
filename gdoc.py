@@ -70,21 +70,40 @@ def create_articles(soup):
             next_node = sibling
     return soup
 
-def create_toc(soup):
-    sections = []
+
+def get_toc_data(soup):
+    toc_data = []
     for section in soup.find_all('section'):
         section_id = section['id']
         section_title = section.find('h2').text
-
         section_data = {'id': section_id, 'title': section_title}
 
         section_articles = []
         for article in section.find_all('article'):
-            article_id = section['id']
-            article_title = section.find('h3').text
+            article_id = article['id']
+            article_title = article.find('h3').text
             article_data = {'id': article_id, 'title': article_title}
             section_articles.append(article_data)
         
         section_data['articles'] = section_articles
-    sections.append(section_data)
-    print(sections)
+        toc_data.append(section_data)
+    return toc_data
+
+
+def create_toc(soup):
+    toc_data = get_toc_data(soup)
+
+    toc_html = '<ul id="toc">\n'
+
+    for section in toc_data:
+        section_link = f'  <li class="section-link"><a href="#{section['id']}">{section['title']}</a></li>\n'
+        if len(section['articles']) > 0:
+            section_link += '  <li>\n    <ul>\n'
+            for article in section['articles']: 
+                article_link = f'      <li class="article-link"><a href="#{article['id']}">{article['title']}</a></li>\n'
+                section_link += article_link
+            section_link += '    </ul>\n  </li>\n'
+        toc_html += section_link
+    toc_html += '</ul>'
+    return BeautifulSoup(toc_html, bs4_parser)
+

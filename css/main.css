@@ -116,6 +116,21 @@ pre {
     position: relative;    
 }
 
+/* TOC */
+#toc a {
+    color: #fff;
+    text-decoration: none;
+} 
+
+#toc {
+    list-style: none;
+}
+
+#toc li {
+    background-color: #333;
+    margin: 0.2em;
+}
+
 /* Copy to clipboard */
 
 button.copy-btn {

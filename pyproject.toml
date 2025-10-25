@@ -1,6 +1,7 @@
 [project]
 name = "gdocs-to-web"
 version = "0.1.0"
+package-mode = false
 description = "A simple script to convert Google Docs Markdown export to valid HTML."
 authors = [
     {name = "Markus Pettersson",email = "markus.pettersson@edu.huddinge.se"}
@@ -8,8 +9,9 @@ authors = [
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = [
-    "beautifulsoup (>=3.2.2,<4.0.0)",
-    "markdown (>=3.9,<4.0)"
+    "markdown (>=3.9,<4.0)",
+    "bs4 (>=0.0.2,<0.0.3)",
+    "python-slugify (>=8.0.4,<9.0.0)"
 ]
 
 

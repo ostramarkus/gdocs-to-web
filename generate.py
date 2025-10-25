@@ -23,8 +23,8 @@ content_soup = gdoc.create_sections(content_soup)
 # Create article
 content_soup = gdoc.create_articles(content_soup)
 
-toc = gdoc.create_toc(content_soup)
-
+toc_soup = gdoc.create_toc(content_soup)
+content_soup.h1.insert_after(toc_soup)
 # Append the content to <main> of the template 
 main_soup.main.append(content_soup)
 
