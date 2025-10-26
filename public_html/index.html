@@ -15,10 +15,10 @@
 </head>
 <body>
 <header><img alt="Python logo" src="img/python-logo-only.svg"><h1>Grunderna i Python</h1></header>
-<main>
-<h1>Grunderna i Python2</h1><ul id="toc">
-<li class="section-link"><a href="#variabler-och-datatyper">Variabler och datatyper</a></li>
-<li>
+<div id="wrap">
+<aside>
+<ul id="toc">
+<li class="section-link"><a href="#variabler-och-datatyper">Variabler och datatyper</a>
 <ul>
 <li class="article-link"><a href="#definiera-variabler">Definiera variabler</a></li>
 <li class="article-link"><a href="#omvandla-mellan-datatyper">Omvandla mellan datatyper</a></li>
@@ -27,8 +27,7 @@
 <li class="article-link"><a href="#addera-eller-subtrahera-variabler">Addera eller subtrahera variabler</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#output-print-funktionen-och-strangar">Output - print-funktionen och str&auml;ngar</a></li>
-<li>
+<li class="section-link"><a href="#output-print-funktionen-och-strangar">Output - print-funktionen och str&auml;ngar</a>
 <ul>
 <li class="article-link"><a href="#skriva-ut-text">Skriva ut text</a></li>
 <li class="article-link"><a href="#satta-ihop-textstrangar-med-plustecknet">S&auml;tta ihop textstr&auml;ngar med plustecknet</a></li>
@@ -40,15 +39,13 @@
 <li class="article-link"><a href="#ta-bort-tomrum-och-ny-rad-tecken-fran-strang">Ta bort tomrum (och ny-rad-tecken) fr&aring;n str&auml;ng</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#input-fran-anvandaren">Input fr&aring;n anv&auml;ndaren</a></li>
-<li>
+<li class="section-link"><a href="#input-fran-anvandaren">Input fr&aring;n anv&auml;ndaren</a>
 <ul>
 <li class="article-link"><a href="#anvandning-av-en-input-funktion">Anv&auml;ndning av en input-funktion</a></li>
 <li class="article-link"><a href="#typomvandla-direkt-fran-input-funktion">Typomvandla direkt fr&aring;n input-funktion</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#listor">Listor</a></li>
-<li>
+<li class="section-link"><a href="#listor">Listor</a>
 <ul>
 <li class="article-link"><a href="#definiera-skapa-en-lista">Definiera/skapa en lista</a></li>
 <li class="article-link"><a href="#na-ett-listvarde-med-positionsnummer">N&aring; ett listv&auml;rde med positionsnummer</a></li>
@@ -63,8 +60,7 @@
 <li class="article-link"><a href="#skapa-en-textstrang-fran-en-lista">Skapa en textstr&auml;ng fr&aring;n en lista</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#villkor-if-satser">Villkor - if-satser</a></li>
-<li>
+<li class="section-link"><a href="#villkor-if-satser">Villkor - if-satser</a>
 <ul>
 <li class="article-link"><a href="#vanliga-operatorer-for-villkor">Vanliga operatorer f&ouml;r villkor</a></li>
 <li class="article-link"><a href="#jamforelse-av-textstrangar">J&auml;mf&ouml;relse av textstr&auml;ngar</a></li>
@@ -77,8 +73,7 @@
 <li class="article-link"><a href="#if-och-funktioner">If och funktioner</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#loopar">Loopar</a></li>
-<li>
+<li class="section-link"><a href="#loopar">Loopar</a>
 <ul>
 <li class="article-link"><a href="#en-for-loop-med-range">En for-loop med range()</a></li>
 <li class="article-link"><a href="#en-for-loop-for-att-ga-igenom-en-lista-strang">En for-loop f&ouml;r att g&aring; igenom en lista/str&auml;ng</a></li>
@@ -88,16 +83,14 @@
 <li class="article-link"><a href="#skapa-listor-med-range">Skapa listor med range</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#funktioner">Funktioner</a></li>
-<li>
+<li class="section-link"><a href="#funktioner">Funktioner</a>
 <ul>
 <li class="article-link"><a href="#egen-funktion">Egen funktion</a></li>
 <li class="article-link"><a href="#egen-funktion-som-tar-emot-argument">Egen funktion som tar emot argument</a></li>
 <li class="article-link"><a href="#egen-funktion-som-tar-emot-flera-argument-och-returnerar-ett-varde">Egen funktion som tar emot flera argument och returnerar ett v&auml;rde</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#dictionary-dict">Dictionary - dict</a></li>
-<li>
+<li class="section-link"><a href="#dictionary-dict">Dictionary - dict</a>
 <ul>
 <li class="article-link"><a href="#en-enkel-dictionary">En enkel dictionary</a></li>
 <li class="article-link"><a href="#en-dictionary-pa-flera-rader">En dictionary p&aring; flera rader</a></li>
@@ -105,16 +98,14 @@
 <li class="article-link"><a href="#ga-igenom-en-dictionary-med-en-for-loop">G&aring; igenom en dictionary med en for-loop</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#tuplar-och-set">Tuplar och set</a></li>
-<li>
+<li class="section-link"><a href="#tuplar-och-set">Tuplar och set</a>
 <ul>
 <li class="article-link"><a href="#definiera-en-tupel">Definiera en tupel</a></li>
 <li class="article-link"><a href="#definiera-ett-set">Definiera ett set</a></li>
 <li class="article-link"><a href="#skillnaderna-mellan-listor-tuplar-och-set">Skillnaderna mellan listor, tuplar och set</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#modulen-random">Modulen random</a></li>
-<li>
+<li class="section-link"><a href="#modulen-random">Modulen random</a>
 <ul>
 <li class="article-link"><a href="#importera-modulen">Importera modulen</a></li>
 <li class="article-link"><a href="#slumpar-ett-decimaltal-mellan-0-och-1">Slumpar ett decimaltal mellan 0 och 1</a></li>
@@ -122,8 +113,7 @@
 <li class="article-link"><a href="#slumpar-ett-alternativ-fran-en-lista">Slumpar ett alternativ fr&aring;n en lista</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#modulen-datetime">Modulen datetime</a></li>
-<li>
+<li class="section-link"><a href="#modulen-datetime">Modulen datetime</a>
 <ul>
 <li class="article-link"><a href="#ta-fram-dagens-datum">Ta fram dagens datum</a></li>
 <li class="article-link"><a href="#ta-fram-ett-annat-datum">Ta fram ett annat datum</a></li>
@@ -134,8 +124,7 @@
 <li class="article-link"><a href="#oversikt-over-modulen-datetime">&Ouml;versikt &ouml;ver modulen datetime</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#filer-lasa-och-skriv">Filer: l&auml;sa och skriv</a></li>
-<li>
+<li class="section-link"><a href="#filer-lasa-och-skriv">Filer: l&auml;sa och skriv</a>
 <ul>
 <li class="article-link"><a href="#oppna-och-las-in-en-hel-textfil">&Ouml;ppna och l&auml;s in en hel textfil</a></li>
 <li class="article-link"><a href="#oppna-och-las-en-textfil-rad-for-rad">&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</a></li>
@@ -146,7 +135,9 @@
 <li class="article-link"><a href="#lageskoder-vid-oppning-av-filer">L&auml;geskoder vid &ouml;ppning av filer</a></li>
 </ul>
 </li>
-</ul>
+</ul></aside>
+<main>
+<h1>Grunderna i Python2</h1>
 <section id="variabler-och-datatyper"><h2>Variabler och datatyper</h2>
 <p>Variabler anv&auml;nds f&ouml;r att lagra enskilda v&auml;rden. Variabler kan vara av olika <strong>datatyper</strong> beroende p&aring; vilken typ av data som lagras.</p>
 <table>
@@ -831,6 +822,7 @@ print(content)
 </tr>
 </tbody>
 </table></article></section></main>
+</div>
 <script src="js/main.js"></script>
 <script>hljs.highlightAll();</script>
 </body>

@@ -4,7 +4,6 @@ from bs4 import BeautifulSoup
 
 bs4_parser = 'html.parser'
 
-
 def html_file_to_soup(filename):
     with open(filename, encoding='utf-8') as html_file:
         html_str = html_file.read()
@@ -71,6 +70,15 @@ def create_articles(soup):
     return soup
 
 
+def remove_trailing_slashes(html_str):
+    ''' Remove trailing slashes to conform with HTML5 '''
+    void_tags = ["area", "base", "br", "col", "embed", "hr", "img",
+                "input", "link", "meta", "param", "source", "track", "wbr"]
+
+    for tag in void_tags:
+        html_str = re.sub(rf'<{tag}([^>]*)\s*/>', rf'<{tag}\1>', html_str)
+    return html_str
+
 def get_toc_data(soup):
     toc_data = []
     for section in soup.find_all('section'):
@@ -96,13 +104,14 @@ def create_toc(soup):
     toc_html = '<ul id="toc">\n'
 
     for section in toc_data:
-        section_link = f'  <li class="section-link"><a href="#{section['id']}">{section['title']}</a></li>\n'
+        section_link = f'  <li class="section-link"><a href="#{section['id']}">{section['title']}</a>\n'
         if len(section['articles']) > 0:
-            section_link += '  <li>\n    <ul>\n'
+            section_link += '   <ul>\n'
             for article in section['articles']: 
                 article_link = f'      <li class="article-link"><a href="#{article['id']}">{article['title']}</a></li>\n'
                 section_link += article_link
-            section_link += '    </ul>\n  </li>\n'
+            section_link += '    </ul>\n'
+        section_link += '</li>\n'
         toc_html += section_link
     toc_html += '</ul>'
     return BeautifulSoup(toc_html, bs4_parser)
