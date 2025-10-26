@@ -5,12 +5,14 @@ from bs4 import BeautifulSoup
 bs4_parser = 'html.parser'
 
 def html_file_to_soup(filename):
+    ''' Read an HTML file and return a BeautifulSoup object '''
     with open(filename, encoding='utf-8') as html_file:
         html_str = html_file.read()
     return make_soup(html_str)
 
 
 def md_file_to_soup(filename):
+    ''' Read a Markdown file, convert to HTML, and return a BeautifulSoup object '''
     with open(filename, encoding='utf-8') as md_file:
         md_str = md_file.read()
     html_str = markdown.markdown(md_str, extensions=['fenced_code', 'tables'])
@@ -18,11 +20,12 @@ def md_file_to_soup(filename):
 
 
 def make_soup(html_str):
+    ''' Convert an HTML string to a BeautifulSoup object '''
     return BeautifulSoup(html_str, bs4_parser)
 
 
 def clean_up_headers(soup):
-    # remove strong from headers
+    ''' Clean up headers by removing <strong> tags and empty headings '''
     for header in soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
         for strong in header.find_all("strong"):
             strong.unwrap()
@@ -33,6 +36,7 @@ def clean_up_headers(soup):
 
 
 def create_sections(soup):
+    ''' Create <section> tags around each <h2> and its content '''
     for h2 in list(soup.find_all("h2")):  # copy list to avoid iteration issues
         section = soup.new_tag("section")
         header_slug = slugify(h2.text)
@@ -71,7 +75,7 @@ def create_articles(soup):
 
 
 def remove_trailing_slashes(html_str):
-    ''' Remove trailing slashes to conform with HTML5 '''
+    ''' Remove trailing slashes from void HTML tags '''
     void_tags = ["area", "base", "br", "col", "embed", "hr", "img",
                 "input", "link", "meta", "param", "source", "track", "wbr"]
 
@@ -80,6 +84,7 @@ def remove_trailing_slashes(html_str):
     return html_str
 
 def get_toc_data(soup):
+    ''' Extract TOC data from the soup object '''
     toc_data = []
     for section in soup.find_all('section'):
         section_id = section['id']
@@ -99,6 +104,7 @@ def get_toc_data(soup):
 
 
 def create_toc(soup):
+    ''' Create a Table of Contents (TOC) as a BeautifulSoup object '''
     toc_data = get_toc_data(soup)
 
     toc_html = '<ul id="toc">\n'
@@ -115,4 +121,3 @@ def create_toc(soup):
         toc_html += section_link
     toc_html += '</ul>'
     return BeautifulSoup(toc_html, bs4_parser)
-
