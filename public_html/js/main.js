@@ -32,3 +32,28 @@ document.querySelectorAll('.section-link').forEach(sectionLink => {
     articlesList.classList.remove('open');
   });
 });
+
+// Scrollspy
+
+const sections = document.querySelectorAll("main section");
+const navLinks = document.querySelectorAll("#toc a");
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const id = entry.target.getAttribute("id");
+      const link = document.querySelector('#toc a[href="#' + id + '"]');
+      if (entry.isIntersecting) {
+        navLinks.forEach((l) => l.classList.remove("active"));
+        link.classList.add("active");
+      }
+    });
+  },
+  {
+    root: null,              // observerar i viewporten
+    threshold: 0,            // trigga så fort något syns
+    rootMargin: "-50% 0px -50% 0px" // mitten av sidan (övre halvan)
+  }
+);
+
+sections.forEach((section) => observer.observe(section));

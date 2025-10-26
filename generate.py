@@ -27,9 +27,13 @@ content_soup = gdoc.create_articles(content_soup)
 
 # Generate and insert table of content
 toc_soup = gdoc.create_toc(content_soup)
+
+toc_title = main_soup.new_tag('h4')
+toc_title.string = 'Innehåll'
+main_soup.aside.append(toc_title)
 main_soup.aside.append(toc_soup)
 
-# Append the content to <main> of the template 
+# Append the content to <main> of the template
 main_soup.main.append(content_soup)
 
 # Render to HTML-string
