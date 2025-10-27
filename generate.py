@@ -25,6 +25,8 @@ content_soup = gdoc.create_articles(content_soup)
 
 # Wrap tables in div
 content_soup = gdoc.div_wrap(content_soup, 'table', 'table-container')
+
+# Wrap code examples in div
 content_soup = gdoc.div_wrap(content_soup, 'pre', 'code-container')
 
 # Generate and insert table of content
