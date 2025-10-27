@@ -1,8 +1,39 @@
-import markdown, re
+import re
+import markdown
 from slugify import slugify
 from bs4 import BeautifulSoup
 
 bs4_parser = 'html.parser'
+
+def md_to_html(md_file, template_file, insert_tag):
+
+    # Read Markdown and make a Beautiful soup
+    content_soup = md_file_to_soup(md_file)
+
+    # Cleanup and sectioning
+    content_soup = clean_up_headers(content_soup)
+    content_soup = create_sections(content_soup)
+    content_soup = create_articles(content_soup)
+    content_soup = div_wrap(content_soup, 'table', 'table-container')
+    content_soup = div_wrap(content_soup, 'pre', 'code-container')
+
+    # Open and read template file
+    main_soup = html_file_to_soup(template_file)
+
+    # Generate and insert table of content
+    toc_soup = create_toc(content_soup)
+    toc_title = main_soup.new_tag('h4')
+    toc_title.string = 'Grunderna i Python'
+    main_soup.aside.append(toc_title)
+    main_soup.aside.append(toc_soup)
+
+    # Append the content to <main> of the template
+    main_soup.main.append(content_soup)
+
+    # Render to HTML-string and cleanup HTML
+    html_output = main_soup.decode(formatter="html")
+    html_output = remove_trailing_slashes(html_output)
+    return html_output
 
 def html_file_to_soup(filename):
     ''' Read an HTML file and return a BeautifulSoup object '''
@@ -83,6 +114,7 @@ def remove_trailing_slashes(html_str):
         html_str = re.sub(rf'<{tag}([^>]*)\s*/>', rf'<{tag}\1>', html_str)
     return html_str
 
+
 def get_toc_data(soup):
     ''' Extract TOC data from the soup object '''
     toc_data = []
@@ -101,14 +133,6 @@ def get_toc_data(soup):
         section_data['articles'] = section_articles
         toc_data.append(section_data)
     return toc_data
-
-def div_wrap(soup, tag_name, class_name):
-    ''' Wrap tables in div '''
-    for tag in soup.find_all(tag_name):
-        div = soup.new_tag("div")
-        div['class'] = class_name
-        tag.wrap(div)
-    return soup
 
 
 def create_toc(soup):
@@ -129,3 +153,12 @@ def create_toc(soup):
         toc_html += section_link
     toc_html += '</ul>'
     return BeautifulSoup(toc_html, bs4_parser)
+
+
+def div_wrap(soup, tag_name, class_name):
+    ''' Wrap tables in div '''
+    for tag in soup.find_all(tag_name):
+        div = soup.new_tag("div")
+        div['class'] = class_name
+        tag.wrap(div)
+    return soup
