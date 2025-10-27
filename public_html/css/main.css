@@ -76,10 +76,9 @@ p {
 /* Tables */
 
 .table-container {
-    background-color: red;
-    padding: 0.5em;
-    overflow-x: auto;
-    display: none;
+    overflow: auto;
+    max-width: calc(100vw - 2rem);
+    box-sizing: border-box;
 }
 
 table {
