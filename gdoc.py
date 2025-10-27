@@ -102,6 +102,21 @@ def get_toc_data(soup):
         toc_data.append(section_data)
     return toc_data
 
+def div_wrap(soup, tag_name, class_name):
+    ''' Wrap tables in div '''
+    for tag in soup.find_all(tag_name):
+        div = soup.new_tag("div")
+        div['class'] = class_name
+        tag.wrap(div)
+    return soup
+
+def wrap_tables(soup):
+    ''' Wrap tables in div '''
+    for table in soup.find_all('table'):
+        table_div = soup.new_tag("div")
+        table_div['class'] = 'table-container'
+        table.wrap(table_div)
+    return soup
 
 def create_toc(soup):
     ''' Create a Table of Contents (TOC) as a BeautifulSoup object '''

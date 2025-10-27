@@ -1,3 +1,7 @@
+* {
+   outline: 1px solid #f00 !important;
+}
+
 html {
     height: 100%;
 }
@@ -14,7 +18,8 @@ body {
 
 header {
     background-color: #111;
-    padding: 0.7rem;    
+    padding: 0.7rem;
+    box-sizing: border-box;
     display: flex;
     align-items: center;
     gap: 0.5em;
@@ -69,6 +74,13 @@ p {
 
 /* Tables */
 
+.table-container {
+    background-color: red;
+    padding: 0.5em;
+    overflow-x: auto;
+    display: none;
+}
+
 table {
     margin-top: 1em;
     border: 1px solid #ccc;
@@ -110,7 +122,9 @@ p {
 }
 
 section {
+    box-sizing: border-box;
     margin: 2rem 0;
+    width: 100%;
     padding: 3rem 3rem;
     background-color: #fff;
     border-radius: 8px;
@@ -133,8 +147,22 @@ article > h3 {
     margin-top: -4px;
 }
 
+article * {
+    overflow: auto;
+}
 
 /* Syntax highlighting */
+.code-container {
+    overflow: auto;
+    box-sizing: border-box;
+    max-width:inherit;
+}
+
+pre {
+    white-space: pre;
+    overflow-wrap: normal;
+}
+
 .hljs {
     border-radius: 6px;
 }
@@ -147,6 +175,7 @@ article > h3 {
 /* TOC */
 
 aside {
+    box-sizing: border-box;
     width: 220px;
     margin-top: 2rem;
     margin-left: 1rem;
@@ -157,6 +186,14 @@ aside {
     height: 80vh;
     overflow: auto;
     background-color: white;
+}
+
+aside h4 {
+    margin-top: 0;
+    margin-bottom: 1em;
+    font-size: 1.2rem;
+    font-weight: normal;
+    color: rgb(48, 48, 117);
 }
 
 #toc {
@@ -221,6 +258,7 @@ aside {
 
 pre {
     overflow-x: auto;
+    width: 100%;
     position: relative;    
 }
 
@@ -243,3 +281,60 @@ button.copy-btn:hover {
     opacity: 1;
     background: #0056b3;
 }
+
+@media (max-width: 1250px) {
+    body {
+        background: #fff;
+    }
+    section {
+        padding-top: 2rem;
+        margin: 0;
+        border-radius: 0;
+    }
+    aside {
+        padding-top: 2rem;
+        margin: 0;
+        border-radius:0;
+        height: 100vh;
+    }
+
+    #wrap {
+        gap: 0;
+    }
+}
+
+@media (max-width: 860px) {
+    #wrap {
+        flex-direction: column;
+    }
+
+    section {
+        padding: 1rem;
+    }
+
+    aside {
+        position: relative;
+        max-width: max-content;
+        width: 100%;
+        top: 0;
+        height:max-content;
+    }
+
+    #toc {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.2em;
+    }
+
+    .section-link {
+        border: none;
+        background-color: #eee;
+        padding: 0.2em;
+    }
+
+    .section-link .open {
+        display: none;
+    }
+
+} 

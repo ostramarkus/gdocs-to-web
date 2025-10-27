@@ -1,4 +1,4 @@
-# Grunderna i Python2
+# Grunderna i Python
 
 ## **Variabler och datatyper**
 
@@ -16,9 +16,14 @@ Variabler används för att lagra enskilda värden. Variabler kan vara av olika 
 Variabler definieras med likamedstecknet: **`=`**.
 
 ```py
-my_string = 'Hello World' 	# Sträng / str
-my_int = 42				# Heltal / int
-my_float = 3.14			# Decimaltal / float
+# Sträng / str
+my_string = 'Hello World'
+
+# Heltal / int
+my_int = 42	
+
+# Decimaltal / float
+my_float = 3.14			
 ```
 
 ### **Omvandla mellan datatyper**
@@ -26,9 +31,14 @@ my_float = 3.14			# Decimaltal / float
 Man kan omvandla värden/variabler mellan olika datatyper. (Eng: *type conversion*)
 
 ```py
-my_string = str(42)		# Gör om ett värde till en textsträng
-my_int = int(13.3)			# Gör om ett värde till ett heltal
-my_float = float('3.14')		# Gör om ett värde till ett decimaltal
+# Gör om ett värde till en textsträng
+my_string = str(42)
+
+# Gör om ett värde till ett heltal
+my_int = int(13.3)			
+
+# Gör om ett värde till ett decimaltal
+my_float = float('3.14')	
 ```
 
 ### 
@@ -708,6 +718,13 @@ with open('names.txt') as file:
         print(line.strip())
 ```
 
+### **Öppna och läs en textfil rad för rad**
+
+```py
+with open('names.txt') as file:
+    for line in file:
+        print(line)
+```
 
 ### **Öppna och läs in en textfil till en lista**
 

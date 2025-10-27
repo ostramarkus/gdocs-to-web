@@ -17,7 +17,7 @@
 <header><img alt="Python logo" src="img/python-logo-only.svg"><h1>Grunderna i Python</h1></header>
 <div id="wrap">
 <aside>
-<h4>Inneh&aring;ll</h4><ul id="toc">
+<h4>Grunderna i Python</h4><ul id="toc">
 <li class="section-link"><a href="#variabler-och-datatyper">Variabler och datatyper</a>
 <ul>
 <li class="article-link"><a href="#definiera-variabler">Definiera variabler</a></li>
@@ -128,6 +128,7 @@
 <ul>
 <li class="article-link"><a href="#oppna-och-las-in-en-hel-textfil">&Ouml;ppna och l&auml;s in en hel textfil</a></li>
 <li class="article-link"><a href="#oppna-och-las-en-textfil-rad-for-rad">&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</a></li>
+<li class="article-link"><a href="#oppna-och-las-en-textfil-rad-for-rad">&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</a></li>
 <li class="article-link"><a href="#oppna-och-las-in-en-textfil-till-en-lista">&Ouml;ppna och l&auml;s in en textfil till en lista</a></li>
 <li class="article-link"><a href="#oppna-och-skriv-till-en-textfil">&Ouml;ppna och skriv till en textfil</a></li>
 <li class="article-link"><a href="#oppna-och-lagg-till-i-befintlig-fil">&Ouml;ppna och l&auml;gg till i befintlig fil</a></li>
@@ -137,10 +138,10 @@
 </li>
 </ul></aside>
 <main>
-<h1>Grunderna i Python2</h1>
+<h1>Grunderna i Python</h1>
 <section id="variabler-och-datatyper"><h2>Variabler och datatyper</h2>
 <p>Variabler anv&auml;nds f&ouml;r att lagra enskilda v&auml;rden. Variabler kan vara av olika <strong>datatyper</strong> beroende p&aring; vilken typ av data som lagras.</p>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th style="text-align: left;">Datatyp</th>
@@ -170,27 +171,37 @@
 <td style="text-align: left;">Textstr&auml;ngar, skrivs inom <code>" "</code> eller <code>' '</code>.</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 <article id="definiera-variabler"><h3>Definiera variabler</h3>
 <p>Variabler definieras med likamedstecknet: <strong><code>=</code></strong>.</p>
-<pre><code class="language-py">my_string = 'Hello World'   # Str&auml;ng / str
-my_int = 42             # Heltal / int
-my_float = 3.14         # Decimaltal / float
-</code></pre>
+<div class="code-container"><pre><code class="language-py"># Str&auml;ng / str
+my_string = 'Hello World'
+
+# Heltal / int
+my_int = 42 
+
+# Decimaltal / float
+my_float = 3.14         
+</code></pre></div>
 </article><article id="omvandla-mellan-datatyper"><h3>Omvandla mellan datatyper</h3>
 <p>Man kan omvandla v&auml;rden/variabler mellan olika datatyper. (Eng: <em>type conversion</em>)</p>
-<pre><code class="language-py">my_string = str(42)     # G&ouml;r om ett v&auml;rde till en textstr&auml;ng
-my_int = int(13.3)          # G&ouml;r om ett v&auml;rde till ett heltal
-my_float = float('3.14')        # G&ouml;r om ett v&auml;rde till ett decimaltal
-</code></pre>
+<div class="code-container"><pre><code class="language-py"># G&ouml;r om ett v&auml;rde till en textstr&auml;ng
+my_string = str(42)
+
+# G&ouml;r om ett v&auml;rde till ett heltal
+my_int = int(13.3)          
+
+# G&ouml;r om ett v&auml;rde till ett decimaltal
+my_float = float('3.14')    
+</code></pre></div>
 
 </article><article id="rakna-med-variabler"><h3>R&auml;kna med variabler</h3>
 <p>Man kan anv&auml;nda variabler i ber&auml;kningar.</p>
-<pre><code class="language-py">x = 100
+<div class="code-container"><pre><code class="language-py">x = 100
 my_sum = 100 + x
-</code></pre>
+</code></pre></div>
 </article><article id="vanliga-operatorer-for-berakningar-aritmetiska-operatorer"><h3>Vanliga operatorer f&ouml;r ber&auml;kningar (aritmetiska operatorer)</h3>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th style="text-align: center;"></th>
@@ -235,9 +246,9 @@ my_sum = 100 + x
 <td style="text-align: left;">Subtrahera fr&aring;n</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </article><article id="addera-eller-subtrahera-variabler"><h3>Addera eller subtrahera variabler</h3>
-<pre><code class="language-py">x = 1
+<div class="code-container"><pre><code class="language-py">x = 1
 y = 100
 
 # Addera 1 till x
@@ -245,120 +256,120 @@ x += 1
 
 # Subtrahera 3 fr&aring;n y
 y -= 3
-</code></pre>
+</code></pre></div>
 
 </article></section><section id="output-print-funktionen-och-strangar"><h2>Output - print-funktionen och str&auml;ngar</h2>
 <article id="skriva-ut-text"><h3>Skriva ut text</h3>
-<pre><code class="language-py">print('Hello World!')
-</code></pre>
+<div class="code-container"><pre><code class="language-py">print('Hello World!')
+</code></pre></div>
 </article><article id="satta-ihop-textstrangar-med-plustecknet"><h3>S&auml;tta ihop textstr&auml;ngar med plustecknet</h3>
 <p>OBS! Alla v&auml;rden m&aring;ste d&aring; vara textstr&auml;ngar.</p>
-<pre><code class="language-py">name = 'Markus'
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
 print('Hello ' + name + '!') 
-</code></pre>
+</code></pre></div>
 </article><article id="skriv-ut-flera-varden-med-kommatecknet"><h3>Skriv ut flera v&auml;rden med kommatecknet</h3>
 <p>Om man skriver ut flera v&auml;rden med kommatecknet kan man blanda datatyper. Man f&aring;r ett automatiskt mellanslag mellan v&auml;rdena.</p>
-<pre><code class="language-py">name = 'Markus'
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
 score = 100
 
 print('Hello', name, 'Your score:', score) 
 # &rarr; 'Hello Markus Your score: 100'
-</code></pre>
+</code></pre></div>
 </article><article id="avancerad-strang-formatering-med-f-strings"><h3>Avancerad str&auml;ng-formatering med f-strings</h3>
 <p>🔗<a href="https://www.datacamp.com/tutorial/python-f-string">Python f-string: A Complete Guide | DataCamp</a></p>
 </article><article id="ta-ut-delar-av-en-strang"><h3>Ta ut delar av en str&auml;ng</h3>
 <p>Str&auml;ngar kan p&aring; m&aring;nga s&auml;tt hanteras som listor. Man kan till exempel n&aring; delar av en str&auml;ng med hakklammer:</p>
-<pre><code class="language-py">name = 'Markus'
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
 first_three_letters = name[0:2] 
 
 # &rarr; 'Mar'
-</code></pre>
+</code></pre></div>
 </article><article id="andra-stora-sma-bokstaver"><h3>&Auml;ndra stora/sm&aring; bokst&auml;ver</h3>
-<pre><code class="language-py">name = 'Markus'
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
 big_name = name.upper() # &rarr; 'MARKUS'
 small_name = name.lower()   # &rarr;  'markus'
-</code></pre>
+</code></pre></div>
 </article><article id="sok-och-ersatt-i-textstrang"><h3>S&ouml;k och ers&auml;tt i textstr&auml;ng</h3>
-<pre><code class="language-py">name = 'Markus'
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
 new_name = name.replace('rk', 'gn')
 
 # &rarr; 'Magnus'
-</code></pre>
+</code></pre></div>
 </article><article id="ta-bort-tomrum-och-ny-rad-tecken-fran-strang"><h3>Ta bort tomrum (och ny-rad-tecken) fr&aring;n str&auml;ng</h3>
-<pre><code class="language-py">name = '    Markus      '
+<div class="code-container"><pre><code class="language-py">name = '    Markus      '
 new_name = name.strip() 
 
 # &rarr; 'Markus'
-</code></pre>
+</code></pre></div>
 </article></section><section id="input-fran-anvandaren"><h2>Input fr&aring;n anv&auml;ndaren</h2>
 <p>Funktionen <strong><code>input()</code></strong> pausar programmet och v&auml;ntar p&aring; text-input fr&aring;n anv&auml;ndaren. Den input-data man f&aring;r fr&aring;n anv&auml;ndaren lagrar man ofta i en variabel. Input-datan &auml;r alltid en textstr&auml;ng/<strong><code>str</code></strong>.</p>
 <article id="anvandning-av-en-input-funktion"><h3>Anv&auml;ndning av en input-funktion</h3>
-<pre><code class="language-py">name = input('Vad heter du?')
-</code></pre>
+<div class="code-container"><pre><code class="language-py">name = input('Vad heter du?')
+</code></pre></div>
 </article><article id="typomvandla-direkt-fran-input-funktion"><h3>Typomvandla direkt fr&aring;n input-funktion</h3>
 <p>Om man vill g&ouml;ra ber&auml;kningar eller numeriska j&auml;mf&ouml;relser med datan kan man konvertera den direkt till en annan datatyp.</p>
-<pre><code class="language-py">age = int(input('Hur gammal &auml;r du?'))
-</code></pre>
+<div class="code-container"><pre><code class="language-py">age = int(input('Hur gammal &auml;r du?'))
+</code></pre></div>
 
 </article></section><section id="listor"><h2>Listor</h2>
 <p>Listor anv&auml;nds f&ouml;r att lagra flera v&auml;rden som h&ouml;r samman med varandra. En lista skapar man som en variabel med v&auml;rden separerade med kommatecken. Listans v&auml;rden ramas in i klammerparenteser <strong><code>[]</code></strong>.</p>
 <article id="definiera-skapa-en-lista"><h3>Definiera/skapa en lista</h3>
-<pre><code class="language-py">my_list = ['value1', 'value2', 'value3']
-</code></pre>
+<div class="code-container"><pre><code class="language-py">my_list = ['value1', 'value2', 'value3']
+</code></pre></div>
 </article><article id="na-ett-listvarde-med-positionsnummer"><h3>N&aring; ett listv&auml;rde med positionsnummer</h3>
 <p>F&ouml;r att n&aring; ett v&auml;rde i listan anv&auml;nder man ett positionsnummer. Den f&ouml;rsta positionen har numret 0. Positionsnummer kallas &auml;ven <em>index</em>.</p>
-<pre><code class="language-py">first_value = my_list[0]
-</code></pre>
+<div class="code-container"><pre><code class="language-py">first_value = my_list[0]
+</code></pre></div>
 </article><article id="rakna-bakifran-med-negativa-positionsnummer"><h3>R&auml;kna bakifr&aring;n med negativa positionsnummer</h3>
 <p>Med negativa positionsnummer r&auml;knar man bakifr&aring;n fr&aring;n sista positionen. </p>
-<pre><code class="language-py">last_value = my_list[-1]
-</code></pre>
+<div class="code-container"><pre><code class="language-py">last_value = my_list[-1]
+</code></pre></div>
 </article><article id="valj-delar-av-en-lista"><h3>V&auml;lj delar av en lista</h3>
 <p>Med kolon <strong>:</strong> kan man ange ett intervall av positioner. </p>
-<pre><code class="language-py">first_three_values = my_list[0:2]
-</code></pre>
+<div class="code-container"><pre><code class="language-py">first_three_values = my_list[0:2]
+</code></pre></div>
 </article><article id="tilldela-ett-varde-till-en-viss-position"><h3>Tilldela ett v&auml;rde till en viss position</h3>
-<pre><code class="language-py">my_list[0] = 'new value'
-</code></pre>
+<div class="code-container"><pre><code class="language-py">my_list[0] = 'new value'
+</code></pre></div>
 </article><article id="lagga-till-ett-till-varde-till-en-lista"><h3>L&auml;gga till ett till v&auml;rde till en lista</h3>
-<pre><code class="language-py">my_list.append('new value')
-</code></pre>
+<div class="code-container"><pre><code class="language-py">my_list.append('new value')
+</code></pre></div>
 </article><article id="ta-reda-pa-langden-pa-en-lista-eller-strang"><h3>Ta reda p&aring; l&auml;ngden p&aring; en lista eller str&auml;ng</h3>
-<pre><code class="language-py">my_list = ['value1', 'value2', 'value3']
+<div class="code-container"><pre><code class="language-py">my_list = ['value1', 'value2', 'value3']
 list_size = len(my_list)
-</code></pre>
-<pre><code class="language-py">name = 'Markus'
+</code></pre></div>
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
 string_size = len(name)
-</code></pre>
+</code></pre></div>
 </article><article id="ga-igenom-iterera-en-lista-ett-varde-i-taget"><h3>G&aring; igenom/iterera en lista ett v&auml;rde i taget</h3>
-<pre><code class="language-py">menu = ['pizza', 'kebab', 'sushi']
+<div class="code-container"><pre><code class="language-py">menu = ['pizza', 'kebab', 'sushi']
 
 for food in menu:
     print(food)
-</code></pre>
+</code></pre></div>
 </article><article id="sortera-en-lista-numeriskt-eller-alfabetiskt"><h3>Sortera en lista (numeriskt eller alfabetiskt)</h3>
-<pre><code class="language-py">menu = ['B', 'D', 'C', 'A']
+<div class="code-container"><pre><code class="language-py">menu = ['B', 'D', 'C', 'A']
 menu.sort()
 
 # &rarr; ['A', 'B', 'C', 'D']
-</code></pre>
+</code></pre></div>
 </article><article id="skapa-en-lista-fran-en-textstrang"><h3>Skapa en lista fr&aring;n en textstr&auml;ng</h3>
-<pre><code class="language-py">food_string = 'kebab, pizza, sushi, meatballs'
+<div class="code-container"><pre><code class="language-py">food_string = 'kebab, pizza, sushi, meatballs'
 food_list = food_string.split(',')
 
 # &rarr; ['kebab', ' pizza', ' sushi', ' meatballs']
-</code></pre>
+</code></pre></div>
 </article><article id="skapa-en-textstrang-fran-en-lista"><h3>Skapa en textstr&auml;ng fr&aring;n en lista</h3>
-<pre><code class="language-py">food_list = ['kebab', ' pizza', ' sushi', ' meatballs']
+<div class="code-container"><pre><code class="language-py">food_list = ['kebab', ' pizza', ' sushi', ' meatballs']
 food_string = ','.join(food_list)
 
 # &rarr; 'kebab, pizza, sushi, meatballs'
-</code></pre>
+</code></pre></div>
 </article></section><section id="villkor-if-satser"><h2>Villkor - if-satser</h2>
 <p>If-satser anv&auml;nds f&ouml;r att programmet ska utf&ouml;ra viss kod endast d&aring; ett visst villkor &auml;r uppfyllt. Det kodblock som ska utf&ouml;ras har 4 mellanslags indrag. (<em>Indentering</em>)</p>
 <p><strong><code>else</code></strong> anv&auml;nds f&ouml;r att ange vad som ska g&ouml;ras ifall villkoret inte uppfylls.</p>
 <article id="vanliga-operatorer-for-villkor"><h3>Vanliga operatorer f&ouml;r villkor</h3>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th style="text-align: center;"></th>
@@ -399,163 +410,163 @@ food_string = ','.join(food_list)
 <td style="text-align: left;">Eller</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </article><article id="jamforelse-av-textstrangar"><h3>J&auml;mf&ouml;relse av textstr&auml;ngar</h3>
-<pre><code class="language-py">name = 'Markus'
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
 
 if name == 'Markus':
    print('Welcome!')
 else:
    print('Go away!')
-</code></pre>
+</code></pre></div>
 </article><article id="jamforelse-av-numeriska-varden"><h3>J&auml;mf&ouml;relse av numeriska v&auml;rden</h3>
-<pre><code class="language-py">age = 25
+<div class="code-container"><pre><code class="language-py">age = 25
 
 if age &gt; 20:
    print('Hello!')
 else:
    print('Goodbye')
-</code></pre>
+</code></pre></div>
 </article><article id="flera-villkor-med-and"><h3>Flera villkor med <code>and</code></h3>
 <p>Med <strong><code>and</code></strong> kan man ange flera villkor som alla m&aring;ste vara sanna.</p>
-<pre><code class="language-py">username = 'marpet'
+<div class="code-container"><pre><code class="language-py">username = 'marpet'
 password = 'secret'
 
 if username == 'marpet' and password == 'secret':
     print('Welcome!')
 else:
     print('Access denied!')
-</code></pre>
+</code></pre></div>
 </article><article id="flera-villkor-med-or"><h3>Flera villkor med <code>or</code></h3>
 <p>Med <strong><code>or</code></strong> kan man ange flera villkor. Det r&auml;cker med att ett av villkoren &auml;r sant.</p>
-<pre><code class="language-py">if username == 'marpet' or username == 'marpet2':
+<div class="code-container"><pre><code class="language-py">if username == 'marpet' or username == 'marpet2':
     print('Welcome!')
 else:
     print('Access denied!')
-</code></pre>
+</code></pre></div>
 </article><article id="else-if-flera-jamforelser"><h3>Else-if - flera j&auml;mf&ouml;relser</h3>
-<pre><code class="language-py">if role == 'admin':
+<div class="code-container"><pre><code class="language-py">if role == 'admin':
     print('Welcome admin!')
 elif role == 'user':
     print('Welcome user!')
 else:
     print('Access denied!')
-</code></pre>
+</code></pre></div>
 </article><article id="if-och-listor"><h3>If och listor</h3>
 <p>Med en if-sats kan man kontrollera ifall ett v&auml;rde finns i en lista.</p>
-<pre><code class="language-py">menu = ['kebab', 'pizza', 'meatballs']
+<div class="code-container"><pre><code class="language-py">menu = ['kebab', 'pizza', 'meatballs']
 
 if 'pizza' in menu:
    print('Yes! Pizza!')
 else:
    print('Nooooo..... I want pizza!')
-</code></pre>
+</code></pre></div>
 </article><article id="if-och-strangar"><h3>If och str&auml;ngar</h3>
 <p>Med en if-sats kan man kontrollera ifall en textstr&auml;ng inneh&aring;ller en viss annan str&auml;ng.</p>
-<pre><code class="language-py">text = 'Python is easy!'
+<div class="code-container"><pre><code class="language-py">text = 'Python is easy!'
 
 if 'easy' in text:
    print('Correct!')
 else:
    print('You are wrong! Practice more!')
-</code></pre>
+</code></pre></div>
 </article><article id="if-och-funktioner"><h3>If och funktioner</h3>
 <p>Funktioner som returnerar <strong><code>True</code></strong> eller <strong><code>False</code></strong> (booleska v&auml;rden) kan anv&auml;ndas direkt som villkor i if-satser.</p>
-<pre><code class="language-py">if is_logged_in():
+<div class="code-container"><pre><code class="language-py">if is_logged_in():
    print('Welcome!')
 else:
    print('Access denied!')
-</code></pre>
+</code></pre></div>
 
 </article></section><section id="loopar"><h2>Loopar</h2>
 <p>Loopar anv&auml;nds n&auml;r man vill utf&ouml;ra samma kod flera g&aring;nger. Den kod som ska utf&ouml;ras i loopen <em>indenteras</em> med 4 mellanslag.</p>
 <article id="en-for-loop-med-range"><h3>En for-loop med range()</h3>
 <p>F&ouml;r att ange hur m&aring;nga g&aring;nger en <strong><code>for</code></strong>-loop ska k&ouml;ras anv&auml;nds funktionen <strong><code>range()</code></strong> som skapar en talserie mellan tv&aring; heltal.</p>
-<pre><code class="language-py">for i in range(0, 10):
+<div class="code-container"><pre><code class="language-py">for i in range(0, 10):
    print('I can count to:', i)
-</code></pre>
+</code></pre></div>
 </article><article id="en-for-loop-for-att-ga-igenom-en-lista-strang"><h3>En for-loop f&ouml;r att g&aring; igenom en lista/str&auml;ng</h3>
 <p>For-loopar anv&auml;nds &auml;ven f&ouml;r att g&aring; igenom (<em>iterera</em>) listor och str&auml;ngar.</p>
-<pre><code class="language-py">menu = ['pizza', 'kebab', 'sushi']
+<div class="code-container"><pre><code class="language-py">menu = ['pizza', 'kebab', 'sushi']
 
 for food in menu:
     print(food)
-</code></pre>
-<pre><code class="language-py">name = 'Markus'
+</code></pre></div>
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
 
 for letter in name:
     print(letter)
-</code></pre>
+</code></pre></div>
 </article><article id="while-loop"><h3>While-loop</h3>
 <p>En <strong><code>while</code></strong>-loop k&ouml;rs s&aring; l&auml;nge ett villkor &auml;r uppfyllt.</p>
-<pre><code class="language-py">i = 0
+<div class="code-container"><pre><code class="language-py">i = 0
 
 while i &lt; 10:
     print('I can count to:', i)
     i += 1
-</code></pre>
+</code></pre></div>
 </article><article id="evig-while-loop"><h3>Evig <code>while</code>-loop</h3>
 <p>Om man anger ett villkor som alltid &auml;r sant, skapas en evig loop.</p>
-<pre><code class="language-py">while True:
+<div class="code-container"><pre><code class="language-py">while True:
     input('Are we there yet?')
-</code></pre>
+</code></pre></div>
 </article><article id="avbryta-en-loop-med-break"><h3>Avbryta en loop med <code>break</code></h3>
 <p>Man kan anv&auml;nda <strong><code>break</code></strong> f&ouml;r att avbryta en loop.</p>
-<pre><code class="language-py">while True:
+<div class="code-container"><pre><code class="language-py">while True:
     answer = input('Are we there yet?')
     if answer == 'yes':
         print('Finally!')
         break
-</code></pre>
+</code></pre></div>
 </article><article id="skapa-listor-med-range"><h3>Skapa listor med range</h3>
 <p>Funktionen <strong><code>range</code></strong> kan &auml;ven anv&auml;ndas f&ouml;r att skapa en lista av talserier. Funktionen tar &auml;ven ett tredje argument som anger avst&aring;ndet mellan talen i talserien.</p>
-<pre><code class="language-py">my_list = list(range(0, 50, 10))
+<div class="code-container"><pre><code class="language-py">my_list = list(range(0, 50, 10))
 print(my_list)
 
 # &rarr; [0, 10, 20, 30, 40]
-</code></pre>
+</code></pre></div>
 
 </article></section><section id="funktioner"><h2>Funktioner</h2>
 <p>En <em>funktion</em> &auml;r namngiven kod som man kan anropa fr&aring;n sitt program. Med funktioner slipper man upprepa sig n&auml;r man vill g&ouml;ra samma sak flera g&aring;nger i ett program. Funktioner &auml;r ocks&aring; ett s&auml;tt att dela upp ett st&ouml;rre program i mindre, mer l&auml;tthanterliga delar. </p>
 <article id="egen-funktion"><h3>Egen funktion</h3>
-<pre><code class="language-py">def hello():
+<div class="code-container"><pre><code class="language-py">def hello():
     print('Hello!')
     print('Have a nice day!')
 
 hello()
-</code></pre>
+</code></pre></div>
 </article><article id="egen-funktion-som-tar-emot-argument"><h3>Egen funktion som tar emot argument</h3>
-<pre><code class="language-py">def hello(name):
+<div class="code-container"><pre><code class="language-py">def hello(name):
     print('Hello', name)
 
 hello('Markus')
-</code></pre>
+</code></pre></div>
 </article><article id="egen-funktion-som-tar-emot-flera-argument-och-returnerar-ett-varde"><h3>Egen funktion som tar emot flera argument och returnerar ett v&auml;rde</h3>
-<pre><code class="language-py">def triangle_area(base, height):
+<div class="code-container"><pre><code class="language-py">def triangle_area(base, height):
     area = base * height / 2
     return area
 
 my_area = triangle_area(5, 7)
 print(my_area)
-</code></pre>
+</code></pre></div>
 </article></section><section id="dictionary-dict"><h2>Dictionary - dict</h2>
 <p>Datatypen <em>dictionary</em> (dict) &auml;r en <em>samling</em> precis som listor. Ist&auml;llet f&ouml;r att de olika elementen representeras av ett positionsnummer (0, 1, 2 etc.) anv&auml;nds egna namn. Namnen som identifierar positionerna kallas f&ouml;r <em>keys</em> (sv. nycklar).</p>
 <article id="en-enkel-dictionary"><h3>En enkel dictionary</h3>
-<pre><code class="language-py">car = {'brand': 'Volvo', 'color': 'black', 'max_speed': 280}
+<div class="code-container"><pre><code class="language-py">car = {'brand': 'Volvo', 'color': 'black', 'max_speed': 280}
 
 print(car['max_speed'])
-</code></pre>
+</code></pre></div>
 </article><article id="en-dictionary-pa-flera-rader"><h3>En dictionary p&aring; flera rader</h3>
-<pre><code class="language-py">car = {
+<div class="code-container"><pre><code class="language-py">car = {
     'brand': 'Volvo', 
     'color': 'black', 
     'max_speed': 280,
     'price': 200000,
     'model_year': 2018,
 }
-</code></pre>
+</code></pre></div>
 </article><article id="en-lista-av-dictionaries"><h3>En lista av dictionaries</h3>
-<pre><code class="language-py">products = [
+<div class="code-container"><pre><code class="language-py">products = [
     {
         "name": "Ahlgens bilar",
         "price": 17.5,
@@ -567,10 +578,10 @@ print(car['max_speed'])
         "quantity": 3,
     },
 ]
-</code></pre>
+</code></pre></div>
 
 </article><article id="ga-igenom-en-dictionary-med-en-for-loop"><h3>G&aring; igenom en dictionary med en for-loop</h3>
-<pre><code class="language-py">car = {
+<div class="code-container"><pre><code class="language-py">car = {
     'brand': 'Volvo', 
     'color': 'black', 
     'max_speed': 280,
@@ -580,7 +591,7 @@ print(car['max_speed'])
 
 for key, value in car.items():
     print(key, ':', value)
-</code></pre>
+</code></pre></div>
 
 </article></section><section id="tuplar-och-set"><h2>Tuplar och set</h2>
 <p>Tuplar och set &auml;r samlingar (<em>collections</em>) och alternativ till listor. </p>
@@ -590,13 +601,13 @@ for key, value in car.items():
 <li><strong>Set</strong> kan endast inneh&aring;lla unika v&auml;rden. De kan allts&aring; inte inneh&aring;lla dubbletter.</li>
 </ul>
 <article id="definiera-en-tupel"><h3>Definiera en tupel</h3>
-<pre><code class="language-py">my_tuple = ('kebab', 'pizza', 'meatballs')
-</code></pre>
+<div class="code-container"><pre><code class="language-py">my_tuple = ('kebab', 'pizza', 'meatballs')
+</code></pre></div>
 </article><article id="definiera-ett-set"><h3>Definiera ett set</h3>
-<pre><code class="language-py">my_set = {'kebab', 'pizza', 'meatballs'}
-</code></pre>
+<div class="code-container"><pre><code class="language-py">my_set = {'kebab', 'pizza', 'meatballs'}
+</code></pre></div>
 </article><article id="skillnaderna-mellan-listor-tuplar-och-set"><h3>Skillnaderna mellan listor, tuplar och set</h3>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>Egenskap</th>
@@ -649,43 +660,43 @@ for key, value in car.items():
 <td>Snabb f&ouml;r medlemskap och m&auml;ngdlogik</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </article></section><section id="modulen-random"><h2>Modulen random</h2>
 <p>Modulen random anv&auml;nds f&ouml;r att hantera slumptal.</p>
 <article id="importera-modulen"><h3>Importera modulen</h3>
 <p>Kodmoduler som <strong><code>random</code></strong> beh&ouml;ver importeras innan de anv&auml;nds. Import av moduler g&ouml;rs h&ouml;gst upp i ens kod.</p>
-<pre><code class="language-py">import random
-</code></pre>
+<div class="code-container"><pre><code class="language-py">import random
+</code></pre></div>
 </article><article id="slumpar-ett-decimaltal-mellan-0-och-1"><h3>Slumpar ett decimaltal mellan 0 och 1</h3>
-<pre><code class="language-py">r1 = random.random()
-</code></pre>
+<div class="code-container"><pre><code class="language-py">r1 = random.random()
+</code></pre></div>
 </article><article id="slumpar-ett-heltal-mellan-vissa-varden"><h3>Slumpar ett heltal mellan vissa v&auml;rden</h3>
-<pre><code class="language-py">r2 = random.randrange(10, 20)
-</code></pre>
+<div class="code-container"><pre><code class="language-py">r2 = random.randrange(10, 20)
+</code></pre></div>
 </article><article id="slumpar-ett-alternativ-fran-en-lista"><h3>Slumpar ett alternativ fr&aring;n en lista</h3>
-<pre><code class="language-py">menu = ["pizza", "kebab", "pasta"]
+<div class="code-container"><pre><code class="language-py">menu = ["pizza", "kebab", "pasta"]
 food = random.choice(menu)
-</code></pre>
+</code></pre></div>
 </article></section><section id="modulen-datetime"><h2>Modulen datetime</h2>
 <p>Modulen datetime anv&auml;nds f&ouml;r att hantera tid och datum.</p>
 <article id="ta-fram-dagens-datum"><h3>Ta fram dagens datum</h3>
-<pre><code class="language-py">today = datetime.date.today()
-</code></pre>
+<div class="code-container"><pre><code class="language-py">today = datetime.date.today()
+</code></pre></div>
 </article><article id="ta-fram-ett-annat-datum"><h3>Ta fram ett annat datum</h3>
-<pre><code class="language-py">christmas = datetime.date(2025, 12, 24)
-</code></pre>
+<div class="code-container"><pre><code class="language-py">christmas = datetime.date(2025, 12, 24)
+</code></pre></div>
 </article><article id="ta-fram-ett-datum-fran-en-strang-i-iso-format"><h3>Ta fram ett datum fr&aring;n en str&auml;ng i iso-format</h3>
-<pre><code class="language-py">christmas = date.fromisoformat("2025-12-24")
-</code></pre>
+<div class="code-container"><pre><code class="language-py">christmas = date.fromisoformat("2025-12-24")
+</code></pre></div>
 </article><article id="ta-fram-veckodag-for-datum"><h3>Ta fram veckodag f&ouml;r datum</h3>
 <p>Metoden <strong><code>weekday()</code></strong> ger veckodagens nummer. M&aring;ndag \= 0, tisdag \= 1 etc.</p>
-<pre><code class="language-py">christmas = datetime.date(2025, 12, 24)
+<div class="code-container"><pre><code class="language-py">christmas = datetime.date(2025, 12, 24)
 print(christmas.weekday())
 
 # &rarr; 2
-</code></pre>
+</code></pre></div>
 </article><article id="rakna-med-datum"><h3>R&auml;kna med datum</h3>
-<pre><code class="language-py">import datetime
+<div class="code-container"><pre><code class="language-py">import datetime
 
 christmas = datetime.date(2025, 12, 24)
 today = datetime.date.today()
@@ -693,8 +704,8 @@ today = datetime.date.today()
 time_to_christmas = christmas - today
 
 print(time_to_christmas)
-</code></pre>
-<pre><code class="language-py">import datetime
+</code></pre></div>
+<div class="code-container"><pre><code class="language-py">import datetime
 
 today = datetime.date.today()
 
@@ -702,9 +713,9 @@ ten_days = datetime.timedelta(days = 10)
 in_ten_days = today + ten_days
 
 print(in_ten_days)
-</code></pre>
+</code></pre></div>
 </article><article id="datetime-datum-och-tid-tillsammans"><h3>Datetime - datum och tid tillsammans</h3>
-<pre><code class="language-py">now = datetime.datetime.now()
+<div class="code-container"><pre><code class="language-py">now = datetime.datetime.now()
 
 print(now)
 # &rarr; 2025-09-16 10:05:21.723942
@@ -714,9 +725,9 @@ print(now.time())
 
 print(now.date())
 # &rarr; 2025-09-16
-</code></pre>
+</code></pre></div>
 </article><article id="oversikt-over-modulen-datetime"><h3>&Ouml;versikt &ouml;ver modulen datetime</h3>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th style="text-align: left;">Klass</th>
@@ -746,41 +757,46 @@ print(now.date())
 <td style="text-align: left;"><code>total_seconds()</code> + st&ouml;der aritmetik med datum/tid (+, -)</td>
 </tr>
 </tbody>
-</table>
+</table></div>
 </article></section><section id="filer-lasa-och-skriv"><h2>Filer: l&auml;sa och skriv</h2>
 <article id="oppna-och-las-in-en-hel-textfil"><h3>&Ouml;ppna och l&auml;s in en hel textfil</h3>
-<pre><code class="language-py">with open('names.txt') as file:
+<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
     content = file.read()
 
 print(content)
-</code></pre>
+</code></pre></div>
 </article><article id="oppna-och-las-en-textfil-rad-for-rad"><h3>&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</h3>
 <p>Genom att anv&auml;nda metoden <strong><code>strip()</code></strong> tar vi bort tecknet f&ouml;r "ny rad" i slutet p&aring; varje textrad.</p>
-<pre><code class="language-py">with open('names.txt') as file:
+<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
     for line in file:
         print(line.strip())
-</code></pre>
+</code></pre></div>
+</article><article id="oppna-och-las-en-textfil-rad-for-rad"><h3>&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</h3>
+<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
+    for line in file:
+        print(line)
+</code></pre></div>
 </article><article id="oppna-och-las-in-en-textfil-till-en-lista"><h3>&Ouml;ppna och l&auml;s in en textfil till en lista</h3>
-<pre><code class="language-py">with open('names.txt') as name_file:
+<div class="code-container"><pre><code class="language-py">with open('names.txt') as name_file:
     names = name_file.readlines()
-</code></pre>
+</code></pre></div>
 </article><article id="oppna-och-skriv-till-en-textfil"><h3>&Ouml;ppna och skriv till en textfil</h3>
 <p>Detta tar bort eventuellt tidigare inneh&aring;ll</p>
-<pre><code class="language-py">with open('textfile.txt', 'w') as textfile:
+<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'w') as textfile:
     textfile.write('Hello world!')
-</code></pre>
+</code></pre></div>
 </article><article id="oppna-och-lagg-till-i-befintlig-fil"><h3>&Ouml;ppna och l&auml;gg till i befintlig fil</h3>
-<pre><code class="language-py">with open('textfile.txt', 'a') as textfile:
+<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'a') as textfile:
     textfile.write('Hello world!')
-</code></pre>
+</code></pre></div>
 </article><article id="skriva-en-ny-rad-med-tecknen-n"><h3>Skriva en ny rad med tecknen: <code>\n</code></h3>
 <p>Om man vill l&auml;gga till en radbrytning i texten som man skriver kan man anv&auml;nda teckenkombinationen: <strong><code>\n</code></strong></p>
-<pre><code class="language-py">with open('textfile.txt', 'a') as textfile:
+<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'a') as textfile:
     textfile.write('Hello world!\n')
     textfile.write('Hello again!')
-</code></pre>
+</code></pre></div>
 </article><article id="lageskoder-vid-oppning-av-filer"><h3>L&auml;geskoder vid &ouml;ppning av filer</h3>
-<table>
+<div class="table-container"><table>
 <thead>
 <tr>
 <th>L&auml;geskod</th>
@@ -821,7 +837,7 @@ print(content)
 <td>Fel om filen redan finns</td>
 </tr>
 </tbody>
-</table></article></section></main>
+</table></div></article></section></main>
 </div>
 <script src="js/main.js"></script>
 <script>hljs.highlightAll();</script>

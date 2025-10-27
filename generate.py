@@ -8,8 +8,6 @@ md_content_file = 'md/content.md'
 html_template_file = 'templates/main.html'
 html_output_file = 'public_html/index.html'
 
-preserve_whitespace_tags = ["p", "h1", "h2", "h3", "li", "span", "em", "b", "i", "strong"]
-
 # Open and read template file
 main_soup = gdoc.html_file_to_soup(html_template_file)
 
@@ -25,11 +23,15 @@ content_soup = gdoc.create_sections(content_soup)
 # Create articles
 content_soup = gdoc.create_articles(content_soup)
 
+# Wrap tables in div
+content_soup = gdoc.div_wrap(content_soup, 'table', 'table-container')
+content_soup = gdoc.div_wrap(content_soup, 'pre', 'code-container')
+
 # Generate and insert table of content
 toc_soup = gdoc.create_toc(content_soup)
 
 toc_title = main_soup.new_tag('h4')
-toc_title.string = 'Innehåll'
+toc_title.string = 'Grunderna i Python'
 main_soup.aside.append(toc_title)
 main_soup.aside.append(toc_soup)
 
