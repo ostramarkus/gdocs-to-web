@@ -1,7 +1,8 @@
+/* Debug
 * {
    outline: 1px solid #f00 !important;
 }
-
+*/
 html {
     height: 100%;
 }
@@ -139,28 +140,23 @@ article {
     box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
 }
 
-article pre  {
-    margin: 1rem 0 0 0;
-} 
-
 article > h3 {
     margin-top: -4px;
 }
 
-article * {
-    overflow: auto;
-}
 
 /* Syntax highlighting */
 .code-container {
-    overflow: auto;
+    overflow-x: auto;
     box-sizing: border-box;
-    max-width:inherit;
+    max-width:100vw;
+    margin: 1em 0 0 0;
 }
 
 pre {
     white-space: pre;
     overflow-wrap: normal;
+    margin: 0;
 }
 
 .hljs {
@@ -309,7 +305,7 @@ button.copy-btn:hover {
     }
 
     section {
-        padding: 1rem;
+        padding: 0.5em 1rem;
     }
 
     aside {
@@ -337,4 +333,17 @@ button.copy-btn:hover {
         display: none;
     }
 
+    article {
+        padding: 0;
+        margin: 1.5em 0;
+        background-color: transparent;
+        border: none;
+        box-shadow: none;
+    }
+
+    .code-container {
+        overflow-x: auto;
+        box-sizing: border-box;
+        max-width:calc(100vw - 2rem);
+    }
 } 
