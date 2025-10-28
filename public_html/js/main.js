@@ -23,9 +23,9 @@ document.querySelectorAll('pre').forEach(pre => {
 
 // Highlight links
 
-document.querySelectorAll('.section-link').forEach(sectionLink => {
+document.querySelectorAll('.section-link a').forEach(sectionLink => {
   sectionLink.addEventListener('click', async () => {
-    let articlesList = sectionLink.querySelector('ul');
+    let articlesList = sectionLink.nextElementSibling;
     if (articlesList.classList.contains('open')) {
       articlesList.classList.remove('open');
     } else {
