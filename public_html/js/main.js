@@ -1,3 +1,22 @@
+// Nav-toggle
+document.getElementById('menu-toggle').addEventListener('click', async () => {
+  let navAside = document.getElementById('nav-container');
+  if (navAside.classList.contains('nav-open')) {
+    document.getElementById('nav-container').classList.remove('nav-open');
+  } else {
+    document.getElementById('nav-container').classList.add('nav-open');
+  }
+})
+
+document.querySelectorAll('#toc a').forEach(link => {
+  link.addEventListener('click', async => {
+    let navAside = document.getElementById('nav-container');  
+    if (navAside.classList.contains('nav-open')) {
+      document.getElementById('nav-container').classList.remove('nav-open');
+    }
+  })
+})
+
 // Hitta alla <pre><code>-block
 document.querySelectorAll('pre').forEach(pre => {
     let copySymbol = '🗐' 
@@ -25,13 +44,20 @@ document.querySelectorAll('pre').forEach(pre => {
 
 document.querySelectorAll('.section-link a').forEach(sectionLink => {
   sectionLink.addEventListener('click', async () => {
+    // Get ul-tag that is sibling to a-tag
     let articlesList = sectionLink.nextElementSibling;
-    if (articlesList.classList.contains('open')) {
-      articlesList.classList.remove('open');
+
+    // Toggle ul-tagg classname 'open'
+    if (articlesList.classList.contains('articles-open')) {
+      articlesList.classList.remove('articles-open');
     } else {
-      articlesList.classList.add('open');
+      // Close all dropdowns
+      document.querySelectorAll('.section-link ul').forEach(dropDown => {
+        dropDown.classList.remove('articles-open')
+      })
+      articlesList.classList.add('articles-open');
     }
-    
+
   });
   
   sectionLink.addEventListener('mouseleave', async () => {

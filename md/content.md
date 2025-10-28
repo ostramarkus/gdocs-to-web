@@ -2,14 +2,16 @@
 
 ## **Variabler och datatyper**
 
-Variabler används för att lagra enskilda värden. Variabler kan vara av olika **datatyper** beroende på vilken typ av data som lagras.
+Variabler används för att lagra enskilda värden. Variabler är av olika **datatyper** beroende på vilken typ av data som lagras.
+
+### **De vanligaste datatyperna**
 
 | Datatyp | Exempel | Förklaring |
 | :---- | :---- | :---- |
+| **str** (string / text) | `name = "Elmo"` | Textsträngar, skrivs inom `" "` eller `' '`. |
 | **int** (heltal) | `x = 5` | Heltal, utan decimaler. Kan vara positiva eller negativa. |
 | **float** (flyttal) | `y = 3.14` | Tal med decimaler. |
 | **bool** (boolean) | `is_happy = True` | Kan bara vara `True` eller `False`.  |
-| **str** (string / text) | `name = "Elmo"` | Textsträngar, skrivs inom `" "` eller `' '`. |
 
 ### **Definiera variabler**
 
@@ -35,13 +37,11 @@ Man kan omvandla värden/variabler mellan olika datatyper. (Eng: *type conversio
 my_string = str(42)
 
 # Gör om ett värde till ett heltal
-my_int = int(13.3)			
-
+my_int = int(13.3)	
+		
 # Gör om ett värde till ett decimaltal
 my_float = float('3.14')	
 ```
-
-### 
 
 ### **Räkna med variabler**
 
@@ -81,7 +81,7 @@ y -= 3
 
 ### 
 
-## **Output \- print-funktionen och strängar**
+## **Output \- print-funktionen**
 
 ### **Skriva ut text**
 
@@ -89,18 +89,9 @@ y -= 3
 print('Hello World!')
 ```
 
-### **Sätta ihop textsträngar med plustecknet**
-
-OBS\! Alla värden måste då vara textsträngar.
-
-```py
-name = 'Markus'
-print('Hello ' + name + '!') 
-```
-
 ### **Skriv ut flera värden med kommatecknet**
 
-Om man skriver ut flera värden med kommatecknet kan man blanda datatyper. Man får ett automatiskt mellanslag mellan värdena.
+Man kan ange flera värden att skriva ut med hjälp av kommatecknet. Man får ett automatiskt mellanslag mellan värdena. Det spelar ingen roll vilken **datatyp** värdena är.
 
 ```py
 name = 'Markus'
@@ -110,7 +101,42 @@ print('Hello', name, 'Your score:', score)
 # → 'Hello Markus Your score: 100'
 ```
 
+## 
+
+## **Textsträngar**
+
+### **Konkatenering \- sätta ihop textsträngar med plustecknet**
+
+Med plustecknet kan man sätta ihop flera textsträngar. Detta kallas **konkatenering**.
+
+**OBS\!** Alla värden måste vara textsträngar.
+
+```py
+name = 'Markus'
+print('Hello ' + name + '!') 
+
+# → Hello Markus!
+```
+
+```py
+firstname = 'Markus'
+lastname = 'Pettersson'
+full_name = firstname + ' ' + lastname
+
+# full_name → 'Markus Pettersson'
+```
+
 ### **Avancerad sträng-formatering med f-strings**
+
+Med så kallad f-sträng-formattering kan man sätta in variabler direkt i en textsträng. Man kan också ange hur variablerna ska formateras vid utskrift (t.ex. antalet decimaler.)
+
+```py
+price = 19.9
+product_name = 'kexchoklad'
+print(f'Du har köpt en {product_name} för {price:.2f} kr.')
+
+# → 'Du har köpt en kexchoklad för 19.90 kr.'
+```
 
 🔗[Python f-string: A Complete Guide | DataCamp](https://www.datacamp.com/tutorial/python-f-string)
 
@@ -122,7 +148,7 @@ Strängar kan på många sätt hanteras som listor. Man kan till exempel nå del
 name = 'Markus'
 first_three_letters = name[0:2] 
 
-# → 'Mar'
+# first_three_letters → 'Mar'
 ```
 
 ### **Ändra stora/små bokstäver**
@@ -139,7 +165,7 @@ small_name = name.lower()	# →  'markus'
 name = 'Markus'
 new_name = name.replace('rk', 'gn')
 
-# → 'Magnus'
+# new_name → 'Magnus'
 ```
 
 ### **Ta bort tomrum (och ny-rad-tecken) från sträng**
@@ -148,8 +174,19 @@ new_name = name.replace('rk', 'gn')
 name = '    Markus      '
 new_name = name.strip()	
 
-# → 'Markus'
+# new_name → 'Markus'
 ```
+
+**Konvertera sträng till lista**
+
+```py
+my_string = 'ABCDEF'
+my_list = list(my_string)
+
+# my_list → ['A', 'B', 'C', 'D', 'E', 'F']
+```
+
+## 
 
 ## **Input från användaren**
 
@@ -183,10 +220,13 @@ my_list = ['value1', 'value2', 'value3']
 
 ### **Nå ett listvärde med positionsnummer**
 
-För att nå ett värde i listan använder man ett positionsnummer. Den första positionen har numret 0\. Positionsnummer kallas även *index*.
+För att nå ett värde i listan använder man ett positionsnummer. Den första positionen har numret 0\. Positionsnummer kallas även **index**.
 
 ```py
+my_list = ['value1', 'value2', 'value3']
 first_value = my_list[0]
+
+# first_value → 'value1'
 ```
 
 ### **Räkna bakifrån med negativa positionsnummer**
@@ -194,7 +234,10 @@ first_value = my_list[0]
 Med negativa positionsnummer räknar man bakifrån från sista positionen. 
 
 ```py
+my_list = ['value1', 'value2', 'value3']
 last_value = my_list[-1]
+
+# last_value → 'value3'
 ```
 
 ### **Välj delar av en lista**
@@ -202,7 +245,10 @@ last_value = my_list[-1]
 Med kolon **:** kan man ange ett intervall av positioner. 
 
 ```py
+my_list = ['value1', 'value2', 'value3', 'value4']
 first_three_values = my_list[0:2]
+
+# first_three_values → ['value1', 'value2', 'value3']
 ```
 
 ### **Tilldela ett värde till en viss position**
@@ -222,11 +268,15 @@ my_list.append('new value')
 ```py
 my_list = ['value1', 'value2', 'value3']
 list_size = len(my_list)
+
+# list_size → 3
 ```
 
 ```py
 name = 'Markus'
 string_size = len(name)
+
+# string_size → 5
 ```
 
 ### **Gå igenom/iterera en lista ett värde i taget**
@@ -244,7 +294,7 @@ for food in menu:
 menu = ['B', 'D', 'C', 'A']
 menu.sort()
 
-# → ['A', 'B', 'C', 'D']
+# menu → ['A', 'B', 'C', 'D']
 ```
 
 ### **Skapa en lista från en textsträng**
@@ -253,7 +303,7 @@ menu.sort()
 food_string = 'kebab, pizza, sushi, meatballs'
 food_list = food_string.split(',')
 
-# → ['kebab', ' pizza', ' sushi', ' meatballs']
+# food_list → ['kebab', ' pizza', ' sushi', ' meatballs']
 ```
 
 ### **Skapa en textsträng från en lista**
@@ -262,7 +312,7 @@ food_list = food_string.split(',')
 food_list = ['kebab', ' pizza', ' sushi', ' meatballs']
 food_string = ','.join(food_list)
 
-# → 'kebab, pizza, sushi, meatballs'
+# food_string → 'kebab, pizza, sushi, meatballs'
 ```
 
 ## **Villkor \- if-satser**
@@ -293,6 +343,8 @@ if name == 'Markus':
    print('Welcome!')
 else:
    print('Go away!')
+
+# → 'Welcome!'
 ```
 
 ### **Jämförelse av numeriska värden**
@@ -304,6 +356,8 @@ if age > 20:
    print('Hello!')
 else:
    print('Goodbye')
+
+# → 'Hello!'
 ```
 
 ### **Flera villkor med `and`** 
@@ -318,6 +372,8 @@ if username == 'marpet' and password == 'secret':
     print('Welcome!')
 else:
     print('Access denied!')
+
+# → 'Welcome!'
 ```
 
 ### **Flera villkor med `or`**
@@ -353,6 +409,8 @@ if 'pizza' in menu:
    print('Yes! Pizza!')
 else:
    print('Nooooo..... I want pizza!')
+
+# → 'Yes! Pizza!'
 ```
 
 ### **If och strängar**
@@ -366,6 +424,8 @@ if 'easy' in text:
    print('Correct!')
 else:
    print('You are wrong! Practice more!')
+
+# → 'Correct'
 ```
 
 ### **If och funktioner**

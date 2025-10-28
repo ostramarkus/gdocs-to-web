@@ -14,12 +14,19 @@
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
 </head>
 <body>
-<header><img alt="Python logo" src="img/python-logo-only.svg"><h1>Grunderna i Python</h1></header>
+<header>
+<div id="header-title">
+<img alt="Python logo" src="img/python-logo-only.svg">
+<h1>Grunderna i Python</h1>
+</div>
+<div id="menu-toggle">☰</div>
+</header>
 <div id="wrap">
-<aside>
+<aside id="nav-container">
 <h4>Grunderna i Python</h4><ul id="toc">
 <li class="section-link"><a href="#variabler-och-datatyper">Variabler och datatyper</a>
 <ul>
+<li class="article-link"><a href="#de-vanligaste-datatyperna">De vanligaste datatyperna</a></li>
 <li class="article-link"><a href="#definiera-variabler">Definiera variabler</a></li>
 <li class="article-link"><a href="#omvandla-mellan-datatyper">Omvandla mellan datatyper</a></li>
 <li class="article-link"><a href="#rakna-med-variabler">R&auml;kna med variabler</a></li>
@@ -27,11 +34,15 @@
 <li class="article-link"><a href="#addera-eller-subtrahera-variabler">Addera eller subtrahera variabler</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#output-print-funktionen-och-strangar">Output - print-funktionen och str&auml;ngar</a>
+<li class="section-link"><a href="#output-print-funktionen">Output - print-funktionen</a>
 <ul>
 <li class="article-link"><a href="#skriva-ut-text">Skriva ut text</a></li>
-<li class="article-link"><a href="#satta-ihop-textstrangar-med-plustecknet">S&auml;tta ihop textstr&auml;ngar med plustecknet</a></li>
 <li class="article-link"><a href="#skriv-ut-flera-varden-med-kommatecknet">Skriv ut flera v&auml;rden med kommatecknet</a></li>
+</ul>
+</li>
+<li class="section-link"><a href="#textstrangar">Textstr&auml;ngar</a>
+<ul>
+<li class="article-link"><a href="#konkatenering-satta-ihop-textstrangar-med-plustecknet">Konkatenering - s&auml;tta ihop textstr&auml;ngar med plustecknet</a></li>
 <li class="article-link"><a href="#avancerad-strang-formatering-med-f-strings">Avancerad str&auml;ng-formatering med f-strings</a></li>
 <li class="article-link"><a href="#ta-ut-delar-av-en-strang">Ta ut delar av en str&auml;ng</a></li>
 <li class="article-link"><a href="#andra-stora-sma-bokstaver">&Auml;ndra stora/sm&aring; bokst&auml;ver</a></li>
@@ -140,7 +151,8 @@
 <main>
 <h1>Grunderna i Python</h1>
 <section id="variabler-och-datatyper"><h2>Variabler och datatyper</h2>
-<p>Variabler anv&auml;nds f&ouml;r att lagra enskilda v&auml;rden. Variabler kan vara av olika <strong>datatyper</strong> beroende p&aring; vilken typ av data som lagras.</p>
+<p>Variabler anv&auml;nds f&ouml;r att lagra enskilda v&auml;rden. Variabler &auml;r av olika <strong>datatyper</strong> beroende p&aring; vilken typ av data som lagras.</p>
+<article id="de-vanligaste-datatyperna"><h3>De vanligaste datatyperna</h3>
 <div class="table-container"><table>
 <thead>
 <tr>
@@ -150,6 +162,11 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td style="text-align: left;"><strong>str</strong> (string / text)</td>
+<td style="text-align: left;"><code>name = "Elmo"</code></td>
+<td style="text-align: left;">Textstr&auml;ngar, skrivs inom <code>" "</code> eller <code>' '</code>.</td>
+</tr>
 <tr>
 <td style="text-align: left;"><strong>int</strong> (heltal)</td>
 <td style="text-align: left;"><code>x = 5</code></td>
@@ -165,14 +182,9 @@
 <td style="text-align: left;"><code>is_happy = True</code></td>
 <td style="text-align: left;">Kan bara vara <code>True</code> eller <code>False</code>.</td>
 </tr>
-<tr>
-<td style="text-align: left;"><strong>str</strong> (string / text)</td>
-<td style="text-align: left;"><code>name = "Elmo"</code></td>
-<td style="text-align: left;">Textstr&auml;ngar, skrivs inom <code>" "</code> eller <code>' '</code>.</td>
-</tr>
 </tbody>
 </table></div>
-<article id="definiera-variabler"><h3>Definiera variabler</h3>
+</article><article id="definiera-variabler"><h3>Definiera variabler</h3>
 <p>Variabler definieras med likamedstecknet: <strong><code>=</code></strong>.</p>
 <div class="code-container"><pre><code class="language-py"># Str&auml;ng / str
 my_string = 'Hello World'
@@ -189,12 +201,11 @@ my_float = 3.14
 my_string = str(42)
 
 # G&ouml;r om ett v&auml;rde till ett heltal
-my_int = int(13.3)          
+my_int = int(13.3)  
 
 # G&ouml;r om ett v&auml;rde till ett decimaltal
 my_float = float('3.14')    
 </code></pre></div>
-
 </article><article id="rakna-med-variabler"><h3>R&auml;kna med variabler</h3>
 <p>Man kan anv&auml;nda variabler i ber&auml;kningar.</p>
 <div class="code-container"><pre><code class="language-py">x = 100
@@ -258,31 +269,49 @@ x += 1
 y -= 3
 </code></pre></div>
 
-</article></section><section id="output-print-funktionen-och-strangar"><h2>Output - print-funktionen och str&auml;ngar</h2>
+</article></section><section id="output-print-funktionen"><h2>Output - print-funktionen</h2>
 <article id="skriva-ut-text"><h3>Skriva ut text</h3>
 <div class="code-container"><pre><code class="language-py">print('Hello World!')
 </code></pre></div>
-</article><article id="satta-ihop-textstrangar-med-plustecknet"><h3>S&auml;tta ihop textstr&auml;ngar med plustecknet</h3>
-<p>OBS! Alla v&auml;rden m&aring;ste d&aring; vara textstr&auml;ngar.</p>
-<div class="code-container"><pre><code class="language-py">name = 'Markus'
-print('Hello ' + name + '!') 
-</code></pre></div>
 </article><article id="skriv-ut-flera-varden-med-kommatecknet"><h3>Skriv ut flera v&auml;rden med kommatecknet</h3>
-<p>Om man skriver ut flera v&auml;rden med kommatecknet kan man blanda datatyper. Man f&aring;r ett automatiskt mellanslag mellan v&auml;rdena.</p>
+<p>Man kan ange flera v&auml;rden att skriva ut med hj&auml;lp av kommatecknet. Man f&aring;r ett automatiskt mellanslag mellan v&auml;rdena. Det spelar ingen roll vilken <strong>datatyp</strong> v&auml;rdena &auml;r.</p>
 <div class="code-container"><pre><code class="language-py">name = 'Markus'
 score = 100
 
 print('Hello', name, 'Your score:', score) 
 # &rarr; 'Hello Markus Your score: 100'
 </code></pre></div>
+
+</article></section><section id="textstrangar"><h2>Textstr&auml;ngar</h2>
+<article id="konkatenering-satta-ihop-textstrangar-med-plustecknet"><h3>Konkatenering - s&auml;tta ihop textstr&auml;ngar med plustecknet</h3>
+<p>Med plustecknet kan man s&auml;tta ihop flera textstr&auml;ngar. Detta kallas <strong>konkatenering</strong>.</p>
+<p><strong>OBS!</strong> Alla v&auml;rden m&aring;ste vara textstr&auml;ngar.</p>
+<div class="code-container"><pre><code class="language-py">name = 'Markus'
+print('Hello ' + name + '!') 
+
+# &rarr; Hello Markus!
+</code></pre></div>
+<div class="code-container"><pre><code class="language-py">firstname = 'Markus'
+lastname = 'Pettersson'
+full_name = firstname + ' ' + lastname
+
+# full_name &rarr; 'Markus Pettersson'
+</code></pre></div>
 </article><article id="avancerad-strang-formatering-med-f-strings"><h3>Avancerad str&auml;ng-formatering med f-strings</h3>
+<p>Med s&aring; kallad f-str&auml;ng-formattering kan man s&auml;tta in variabler direkt i en textstr&auml;ng. Man kan ocks&aring; ange hur variablerna ska formateras vid utskrift (t.ex. antalet decimaler.)</p>
+<div class="code-container"><pre><code class="language-py">price = 19.9
+product_name = 'kexchoklad'
+print(f'Du har k&ouml;pt en {product_name} f&ouml;r {price:.2f} kr.')
+
+# &rarr; 'Du har k&ouml;pt en kexchoklad f&ouml;r 19.90 kr.'
+</code></pre></div>
 <p>🔗<a href="https://www.datacamp.com/tutorial/python-f-string">Python f-string: A Complete Guide | DataCamp</a></p>
 </article><article id="ta-ut-delar-av-en-strang"><h3>Ta ut delar av en str&auml;ng</h3>
 <p>Str&auml;ngar kan p&aring; m&aring;nga s&auml;tt hanteras som listor. Man kan till exempel n&aring; delar av en str&auml;ng med hakklammer:</p>
 <div class="code-container"><pre><code class="language-py">name = 'Markus'
 first_three_letters = name[0:2] 
 
-# &rarr; 'Mar'
+# first_three_letters &rarr; 'Mar'
 </code></pre></div>
 </article><article id="andra-stora-sma-bokstaver"><h3>&Auml;ndra stora/sm&aring; bokst&auml;ver</h3>
 <div class="code-container"><pre><code class="language-py">name = 'Markus'
@@ -293,14 +322,21 @@ small_name = name.lower()   # &rarr;  'markus'
 <div class="code-container"><pre><code class="language-py">name = 'Markus'
 new_name = name.replace('rk', 'gn')
 
-# &rarr; 'Magnus'
+# new_name &rarr; 'Magnus'
 </code></pre></div>
 </article><article id="ta-bort-tomrum-och-ny-rad-tecken-fran-strang"><h3>Ta bort tomrum (och ny-rad-tecken) fr&aring;n str&auml;ng</h3>
 <div class="code-container"><pre><code class="language-py">name = '    Markus      '
 new_name = name.strip() 
 
-# &rarr; 'Markus'
+# new_name &rarr; 'Markus'
 </code></pre></div>
+<p><strong>Konvertera str&auml;ng till lista</strong></p>
+<div class="code-container"><pre><code class="language-py">my_string = 'ABCDEF'
+my_list = list(my_string)
+
+# my_list &rarr; ['A', 'B', 'C', 'D', 'E', 'F']
+</code></pre></div>
+
 </article></section><section id="input-fran-anvandaren"><h2>Input fr&aring;n anv&auml;ndaren</h2>
 <p>Funktionen <strong><code>input()</code></strong> pausar programmet och v&auml;ntar p&aring; text-input fr&aring;n anv&auml;ndaren. Den input-data man f&aring;r fr&aring;n anv&auml;ndaren lagrar man ofta i en variabel. Input-datan &auml;r alltid en textstr&auml;ng/<strong><code>str</code></strong>.</p>
 <article id="anvandning-av-en-input-funktion"><h3>Anv&auml;ndning av en input-funktion</h3>
@@ -317,16 +353,25 @@ new_name = name.strip()
 <div class="code-container"><pre><code class="language-py">my_list = ['value1', 'value2', 'value3']
 </code></pre></div>
 </article><article id="na-ett-listvarde-med-positionsnummer"><h3>N&aring; ett listv&auml;rde med positionsnummer</h3>
-<p>F&ouml;r att n&aring; ett v&auml;rde i listan anv&auml;nder man ett positionsnummer. Den f&ouml;rsta positionen har numret 0. Positionsnummer kallas &auml;ven <em>index</em>.</p>
-<div class="code-container"><pre><code class="language-py">first_value = my_list[0]
+<p>F&ouml;r att n&aring; ett v&auml;rde i listan anv&auml;nder man ett positionsnummer. Den f&ouml;rsta positionen har numret 0. Positionsnummer kallas &auml;ven <strong>index</strong>.</p>
+<div class="code-container"><pre><code class="language-py">my_list = ['value1', 'value2', 'value3']
+first_value = my_list[0]
+
+# first_value &rarr; 'value1'
 </code></pre></div>
 </article><article id="rakna-bakifran-med-negativa-positionsnummer"><h3>R&auml;kna bakifr&aring;n med negativa positionsnummer</h3>
 <p>Med negativa positionsnummer r&auml;knar man bakifr&aring;n fr&aring;n sista positionen. </p>
-<div class="code-container"><pre><code class="language-py">last_value = my_list[-1]
+<div class="code-container"><pre><code class="language-py">my_list = ['value1', 'value2', 'value3']
+last_value = my_list[-1]
+
+# last_value &rarr; 'value3'
 </code></pre></div>
 </article><article id="valj-delar-av-en-lista"><h3>V&auml;lj delar av en lista</h3>
 <p>Med kolon <strong>:</strong> kan man ange ett intervall av positioner. </p>
-<div class="code-container"><pre><code class="language-py">first_three_values = my_list[0:2]
+<div class="code-container"><pre><code class="language-py">my_list = ['value1', 'value2', 'value3', 'value4']
+first_three_values = my_list[0:2]
+
+# first_three_values &rarr; ['value1', 'value2', 'value3']
 </code></pre></div>
 </article><article id="tilldela-ett-varde-till-en-viss-position"><h3>Tilldela ett v&auml;rde till en viss position</h3>
 <div class="code-container"><pre><code class="language-py">my_list[0] = 'new value'
@@ -337,9 +382,13 @@ new_name = name.strip()
 </article><article id="ta-reda-pa-langden-pa-en-lista-eller-strang"><h3>Ta reda p&aring; l&auml;ngden p&aring; en lista eller str&auml;ng</h3>
 <div class="code-container"><pre><code class="language-py">my_list = ['value1', 'value2', 'value3']
 list_size = len(my_list)
+
+# list_size &rarr; 3
 </code></pre></div>
 <div class="code-container"><pre><code class="language-py">name = 'Markus'
 string_size = len(name)
+
+# string_size &rarr; 5
 </code></pre></div>
 </article><article id="ga-igenom-iterera-en-lista-ett-varde-i-taget"><h3>G&aring; igenom/iterera en lista ett v&auml;rde i taget</h3>
 <div class="code-container"><pre><code class="language-py">menu = ['pizza', 'kebab', 'sushi']
@@ -351,19 +400,19 @@ for food in menu:
 <div class="code-container"><pre><code class="language-py">menu = ['B', 'D', 'C', 'A']
 menu.sort()
 
-# &rarr; ['A', 'B', 'C', 'D']
+# menu &rarr; ['A', 'B', 'C', 'D']
 </code></pre></div>
 </article><article id="skapa-en-lista-fran-en-textstrang"><h3>Skapa en lista fr&aring;n en textstr&auml;ng</h3>
 <div class="code-container"><pre><code class="language-py">food_string = 'kebab, pizza, sushi, meatballs'
 food_list = food_string.split(',')
 
-# &rarr; ['kebab', ' pizza', ' sushi', ' meatballs']
+# food_list &rarr; ['kebab', ' pizza', ' sushi', ' meatballs']
 </code></pre></div>
 </article><article id="skapa-en-textstrang-fran-en-lista"><h3>Skapa en textstr&auml;ng fr&aring;n en lista</h3>
 <div class="code-container"><pre><code class="language-py">food_list = ['kebab', ' pizza', ' sushi', ' meatballs']
 food_string = ','.join(food_list)
 
-# &rarr; 'kebab, pizza, sushi, meatballs'
+# food_string &rarr; 'kebab, pizza, sushi, meatballs'
 </code></pre></div>
 </article></section><section id="villkor-if-satser"><h2>Villkor - if-satser</h2>
 <p>If-satser anv&auml;nds f&ouml;r att programmet ska utf&ouml;ra viss kod endast d&aring; ett visst villkor &auml;r uppfyllt. Det kodblock som ska utf&ouml;ras har 4 mellanslags indrag. (<em>Indentering</em>)</p>
@@ -418,6 +467,8 @@ if name == 'Markus':
    print('Welcome!')
 else:
    print('Go away!')
+
+# &rarr; 'Welcome!'
 </code></pre></div>
 </article><article id="jamforelse-av-numeriska-varden"><h3>J&auml;mf&ouml;relse av numeriska v&auml;rden</h3>
 <div class="code-container"><pre><code class="language-py">age = 25
@@ -426,6 +477,8 @@ if age &gt; 20:
    print('Hello!')
 else:
    print('Goodbye')
+
+# &rarr; 'Hello!'
 </code></pre></div>
 </article><article id="flera-villkor-med-and"><h3>Flera villkor med <code>and</code></h3>
 <p>Med <strong><code>and</code></strong> kan man ange flera villkor som alla m&aring;ste vara sanna.</p>
@@ -436,6 +489,8 @@ if username == 'marpet' and password == 'secret':
     print('Welcome!')
 else:
     print('Access denied!')
+
+# &rarr; 'Welcome!'
 </code></pre></div>
 </article><article id="flera-villkor-med-or"><h3>Flera villkor med <code>or</code></h3>
 <p>Med <strong><code>or</code></strong> kan man ange flera villkor. Det r&auml;cker med att ett av villkoren &auml;r sant.</p>
@@ -460,6 +515,8 @@ if 'pizza' in menu:
    print('Yes! Pizza!')
 else:
    print('Nooooo..... I want pizza!')
+
+# &rarr; 'Yes! Pizza!'
 </code></pre></div>
 </article><article id="if-och-strangar"><h3>If och str&auml;ngar</h3>
 <p>Med en if-sats kan man kontrollera ifall en textstr&auml;ng inneh&aring;ller en viss annan str&auml;ng.</p>
@@ -469,6 +526,8 @@ if 'easy' in text:
    print('Correct!')
 else:
    print('You are wrong! Practice more!')
+
+# &rarr; 'Correct'
 </code></pre></div>
 </article><article id="if-och-funktioner"><h3>If och funktioner</h3>
 <p>Funktioner som returnerar <strong><code>True</code></strong> eller <strong><code>False</code></strong> (booleska v&auml;rden) kan anv&auml;ndas direkt som villkor i if-satser.</p>

@@ -4,23 +4,31 @@ from slugify import slugify
 from bs4 import BeautifulSoup
 
 bs4_parser = 'html.parser'
+silent = False
 
-def md_to_html(md_file, template_file, insert_tag):
+def md_to_html(md_file, template_file, insert_tag='main'):
 
     # Read Markdown and make a Beautiful soup
     content_soup = md_file_to_soup(md_file)
+    info(f'Opening Markdown-file: {md_file}')
 
     # Cleanup and sectioning
+    info('Cleaning up headers')
     content_soup = clean_up_headers(content_soup)
+    info('Divide content in sectionds')
     content_soup = create_sections(content_soup)
+    info('Divide content in articles')
     content_soup = create_articles(content_soup)
+    info('Wrap tables and code-examples in div-tags')
     content_soup = div_wrap(content_soup, 'table', 'table-container')
     content_soup = div_wrap(content_soup, 'pre', 'code-container')
 
     # Open and read template file
+    info(f'Opening template file: {template_file}')
     main_soup = html_file_to_soup(template_file)
 
     # Generate and insert table of content
+    info('Creating table of contents')
     toc_soup = create_toc(content_soup)
     toc_title = main_soup.new_tag('h4')
     toc_title.string = 'Grunderna i Python'
@@ -28,9 +36,12 @@ def md_to_html(md_file, template_file, insert_tag):
     main_soup.aside.append(toc_soup)
 
     # Append the content to <main> of the template
-    main_soup.main.append(content_soup)
+    info('Appending markdown-content to tag:' + insert_tag)
+    main_tag = main_soup.find(insert_tag)
+    main_tag.append(content_soup)
 
     # Render to HTML-string and cleanup HTML
+    info('Render result to HTML-string and clean up code')
     html_output = main_soup.decode(formatter="html")
     html_output = remove_trailing_slashes(html_output)
     return html_output
@@ -162,3 +173,6 @@ def div_wrap(soup, tag_name, class_name):
         div['class'] = class_name
         tag.wrap(div)
     return soup
+
+def info(msg):
+    if not silent: print(msg) 
