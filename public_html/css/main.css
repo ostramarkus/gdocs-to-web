@@ -185,9 +185,11 @@ aside {
 
 aside h4 {
     margin-top: 0;
+    text-transform: uppercase;
     margin-bottom: 1em;
-    font-size: 1.2rem;
-    font-weight: normal;
+    font-size: 0.8rem;
+    letter-spacing: 0.1em;
+    font-weight: bold;
     color: rgb(48, 48, 117);
 }
 

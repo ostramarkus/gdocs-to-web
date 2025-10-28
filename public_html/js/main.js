@@ -21,15 +21,21 @@ document.querySelectorAll('pre').forEach(pre => {
   });
 });
 
+// Highlight links
+
 document.querySelectorAll('.section-link').forEach(sectionLink => {
-  sectionLink.addEventListener('mouseenter', async () => {
+  sectionLink.addEventListener('click', async () => {
     let articlesList = sectionLink.querySelector('ul');
-    articlesList.classList.add('open');
+    if (articlesList.classList.contains('open')) {
+      articlesList.classList.remove('open');
+    } else {
+      articlesList.classList.add('open');
+    }
+    
   });
   
   sectionLink.addEventListener('mouseleave', async () => {
     let articlesList = sectionLink.querySelector('ul');
-    articlesList.classList.remove('open');
   });
 });
 
