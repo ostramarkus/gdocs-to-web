@@ -183,6 +183,7 @@ pre {
 
 .hljs {
     border-radius: 6px;
+    box-sizing: border-box;
 }
 
 .hljs-comment {
@@ -330,13 +331,11 @@ button.copy-btn:hover {
     }
 
     header {
-        position:sticky;
-        top:0;
+        position: sticky;
+        top: 0;
         box-shadow: 0 4px 4px rgba(0,0,0,0.1);
         z-index: 1000;
     }
-
-
 
     #wrap {
         flex-direction: column;
@@ -352,24 +351,34 @@ button.copy-btn:hover {
         position: sticky;
         max-width: max-content;
         width: 100%;
-        top: 3.6rem;
-        height:max-content;
+        top: 3.2rem;
+        height: max-content;
         margin-bottom: 1rem;
         display: none;
         z-index: 1000;
     }
 
+    #nav-container h4 {
+        text-align: center;
+    }
     #toc {
         width: 100%;
         display: flex;
         flex-wrap: wrap;
-        gap: 0.2em;
+        justify-content: center;
+        gap: 0.5em;
     }
 
     .section-link {
         border: none;
+    }
+
+    #toc a {
+        font-size: 0.8rem;
+        border: none;
         background-color: #eee;
-        padding: 0.2em;
+        padding: 0.6em 1em;
+        border: none;
     }
 
     .section-link .articles-open {
@@ -387,6 +396,6 @@ button.copy-btn:hover {
     .code-container {
         overflow-x: auto;
         box-sizing: border-box;
-        max-width:calc(100vw - 2rem);
+        max-width:calc(100vw - 4rem);
     }
 } 
