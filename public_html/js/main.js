@@ -42,8 +42,14 @@ document.querySelectorAll('pre').forEach(pre => {
 
 // Highlight links
 
-document.querySelectorAll('.section-link a').forEach(sectionLink => {
+document.querySelectorAll('.section-link > a').forEach(sectionLink => {
   sectionLink.addEventListener('click', async () => {
+    if (sectionLink.classList.contains('section-open')) {
+      sectionLink.classList.remove('section-open');
+    } else {
+      sectionLink.classList.add('section-open');
+    }
+
     // Get ul-tag that is sibling to a-tag
     let articlesList = sectionLink.nextElementSibling;
 
