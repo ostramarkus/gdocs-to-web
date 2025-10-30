@@ -1,9 +1,9 @@
 import gdoc
 
 
-md_content_file = 'md/content.md'
+md_content_file = 'md/github.md'
 html_template_file = 'templates/main.html'
-html_output_file = 'public_html/index.html'
+html_output_file = 'public_html/github.html'
 
 html_output = gdoc.md_to_html(md_content_file, html_template_file, 'main')
 

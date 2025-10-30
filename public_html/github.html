@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+
+<html lang="sv">
+<head>
+<meta charset="utf-8">
+<meta content="IE=edge" http-equiv="X-UA-Compatible">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Grunderna i Python</title>
+<link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/atom-one-dark-reasonable.css" rel="stylesheet">
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+</head>
+<body>
+<header>
+<div id="header-title">
+<img alt="Python logo" src="img/python-logo-only.svg">
+<h1>Grunderna i Python</h1>
+</div>
+<div id="menu-toggle">☰</div>
+</header>
+<div id="wrap">
+<aside id="nav-container">
+<h4>Grunderna i Python</h4><ul id="toc">
+<li class="section-link"><a href="#github-codespaces">GitHub Codespaces</a>
+</li>
+<li class="section-link"><a href="#kom-igang-med-github-och-codespaces">Kom ig&aring;ng med GitHub och Codespaces</a>
+<ul>
+<li class="article-link"><a href="#1-skapa-ett-github-konto">1. Skapa ett GitHub-konto</a></li>
+<li class="article-link"><a href="#2-skapa-ett-nytt-github-repo">2. Skapa ett nytt GitHub-repo</a></li>
+<li class="article-link"><a href="#3-oppna-i-codespaces">3. &Ouml;ppna i Codespaces</a></li>
+<li class="article-link"><a href="#4-spara-och-versionshantera-med-git">4. Spara och versionshantera med Git</a></li>
+</ul>
+</li>
+<li class="section-link"><a href="#avancerat-arbeta-i-grenar-branches">Avancerat: arbeta i grenar (branches)</a>
+<ul>
+<li class="article-link"><a href="#hamta-uppdateringar">H&auml;mta uppdateringar</a></li>
+</ul>
+</li>
+<li class="section-link"><a href="#vanligt-arbetsflode-i-codespaces">Vanligt arbetsfl&ouml;de i Codespaces</a>
+</li>
+</ul></aside>
+<main>
+<h1>GitHub Codespaces och Git</h1>
+<section id="github-codespaces"><h2>GitHub Codespaces</h2>
+<p>GitHub Codespaces &auml;r en <strong>molnbaserad utvecklingsmilj&ouml;</strong> &ndash; du programmerar direkt i webbl&auml;saren (eller i VS Code) och har redan <strong>Git</strong> och <strong>GitHub</strong> f&auml;rdigintegrerat.<br>
+Det betyder att du kan b&ouml;rja jobba med versionhantering direkt utan att installera n&aring;got.</p>
+</section><section id="kom-igang-med-github-och-codespaces"><h2>Kom ig&aring;ng med GitHub och Codespaces</h2>
+<article id="1-skapa-ett-github-konto"><h3>1. Skapa ett GitHub-konto</h3>
+<p>G&aring; in p&aring; <a href="https://github.com/">https://github.com</a> och skapa ett nytt konto. Anv&auml;nd g&auml;rna din edu-adress.</p>
+</article><article id="2-skapa-ett-nytt-github-repo"><h3>2. Skapa ett nytt GitHub-repo</h3>
+<p>Ett <strong>repo</strong> (kort f&ouml;r <em>repository</em>) &auml;r i GitHub <strong>en plats d&auml;r all din kod och dess historik sparas</strong>. Det &auml;r allts&aring; b&aring;de en mapp med filer och en logg &ouml;ver alla &auml;ndringar som har gjorts i dessa filer.</p>
+<ol>
+<li>Klicka p&aring; <strong><code>+</code></strong> knappen uppe till h&ouml;ger (Create new) och v&auml;lj New Repository. (Eller g&aring; direkt till <a href="https://github.com/new">github.com/new</a>)  </li>
+<li>Ge projektet ett namn (t.ex. <strong><code>python-projekt</code></strong> eller <strong><code>webbapp</code></strong>) (och eventuellt en kort beskrivning).  </li>
+<li>Klicka p&aring; <strong>Create repository</strong></li>
+</ol>
+</article><article id="3-oppna-i-codespaces"><h3>3. &Ouml;ppna i Codespaces</h3>
+<p>N&auml;r ditt repo &auml;r skapat:</p>
+<ol>
+<li>
+<p>Klicka p&aring; den gr&ouml;na knappen &ldquo;\&lt;&gt; Code&rdquo;</p>
+</li>
+<li>
+<p>V&auml;lj fliken <strong>Codespaces</strong></p>
+</li>
+<li>
+<p>Klicka p&aring; &ldquo;<strong>Create codespace on main</strong>&rdquo;</p>
+</li>
+</ol>
+<p>Detta skapar en virtuell maskin och &ouml;ppnar en <strong>VS Code-liknande milj&ouml; i webbl&auml;saren</strong> &ndash; med Git och Python installerat.</p>
+</article><article id="4-spara-och-versionshantera-med-git"><h3>4. Spara och versionshantera med Git</h3>
+<p>N&auml;r du &auml;ndrar filer i Codespaces kan du anv&auml;nda Git direkt i den inbyggda terminalen eller via det grafiska gr&auml;nssnittet i VS Code.</p>
+<h4>Alternativ 1: Via terminal</h4>
+<p>Se vilka filer som &auml;ndrats:</p>
+<div class="code-container"><pre><code class="language-shell">git status
+</code></pre></div>
+<p>L&auml;gg till filerna du vill spara:</p>
+<div class="code-container"><pre><code class="language-shell">git add .
+</code></pre></div>
+<p>Skapa en commit (en sparad version):</p>
+<div class="code-container"><pre><code class="language-shell">git commit -m "Lade till min f&ouml;rsta Python-fil"
+</code></pre></div>
+<p>Skicka &auml;ndringarna till GitHub:</p>
+<div class="code-container"><pre><code class="language-shell">git push
+</code></pre></div>
+<h4>Alternativ 2: Via VS Code-gr&auml;nssnittet</h4>
+<p>Klicka p&aring; <strong>Source Control-ikonen</strong> (📁 med gren-symbol) i v&auml;nstermenyn.<br>
+Du ser en lista med &auml;ndrade filer.<br>
+Klicka p&aring; <strong>+</strong> f&ouml;r att l&auml;gga till (stage) filerna.<br>
+Skriv ett <strong>commit-meddelande</strong> &ouml;verst, t.ex. <em>&ldquo;Lade till index.html&rdquo;</em>.<br>
+Klicka p&aring; <strong>Commit</strong> (eller <code>Ctrl+Enter</code>).<br>
+Klicka p&aring; <strong>Sync Changes</strong> (🔁) f&ouml;r att pusha till GitHub.</p>
+</article></section><section id="avancerat-arbeta-i-grenar-branches"><h2>Avancerat: arbeta i grenar (branches)</h2>
+<p>Att skapa grenar &auml;r lika enkelt i Codespaces.</p>
+<h4>Terminal:</h4>
+<div class="code-container"><pre><code class="language-shell">git checkout -b ny-funktion
+</code></pre></div>
+<p>Du &auml;r nu i en ny gren. G&ouml;r dina &auml;ndringar, committa, och skicka upp till GitHub:</p>
+<div class="code-container"><pre><code class="language-shell">git push --set-upstream origin ny-funktion
+</code></pre></div>
+<h4>Med VS Code-gr&auml;nssnittet:</h4>
+<ol>
+<li>
+<p>Klicka p&aring; branch-namnet l&auml;ngst ner i statusf&auml;ltet (oftast &ldquo;main&rdquo;).</p>
+</li>
+<li>
+<p>Skriv in ett nytt namn f&ouml;r din gren, t.ex. <strong><code>ny-funktion</code></strong>.</p>
+</li>
+<li>
+<p>Tryck Enter &ndash; Codespaces byter automatiskt gren.</p>
+</li>
+</ol>
+<p>N&auml;r du &auml;r klar kan du g&aring; till <strong>GitHub-sidan</strong> f&ouml;r projektet och skapa en <strong>Pull Request</strong> f&ouml;r att sl&aring; ihop din gren med <strong><code>main</code></strong>.</p>
+<article id="hamta-uppdateringar"><h3>H&auml;mta uppdateringar</h3>
+<p>Om n&aring;gon annan &auml;ndrat n&aring;got i projektet:</p>
+<div class="code-container"><pre><code class="language-shell">git pull
+</code></pre></div>
+<p>eller klicka p&aring; <strong>Sync Changes</strong> igen.</p>
+</article></section><section id="vanligt-arbetsflode-i-codespaces"><h2>Vanligt arbetsfl&ouml;de i Codespaces</h2>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th style="text-align: left;">Steg</th>
+<th style="text-align: left;">Vad du g&ouml;r</th>
+<th style="text-align: left;">Kommando / Knapp</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;">1.</td>
+<td style="text-align: left;">G&ouml;r &auml;ndringar i filer</td>
+<td style="text-align: left;">&ndash;</td>
+</tr>
+<tr>
+<td style="text-align: left;">2.</td>
+<td style="text-align: left;">Kolla status</td>
+<td style="text-align: left;"><strong><code>git status</code></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">3.</td>
+<td style="text-align: left;">L&auml;gg till filer</td>
+<td style="text-align: left;"><strong><code>git add</code></strong> <strong><code>.</code></strong> eller &ldquo;+&rdquo; i Source Control</td>
+</tr>
+<tr>
+<td style="text-align: left;">4.</td>
+<td style="text-align: left;">Skriv commit-meddelande</td>
+<td style="text-align: left;"><strong><code>git commit -m "Beskriv &auml;ndringen"</code></strong></td>
+</tr>
+<tr>
+<td style="text-align: left;">5.</td>
+<td style="text-align: left;">Skicka till GitHub</td>
+<td style="text-align: left;"><strong><code>git push</code></strong> eller &ldquo;Sync Changes&rdquo;</td>
+</tr>
+<tr>
+<td style="text-align: left;">6.</td>
+<td style="text-align: left;">H&auml;mta ny kod</td>
+<td style="text-align: left;"><strong><code>git pull</code></strong> eller &ldquo;Sync Changes&rdquo;</td>
+</tr>
+<tr>
+<td style="text-align: left;">7.</td>
+<td style="text-align: left;">Testa id&eacute;er i ny gren</td>
+<td style="text-align: left;"><strong><code>git checkout -b gren-namn</code></strong></td>
+</tr>
+</tbody>
+</table></div></section></main>
+</div>
+<script src="js/main.js"></script>
+<script>hljs.highlightAll();</script>
+</body>
+</html>
