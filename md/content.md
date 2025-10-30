@@ -15,7 +15,7 @@ Variabler används för att lagra enskilda värden. Variabler är av olika **dat
 
 ### **Definiera variabler**
 
-Variabler definieras med likamedstecknet: **`=`**.
+Variabler skapas och tilldelas ett värde med likamedstecknet: **`=`**.
 
 ```py
 # Sträng / str
@@ -30,7 +30,7 @@ my_float = 3.14
 
 ### **Omvandla mellan datatyper**
 
-Man kan omvandla värden/variabler mellan olika datatyper. (Eng: *type conversion*)
+Man kan omvandla värden/variabler mellan olika datatyper. (Eng: *type conversion* eller *type casting.*)
 
 ```py
 # Gör om ett värde till en textsträng
@@ -43,16 +43,29 @@ my_int = int(13.3)
 my_float = float('3.14')	
 ```
 
+### **Ta reda på datatyp**
+
+Med funktionen **`type()`** kan man ta reda på datatypen för en variabel.
+
+```py
+name = 'Markus'
+print(type(name))
+
+# → <class 'str'>
+```
+
 ### **Räkna med variabler**
 
-Man kan använda variabler i beräkningar.
+Variabler kan användas i beräkningar.
 
 ```py
 x = 100
 my_sum = 100 + x
 ```
 
-### **Vanliga operatorer för beräkningar (aritmetiska operatorer)**
+### **Vanliga operatorer för beräkningar**
+
+Operatorer som används i beräkningar kallas för **aritmetiska operatorer**.
 
 |  | Förklaring |
 | :---: | :---- |
@@ -81,9 +94,11 @@ y -= 3
 
 ### 
 
-## **Output \- print-funktionen**
+## **Input och output**
 
-### **Skriva ut text**
+### **Skriva ut med `print()`**
+
+Funktionen **`print()`** skriver ut text till terminalfönstret. 
 
 ```py
 print('Hello World!')
@@ -101,11 +116,39 @@ print('Hello', name, 'Your score:', score)
 # → 'Hello Markus Your score: 100'
 ```
 
-## 
+### **Skriv ut utan att skapa en ny rad**
+
+Om man vill skriva ut fler värden på samma rad kan man ange en tom sträng för argumentet **`end`** i print-funktionen.
+
+```py
+print('One ', end="")
+print('Two ', end="")
+print('Three')
+
+# → 'One Two Three'
+```
+
+### **Input-funktionen**
+
+Funktionen **`input()`** pausar programmet och väntar på text-input från användaren. Den input man får lagrar man oftast i en variabel. 
+
+**OBS\!** Input-datan är alltid en textsträng/**`str`**.
+
+```py
+name = input('Vad heter du?')
+```
+
+### **Typomvandla direkt från input-funktion**
+
+Om man vill göra beräkningar eller numeriska jämförelser med datan från en input-funktion kan man konvertera den direkt till en annan datatyp.
+
+```py
+age = int(input('Hur gammal är du?'))
+```
 
 ## **Textsträngar**
 
-### **Konkatenering \- sätta ihop textsträngar med plustecknet**
+### **Sätta ihop textsträngar**
 
 Med plustecknet kan man sätta ihop flera textsträngar. Detta kallas **konkatenering**.
 
@@ -126,7 +169,7 @@ full_name = firstname + ' ' + lastname
 # full_name → 'Markus Pettersson'
 ```
 
-### **Avancerad sträng-formatering med f-strings**
+### **Sträng-formatering med f-strings**
 
 Med så kallad f-sträng-formattering kan man sätta in variabler direkt i en textsträng. Man kan också ange hur variablerna ska formateras vid utskrift (t.ex. antalet decimaler.)
 
@@ -140,9 +183,16 @@ print(f'Du har köpt en {product_name} för {price:.2f} kr.')
 
 🔗[Python f-string: A Complete Guide | DataCamp](https://www.datacamp.com/tutorial/python-f-string)
 
+| Typ | Exempel | Förklaring | Resultat |
+| :---- | :---- | :---- | :---- |
+| Decimaler | `f"{pi:.2f}"` | 2 decimaler | `"3.14"` |
+| Begynnande nollor | `f"{11:4d}"` | Lägger till nollor så att strängen blir 4 tecken | "0011" |
+| Procent | `f"{0.85:.0%}"` |  | `"85%"` |
+| Tusentalsavgränsning | `f"{1234567:,}"` |  | `"1,234,567"` |
+
 ### **Ta ut delar av en sträng**
 
-Strängar kan på många sätt hanteras som listor. Man kan till exempel nå delar av en sträng med hakklammer:
+Strängar kan på många sätt hanteras som listor. Man kan till exempel ta utdelar av en sträng med hakklammer **`[]`**. Detta kallas för **slicing**.
 
 ```py
 name = 'Markus'
@@ -159,13 +209,13 @@ big_name = name.upper()	# → 'MARKUS'
 small_name = name.lower()	# →  'markus'
 ```
 
-### **Sök och ersätt i textsträng**
+### **Sök och ersätt i text**
 
 ```py
-name = 'Markus'
-new_name = name.replace('rk', 'gn')
+string = 'find and replace'
+new_string = string.replace('find', 'replace')
 
-# new_name → 'Magnus'
+# new_string → 'replace and replace'
 ```
 
 ### **Ta bort tomrum (och ny-rad-tecken) från sträng**
@@ -177,7 +227,7 @@ new_name = name.strip()
 # new_name → 'Markus'
 ```
 
-**Konvertera sträng till lista**
+### **Konvertera sträng till lista**
 
 ```py
 my_string = 'ABCDEF'
@@ -188,37 +238,17 @@ my_list = list(my_string)
 
 ## 
 
-## **Input från användaren**
-
-Funktionen **`input()`** pausar programmet och väntar på text-input från användaren. Den input-data man får från användaren lagrar man ofta i en variabel. Input-datan är alltid en textsträng/**`str`**.
-
-### **Användning av en input-funktion**
-
-```py
-name = input('Vad heter du?')
-```
-
-### **Typomvandla direkt från input-funktion**
-
-Om man vill göra beräkningar eller numeriska jämförelser med datan kan man konvertera den direkt till en annan datatyp.
-
-```py
-age = int(input('Hur gammal är du?'))
-```
-
-## 
-
 ## **Listor**
 
 Listor används för att lagra flera värden som hör samman med varandra. En lista skapar man som en variabel med värden separerade med kommatecken. Listans värden ramas in i klammerparenteser **`[]`**.
 
-### **Definiera/skapa en lista**
+### **Definiera en lista**
 
 ```py
 my_list = ['value1', 'value2', 'value3']
 ```
 
-### **Nå ett listvärde med positionsnummer**
+### **Nå ett listvärde**
 
 För att nå ett värde i listan använder man ett positionsnummer. Den första positionen har numret 0\. Positionsnummer kallas även **index**.
 
@@ -229,7 +259,7 @@ first_value = my_list[0]
 # first_value → 'value1'
 ```
 
-### **Räkna bakifrån med negativa positionsnummer**
+### **Räkna bakifrån**
 
 Med negativa positionsnummer räknar man bakifrån från sista positionen. 
 
@@ -242,7 +272,7 @@ last_value = my_list[-1]
 
 ### **Välj delar av en lista**
 
-Med kolon **:** kan man ange ett intervall av positioner. 
+Med kolon **:** kan man ange ett intervall av positioner. Detta kallas för **slicing**.
 
 ```py
 my_list = ['value1', 'value2', 'value3', 'value4']
@@ -288,15 +318,6 @@ for food in menu:
     print(food)
 ```
 
-### **Sortera en lista (numeriskt eller alfabetiskt)**
-
-```py
-menu = ['B', 'D', 'C', 'A']
-menu.sort()
-
-# menu → ['A', 'B', 'C', 'D']
-```
-
 ### **Skapa en lista från en textsträng**
 
 ```py
@@ -315,11 +336,63 @@ food_string = ','.join(food_list)
 # food_string → 'kebab, pizza, sushi, meatballs'
 ```
 
+### **Sortera en lista**
+
+```py
+menu = ['B', 'D', 'C', 'A']
+menu.sort()
+
+# menu → ['A', 'B', 'C', 'D']
+```
+
+```py
+numbers = [1, 5, 2.4, 0.3, 100]
+numbers.sort()
+
+# numbers → [0.3, 1, 2.4, 5, 100]
+```
+
+### **Summera en lista**
+
+```py
+scores = [12, 34, 56, 12, 32, 34]
+
+print(sum(scores))
+# → 180
+```
+
+### **Max- och min-värden**
+
+```py
+scores = [12, 34, 56, 12, 32, 34]
+
+print(min(scores))
+# → 12
+```
+
+```py
+scores = [12, 34, 56, 12, 32, 34]
+
+print(max(scores))
+# → 56
+```
+
+### **Medelvärde**
+
+```py
+scores = [12, 34, 56, 12, 32, 34]
+
+print(sum(scores) / len(scores))
+# → 30.0
+```
+
+## 
+
 ## **Villkor \- if-satser**
 
 If-satser används för att programmet ska utföra viss kod endast då ett visst villkor är uppfyllt. Det kodblock som ska utföras har 4 mellanslags indrag. (*Indentering*)
 
-**`else`** används för att ange vad som ska göras ifall villkoret inte uppfylls.
+**`else`** används för att ange vad som ska göras ifall villkoret inte uppfylls. **`elif`** används för att kedja flera villkorstester efter varandra.
 
 ### **Vanliga operatorer för villkor**
 
@@ -389,11 +462,15 @@ else:
 
 ### **Else-if \- flera jämförelser**
 
+Med **`elif`** testas flera villkor efter varandra. När ett villkor är sant avslutas if-satsen.
+
 ```py
 if role == 'admin':
     print('Welcome admin!')
 elif role == 'user':
     print('Welcome user!')
+elif role == 'author':
+    print('Welcome author!')
 else:
     print('Access denied!')
 ```
@@ -443,7 +520,7 @@ else:
 
 ## **Loopar**
 
-Loopar används när man vill utföra samma kod flera gånger. Den kod som ska utföras i loopen *indenteras* med 4 mellanslag.
+Loopar används när man vill upprepa kod flera gånger. Den kod som ska utföras i loopen *indenteras* med 4 mellanslag.
 
 ### **En for-loop med range()**
 
@@ -532,7 +609,9 @@ def hello():
 hello()
 ```
 
-### **Egen funktion som tar emot argument**
+### **Funktion som tar emot argument**
+
+De värden som skickas in i en funktion kallas för **argument**.
 
 ```py
 def hello(name):
@@ -541,7 +620,9 @@ def hello(name):
 hello('Markus')
 ```
 
-### **Egen funktion som tar emot flera argument och returnerar ett värde**
+### **Flera argument \- returnera ett värde**
+
+Det är vanligt att en funktion bearbetar information för att sedan skicka tillbaka ett resultat till huvudprogrammet \- funktionen **returnerar** ett värde.
 
 ```py
 def triangle_area(base, height):
@@ -552,9 +633,49 @@ my_area = triangle_area(5, 7)
 print(my_area)
 ```
 
+### **Returnera booleska värden**
+
+Det är vanligt med funktioner som returnerar **`True`** eller **`False`** (*booleska* värden).
+
+```py
+def is_weekend(day):
+    if day == 'saturday' or day == 'sunday':
+        return True
+    else:
+        return False
+```
+
+Om funktionen bara testar ett eller flera villkor behöver man inte någon if-sats. Man kan istället direkt returnera resultatet av villkorstestet:
+
+```py
+def is_weekend(day):
+    return day == 'saturday' or day == 'sunday'
+```
+
+### **Funktioner med keyword-arguments**
+
+Om man vill göra sina funktioner tydligare och flexiblare kan man använda **keyword-arguments** (nyckelargument). Då namnger man argumenten som funktionen tar emot och anger även **default-värden** för argumenten.
+
+Med keyword-argument behöver man inte hålla koll på ordningen för argumenten när man anropar funktionen. Och med default-värden kraschar inte programmet om man utelämnar ett argument.
+
+```py
+# Funktion med keyword-arguments och default-värden
+def triangle_area(base=10, height=10):
+    area = base * height / 2
+    return area
+    
+# Funktionen anropas med de namngivna argumenten
+my_area = triangle_area(base=5, height=7)
+
+# Funktionen anropas utan argument - då används default-värden
+my_area1 = triangle_area()
+```
+
+## 
+
 ## **Dictionary \- dict**
 
-Datatypen *dictionary* (dict) är en *samling* precis som listor. Istället för att de olika elementen representeras av ett positionsnummer (0, 1, 2 etc.) används egna namn. Namnen som identifierar positionerna kallas för *keys* (sv. nycklar).
+Datatypen **dictionary** (dict) är en *samling* precis som listor. Istället för att de olika elementen representeras av ett positionsnummer (0, 1, 2 etc.) används beskrivande namn. Namnen som identifierar positionerna kallas för **keys** (sv. nycklar).
 
 ### **En enkel dictionary**
 
@@ -614,7 +735,7 @@ for key, value in car.items():
 
 ## **Tuplar och set**
 
-Tuplar och set är samlingar (*collections*) och alternativ till listor. 
+**Tuplar** och **set** är samlingar (*collections*) och alternativ till listor. 
 
 De viktigaste skillnaderna mot vanliga listor:
 
@@ -636,22 +757,22 @@ my_set = {'kebab', 'pizza', 'meatballs'}
 ### **Skillnaderna mellan listor, tuplar och set**
 
 | Egenskap | List (`list`) | Tuple (`tuple`) | Set (`set`) |
-| ----- | ----- | ----- | ----- |
-| Ordning | Bevaras | Bevaras | Ingen garanterad ordning |
-| Dubbletter | Tillåts | Tillåts | Ej tillåtna (unika element) |
-| Ändringsbar | Ja | Nej (immutable) | Ja (men endast unika element) |
-| Sökning (x in ...) | Långsammare  | Långsammare  | Mycket snabb  |
-| Använd som dict-nyckel | Nej | Ja | Nej |
-| Vanliga användningsområden | Listor av data som kan ändras, ordning viktig | Koordinater, fasta värden, säkra datastrukturer | Unika värden, mängdoperationer (union, snitt, skillnad) |
-| Prestanda | Flexibel men lite långsammare | Snabbare än listor | Snabb för medlemskap och mängdlogik |
+| :---- | :---- | :---- | :---- |
+| **Ordning** | Bevaras | Bevaras | Ingen garanterad ordning |
+| **Dubbletter** | Tillåts | Tillåts | Ej tillåtna (unika element) |
+| **Ändringsbar** | Ja | Nej (immutable) | Ja (men endast unika element) |
+| **Sökning (`x in ...`)** | Långsammare  | Långsammare  | Mycket snabb  |
+| **Använd som dict-nyckel** | Nej | Ja | Nej |
+| **Vanliga användningsområden** | Listor av data som kan ändras, ordning viktig | Koordinater, fasta värden, säkra datastrukturer | Unika värden, mängdoperationer (union, snitt, skillnad) |
+| **Prestanda** | Flexibel men lite långsammare | Snabbare än listor | Snabb för medlemskap och mängdlogik |
 
 ## **Modulen random**
 
-Modulen random används för att hantera slumptal.
+Modulen **`random`** används för att hantera slumptal.
 
-### **Importera modulen**
+### **Importera moduler**
 
-Kodmoduler som **`random`** behöver importeras innan de används. Import av moduler görs högst upp i ens kod.
+Moduler som **`random`** behöver importeras innan de används. Import av moduler görs högst upp i ens kod.
 
 ```py
 import random
@@ -678,11 +799,13 @@ food = random.choice(menu)
 
 ## **Modulen datetime**
 
-Modulen datetime används för att hantera tid och datum.
+Modulen **`datetime`** används för att hantera tid och datum.
 
 ### **Ta fram dagens datum**
 
 ```py
+import datetime
+
 today = datetime.date.today()
 ```
 
@@ -712,8 +835,6 @@ print(christmas.weekday())
 ### **Räkna med datum**
 
 ```py
-import datetime
-
 christmas = datetime.date(2025, 12, 24)
 today = datetime.date.today()
 
@@ -723,8 +844,6 @@ print(time_to_christmas)
 ```
 
 ```py
-import datetime
-
 today = datetime.date.today()
 
 ten_days = datetime.timedelta(days = 10)
@@ -822,10 +941,68 @@ with open('textfile.txt', 'a') as textfile:
 ### **Lägeskoder vid öppning av filer**
 
 | Lägeskod | Betydelse | Exempel | Kommentar |
-| ----- | ----- | ----- | ----- |
+| :---- | :---- | :---- | :---- |
 | `"r"` | Läsning (read) | `open("fil.txt", "r")` | Filen måste redan finnas |
 | `"w"` | Skrivning (write) | `open("fil.txt", "w")` | Skriver över hela filen |
 | `"a"` | Append (lägg till) | `open("fil.txt", "a")` | Skriver i slutet av filen |
 | `"b"` | Binärt läge | `open("bild.png", "rb")` | För filer som inte är text |
 | `"x"` | Skapa ny fil | `open("nyfil.txt", "x")` | Fel om filen redan finns |
+
+## **Felhantering**
+
+En viktig del i programmering är att hantera eventuella fel som kan uppstå i ens program. 
+
+### **Tre typer av fel**
+
+| Typ av fel | När det uppstår | Kan fångas med try/except? | Exempel |
+| :---- | :---- | ----- | :---- |
+| Syntaxfel | När programmet tolkas | ❌ Nej | Saknat kolon, fel indentering |
+| Körningsfel (Exception) | Under körning | ✅ Ja | ZeroDivisionError, ValueError, NameError |
+| Logiskt fel | Under körning (utan krasch) | ❌ Nej | Fel formel, fel algoritm |
+
+Körningsfel (**exceptions**) kan fångas upp och hanteras med **`try`**/**`except`**.
+
+### **Try och except**
+
+Den kod man misstänker kan utlösa ett körningsfel sätts i ett kodblock under `try`. Med **`except`** anger man vilket fel som förväntas och i ett kodblock under anger man hur felet ska hanteras.
+
+```py
+try:
+  age = int(input("Hur gammal är du?"))
+  
+except ValueError:
+  print("Du måste ange ett heltal!")
+  exit()
+```
+
+### **Felaktig input \- försök igen**
+
+Ett sätt att hantera felaktig input är att be användaren att försöka igen. Det går att göra med en evig loop som bryts (med **break**) när inget fel inträffar.
+
+```py
+while True:
+  try:
+    age = int(input("Hur gammal är du?"))
+    break
+    
+  except ValueError:
+    print("Du måste ange ett heltal.")
+
+print(f"Du är {age} år gammal!")
+
+```
+
+### **Några vanliga exceptions**
+
+| Feltyp | När det händer | Exempel |
+| :---- | :---- | :---- |
+| `ValueError` | När ett värde inte kan tolkas korrekt | `int("hej")` |
+| `TypeError` | När du blandar fel datatyper | `"hej" + 5` |
+| `ZeroDivisionError` | När du dividerar med noll | `10 / 0` |
+| `IndexError` | När du försöker nå ett index som inte finns | `lista[10]` |
+| `KeyError` | När en nyckel saknas i en dictionary | `min_dict["namn"]` om nyckeln inte finns |
+| `FileNotFoundError` | När du försöker öppna en fil som inte finns | `open("saknas.txt")` |
+| `NameError` | När en variabel inte är definierad | `print(x)` utan att `x` finns |
+| `AttributeError` | När ett objekt saknar ett visst attribut | `"hej".append("då")` |
+| `ImportError` | När ett importerat paket inte hittas | `import felpaket` |
 

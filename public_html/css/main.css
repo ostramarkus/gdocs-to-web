@@ -1,14 +1,16 @@
 :root {
-    --primary: #414094;
+    --primary: #1c3fb1;
     --first-accent: #ce433d;
-    --second-accent: #409461;
-    --third-accent: #DBC45E;
-    --dark-background: #30303F;
+    --second-accent: #374467;
+    --third-accent: #98c379;
+    --dark-background: #0c1227;
     --header-dark: #111;
     --article-bg: #f4f4f4;
+    --border1: #ddd;
     --border-radius: 8px;
     --bg-muted: #f6f8fa;
     --inline-code: #818b981f;
+    --code-comments: #ca7cc8;
 }
 
 /* Debug
@@ -26,6 +28,7 @@ body {
     background: linear-gradient(345deg,rgba(0, 0, 0, 1) 0%, rgb(52, 67, 103) 100%);    color: #24232c;
     background-attachment: fixed;
     margin: 0;
+    color: #333;
 }
 
 
@@ -115,7 +118,7 @@ p {
 
 table {
     margin-top: 1em;
-    border: 1px solid #ccc;
+    border: 1px solid var(--border1);
     border-collapse: collapse;
     background-color: white;
 }
@@ -189,7 +192,7 @@ article > h3 {
     overflow-x: auto;
     box-sizing: border-box;
     max-width:100vw;
-    margin: 1em 0 0 0;
+    margin: 0.5em 0;
 }
 
 pre {
@@ -201,10 +204,12 @@ pre {
 .hljs {
     border-radius: var(--border-radius);
     box-sizing: border-box;
+    background-color: var(--dark-background);
+    border-left: 5px solid var(--third-accent);
 }
 
 .hljs-comment {
-    color: var(--first-accent);
+    color: var(--code-comments);
 }
 
 
@@ -273,7 +278,7 @@ pre {
 }
 
 .section-link  {
-    border-bottom: 1px solid #ccc;
+    border-bottom: 1px solid var(--border1);
 }
 
 .section-link ul {
@@ -310,7 +315,6 @@ pre {
 #toc .section-link a:hover,
 #toc .active{
     color: var(--primary);
-
 }
 
 #toc .active{
@@ -330,10 +334,10 @@ button.copy-btn {
       position: absolute;
       top: 8px;
       right: 8px;
-      padding: 0.2em 0.5em 0.4em;
+      padding: 0.3em;
       font-size: 1em;
       border: none;
-      border-radius: var(--border-radius);
+      border-radius: 4px;
       background: #a6b7ca44;
       color: white;
       cursor: pointer;
@@ -341,9 +345,14 @@ button.copy-btn {
       transition: opacity 0.2s, background 0.2s;
     }
 
+button.copy-btn img {
+    width: 1rem;
+    display: block;
+}
+
 button.copy-btn:hover {
     opacity: 1;
-    background: #0056b3;
+    background-color: var(--primary);
 }
 
 @media (max-width: 1250px) {
@@ -355,6 +364,7 @@ button.copy-btn:hover {
         padding-top: 2rem;
         margin: 0;
         border-radius: 0;
+        border-bottom: 1px solid var(--border1)        
     }
 
     #nav-container {
@@ -386,9 +396,9 @@ button.copy-btn:hover {
     }
 
     section {
-        padding: 5em 2rem 0rem 2rem;
-        margin-top: -2rem;
+        padding: 2em;
         background-color: transparent;
+        border-bottom: 1px solid var(--border1)
     }
 
     #nav-container {

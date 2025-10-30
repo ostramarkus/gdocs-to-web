@@ -1,38 +1,40 @@
 // Nav-toggle
 document.getElementById('menu-toggle').addEventListener('click', async () => {
-  let navAside = document.getElementById('nav-container');
-  if (navAside.classList.contains('nav-open')) {
-    document.getElementById('nav-container').classList.remove('nav-open');
-  } else {
-    document.getElementById('nav-container').classList.add('nav-open');
+  const navAside = document.getElementById('nav-container');
+  navAside.classList.toggle('nav-open');
+});
+
+// Make big tables great again
+document.querySelectorAll('table').forEach(table => {
+  let parentWidth = table.parentNode.offsetWidth
+  if (table.offsetWidth / parentWidth > 0.7) {
+    table.style.width = "100%";
   }
-})
+});
 
+// Remove nav-menu if link is clicked
 document.querySelectorAll('#toc a').forEach(link => {
-  link.addEventListener('click', async => {
+  link.addEventListener('click', async () => {
     let navAside = document.getElementById('nav-container');  
-    if (navAside.classList.contains('nav-open')) {
-      document.getElementById('nav-container').classList.remove('nav-open');
-    }
-  })
-})
+    document.getElementById('nav-container').classList.remove('nav-open');
+  });
+});
 
-// Hitta alla <pre><code>-block
+// Insert copy-button in code blocks
 document.querySelectorAll('pre').forEach(pre => {
-    let copySymbol = '🗐' 
-  // Skapa en knapp
+  let copySymbol = '<img src="img/copy.svg" alt="Kopiera">' 
   const button = document.createElement('button');
-  button.textContent = copySymbol;
+  button.innerHTML = copySymbol;
   button.className = 'copy-btn';
   pre.appendChild(button);
 
-  // Lägg till klickhändelse
+  // Click event
   button.addEventListener('click', async () => {
     const code = pre.querySelector('code').innerText;
 
     try {
       await navigator.clipboard.writeText(code);
-      setTimeout(() => button.textContent = copySymbol, 2000);
+      setTimeout(() => button.innerHTML = copySymbol, 2000);
     } catch (err) {
       console.error('Kunde inte kopiera text: ', err);
       button.textContent = 'Fel!';
@@ -41,7 +43,6 @@ document.querySelectorAll('pre').forEach(pre => {
 });
 
 // Highlight links
-
 document.querySelectorAll('.section-link > a').forEach(sectionLink => {
   sectionLink.addEventListener('click', async () => {
     if (sectionLink.classList.contains('section-open')) {
@@ -63,11 +64,6 @@ document.querySelectorAll('.section-link > a').forEach(sectionLink => {
       })
       articlesList.classList.add('articles-open');
     }
-
-  });
-  
-  sectionLink.addEventListener('mouseleave', async () => {
-    let articlesList = sectionLink.querySelector('ul');
   });
 });
 
@@ -88,9 +84,9 @@ const observer = new IntersectionObserver(
     });
   },
   {
-    root: null,              // observerar i viewporten
-    threshold: 0,            // trigga så fort något syns
-    rootMargin: "-50% 0px -50% 0px" // mitten av sidan (övre halvan)
+    root: null,
+    threshold: 0,
+    rootMargin: "-20% 0px -80% 0px"
   }
 );
 
