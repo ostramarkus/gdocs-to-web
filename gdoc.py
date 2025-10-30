@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 bs4_parser = 'html.parser'
 silent = False
 
-def md_to_html(md_file, template_file, insert_tag='main'):
+def md_to_html(md_file, template_file, title="Untitled", insert_tag='main'):
 
     # Read Markdown and make a Beautiful soup
     content_soup = md_file_to_soup(md_file)
@@ -26,6 +26,10 @@ def md_to_html(md_file, template_file, insert_tag='main'):
     # Open and read template file
     info(f'Opening template file: {template_file}')
     main_soup = html_file_to_soup(template_file)
+
+    # Set title of document
+    info('Setting title')
+    main_soup.find('h1').string = title
 
     # Generate and insert table of content
     info('Creating table of contents')
