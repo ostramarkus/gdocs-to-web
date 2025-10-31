@@ -171,14 +171,16 @@ full_name = firstname + ' ' + lastname
 
 ### **Sträng-formatering med f-strings**
 
-Med så kallad f-sträng-formattering kan man sätta in variabler direkt i en textsträng. Man kan också ange hur variablerna ska formateras vid utskrift (t.ex. antalet decimaler.)
+Med så kallad f-sträng-formattering kan man sätta in variabler (eller andra uttryck, till exempel beräkningar) direkt i en textsträng. Man kan också ange hur variablerna ska formateras vid utskrift (t.ex. antalet decimaler.)
 
 ```py
+product = 'kexchoklad'
 price = 19.9
-product_name = 'kexchoklad'
-print(f'Du har köpt en {product_name} för {price:.2f} kr.')
+quantity = 4
 
-# → 'Du har köpt en kexchoklad för 19.90 kr.'
+print(f'Du har köpt {product} för {price * quantity:.2f} kr.')
+
+# → 'Du har köpt kexchoklad för 79.60 kr.'
 ```
 
 🔗[Python f-string: A Complete Guide | DataCamp](https://www.datacamp.com/tutorial/python-f-string)
@@ -196,7 +198,7 @@ Strängar kan på många sätt hanteras som listor. Man kan till exempel ta utde
 
 ```py
 name = 'Markus'
-first_three_letters = name[0:2] 
+first_three_letters = name[0:3] 
 
 # first_three_letters → 'Mar'
 ```
@@ -205,8 +207,15 @@ first_three_letters = name[0:2]
 
 ```py
 name = 'Markus'
-big_name = name.upper()	# → 'MARKUS'
-small_name = name.lower()	# →  'markus'
+
+big_name = name.upper()
+# → 'MARKUS'
+
+small_name = name.lower()
+# →  'markus'
+
+cap_name = small_name.cpitalize()	
+# 'markus' → 'Markus'
 ```
 
 ### **Sök och ersätt i text**
@@ -227,6 +236,19 @@ new_name = name.strip()
 # new_name → 'Markus'
 ```
 
+### **Kedja metoder**
+
+Metoder som returnerar ett resultat kan man kedja ihop för att göra flera operationer direkt efter varandra. (Resultatet från en metod skickas vidare till nästa.)
+
+```py
+ugly_name = '  mAr_kUs   '
+
+nice_name = ugly_name.strip().replace('_', '').capitalize()
+print(nice_name)
+
+# → 'Markus'
+```
+
 ### **Konvertera sträng till lista**
 
 ```py
@@ -240,23 +262,25 @@ my_list = list(my_string)
 
 ## **Listor**
 
-Listor används för att lagra flera värden som hör samman med varandra. En lista skapar man som en variabel med värden separerade med kommatecken. Listans värden ramas in i klammerparenteser **`[]`**.
+Listor används för att lagra flera värden som hör samman med varandra. (En listas värden kallas även för *element* eller *item.*)
+
+En lista skapar man som en variabel med värden separerade med kommatecken. Listans värden ramas in i klammerparenteser **`[]`**.
 
 ### **Definiera en lista**
 
 ```py
-my_list = ['value1', 'value2', 'value3']
+menu = ['kebab', 'pizza', 'sushi']
 ```
 
 ### **Nå ett listvärde**
 
-För att nå ett värde i listan använder man ett positionsnummer. Den första positionen har numret 0\. Positionsnummer kallas även **index**.
+För att nå ett värde i listan använder man ett positionsnummer. Positionsnummer kallas även **index**. Den första positionen har **index** 0\. 
 
 ```py
-my_list = ['value1', 'value2', 'value3']
-first_value = my_list[0]
+menu = ['kebab', 'pizza', 'sushi']
+first_dish = menu[0]
 
-# first_value → 'value1'
+# first_dish → 'kebab'
 ```
 
 ### **Räkna bakifrån**
@@ -264,42 +288,42 @@ first_value = my_list[0]
 Med negativa positionsnummer räknar man bakifrån från sista positionen. 
 
 ```py
-my_list = ['value1', 'value2', 'value3']
-last_value = my_list[-1]
+menu = ['kebab', 'pizza', 'sushi']
+last_dish = menu[-1]
 
-# last_value → 'value3'
+# last_dish → 'sushi'
 ```
 
 ### **Välj delar av en lista**
 
-Med kolon **:** kan man ange ett intervall av positioner. Detta kallas för **slicing**.
+Med kolon **:** kan man ange ett intervall av positioner som man vill nå. Detta kallas för **slicing**.
 
 ```py
-my_list = ['value1', 'value2', 'value3', 'value4']
-first_three_values = my_list[0:2]
+menu = ['kebab', 'pizza', 'sushi', 'tacos']
+first_three_dishes = menu[0:3]
 
-# first_three_values → ['value1', 'value2', 'value3']
+# first_three_dishes → ['kebab', 'pizza', 'sushi']
 ```
 
 ### **Tilldela ett värde till en viss position**
 
 ```py
-my_list[0] = 'new value'
+menu[0] = 'meatballs'
 ```
 
-### **Lägga till ett till värde till en lista**
+### **Lägga till ett värde till en lista**
 
 ```py
-my_list.append('new value')
+menu.append('thai-food')
 ```
 
 ### **Ta reda på längden på en lista eller sträng**
 
 ```py
-my_list = ['value1', 'value2', 'value3']
-list_size = len(my_list)
+menu = ['kebab', 'pizza', 'sushi']
+nr_of_dishes = len(menu)
 
-# list_size → 3
+# nr_of_dishes → 3
 ```
 
 ```py
@@ -314,35 +338,35 @@ string_size = len(name)
 ```py
 menu = ['pizza', 'kebab', 'sushi']
 
-for food in menu:
-    print(food)
+for dish in menu:
+    print(dish)
 ```
 
 ### **Skapa en lista från en textsträng**
 
 ```py
-food_string = 'kebab, pizza, sushi, meatballs'
-food_list = food_string.split(',')
+menu_string = 'kebab, pizza, sushi, meatballs'
+menu = menu_string.split(',')
 
 # food_list → ['kebab', ' pizza', ' sushi', ' meatballs']
 ```
 
-### **Skapa en textsträng från en lista**
+### **Konvertera en lista till en sträng**
 
 ```py
-food_list = ['kebab', ' pizza', ' sushi', ' meatballs']
-food_string = ','.join(food_list)
+menu = ['kebab', ' pizza', ' sushi', ' meatballs']
+menu_string = ','.join(food_list)
 
-# food_string → 'kebab, pizza, sushi, meatballs'
+# menu_string → 'kebab, pizza, sushi, meatballs'
 ```
 
 ### **Sortera en lista**
 
 ```py
-menu = ['B', 'D', 'C', 'A']
-menu.sort()
+letters = ['B', 'D', 'C', 'A']
+letters.sort()
 
-# menu → ['A', 'B', 'C', 'D']
+# letters → ['A', 'B', 'C', 'D']
 ```
 
 ```py
@@ -352,12 +376,25 @@ numbers.sort()
 # numbers → [0.3, 1, 2.4, 5, 100]
 ```
 
+### **Räkna förekomst i lista**
+
+Med metoden **`count()`** kan man räkna förekomsten av ett värde i en lista.
+
+```py
+grades = ['D', 'C', 'A', 'D', 'F', 'D', 'A', 'E', 
+          'B', 'D', 'E', 'E', 'F', 'E', 'B', 'F']
+
+nr_of_a = grades.count('A')
+
+print('Antal A:', nr_of_a)
+```
+
 ### **Summera en lista**
 
 ```py
 scores = [12, 34, 56, 12, 32, 34]
-
 print(sum(scores))
+
 # → 180
 ```
 
@@ -365,34 +402,34 @@ print(sum(scores))
 
 ```py
 scores = [12, 34, 56, 12, 32, 34]
-
 print(min(scores))
+
 # → 12
 ```
 
 ```py
 scores = [12, 34, 56, 12, 32, 34]
-
 print(max(scores))
+
 # → 56
 ```
 
 ### **Medelvärde**
 
+Här används **`sum()`** och **`len()`** i kombination för att räkna ut ett medelvärde.
+
 ```py
 scores = [12, 34, 56, 12, 32, 34]
-
 print(sum(scores) / len(scores))
+
 # → 30.0
 ```
 
-## 
-
 ## **Villkor \- if-satser**
 
-If-satser används för att programmet ska utföra viss kod endast då ett visst villkor är uppfyllt. Det kodblock som ska utföras har 4 mellanslags indrag. (*Indentering*)
+If-satser används för att programmet ska utföra viss kod endast då ett visst **villkor** är uppfyllt. Det kodblock som ska utföras har 4 mellanslags indrag. (*Indentering*)
 
-**`else`** används för att ange vad som ska göras ifall villkoret inte uppfylls. **`elif`** används för att kedja flera villkorstester efter varandra.
+**`else`** används för att ange vad som ska göras ifall villkoret **inte** uppfylls. **`elif`** används för att kedja flera villkorstester efter varandra.
 
 ### **Vanliga operatorer för villkor**
 
@@ -445,8 +482,6 @@ if username == 'marpet' and password == 'secret':
     print('Welcome!')
 else:
     print('Access denied!')
-
-# → 'Welcome!'
 ```
 
 ### **Flera villkor med `or`**
@@ -492,7 +527,7 @@ else:
 
 ### **If och strängar**
 
-Med en if-sats kan man kontrollera ifall en textsträng innehåller en viss annan sträng.
+Med en if-sats kan man kontrollera ifall en textsträng innehåller viss text.
 
 ```py
 text = 'Python is easy!'
@@ -520,18 +555,18 @@ else:
 
 ## **Loopar**
 
-Loopar används när man vill upprepa kod flera gånger. Den kod som ska utföras i loopen *indenteras* med 4 mellanslag.
+Loopar används när man vill upprepa kod i sitt program. Den kod som ska utföras i loopen *indenteras* med 4 mellanslag.
 
-### **En for-loop med range()**
+### **En `for`\-loop med `range()`**
 
-För att ange hur många gånger en **`for`**\-loop ska köras används funktionen **`range()`** som skapar en talserie mellan två heltal.
+För att ange hur många gånger en **`for`**\-loop ska köras kan man använda en räknare (variabeln **`i`**) och funktionen **`range()`** som skapar en talserie mellan två heltal.
 
 ```py
 for i in range(0, 10):
    print('I can count to:', i)
 ```
 
-### **En for-loop för att gå igenom en lista/sträng**
+### **En `for`\-loop för att gå igenom en lista/sträng**
 
 For-loopar används även för att gå igenom (*iterera*) listor och strängar.
 
@@ -582,9 +617,9 @@ while True:
         break
 ```
 
-### **Skapa listor med range**
+### **Skapa listor med `range()`**
 
-Funktionen **`range`** kan även användas för att skapa en lista av talserier. Funktionen tar även ett tredje argument som anger avståndet mellan talen i talserien.
+Funktionen **`range()`** kan även användas för att skapa en lista av talserier. Funktionen tar även ett tredje argument som anger stegstorleken (differensen) mellan talen i talserien.
 
 ```py
 my_list = list(range(0, 50, 10))
@@ -597,7 +632,7 @@ print(my_list)
 
 ## **Funktioner**
 
-En *funktion* är namngiven kod som man kan anropa från sitt program. Med funktioner slipper man upprepa sig när man vill göra samma sak flera gånger i ett program. Funktioner är också ett sätt att dela upp ett större program i mindre, mer lätthanterliga delar. 
+En *funktion* är namngiven kod som man sedan kan anropa från sitt program. Med funktioner slipper man upprepa sig när man vill göra samma sak flera gånger. Funktioner är också ett sätt att dela upp ett större program i mindre, mer lätthanterliga delar. 
 
 ### **Egen funktion**
 
@@ -645,7 +680,7 @@ def is_weekend(day):
         return False
 ```
 
-Om funktionen bara testar ett eller flera villkor behöver man inte någon if-sats. Man kan istället direkt returnera resultatet av villkorstestet:
+Om funktionen bara testar ett eller flera villkor behöver man inte någon if-sats. Man kan istället returnera resultatet av villkorstestet direkt:
 
 ```py
 def is_weekend(day):
@@ -654,9 +689,9 @@ def is_weekend(day):
 
 ### **Funktioner med keyword-arguments**
 
-Om man vill göra sina funktioner tydligare och flexiblare kan man använda **keyword-arguments** (nyckelargument). Då namnger man argumenten som funktionen tar emot och anger även **default-värden** för argumenten.
+Om man vill göra sina funktioner tydligare och flexiblare kan man använda namngivna argument (**keyword-arguments**). Då namnger man argumenten som funktionen tar emot och anger även **standardvärden (**eng. *default values*) för argumenten.
 
-Med keyword-argument behöver man inte hålla koll på ordningen för argumenten när man anropar funktionen. Och med default-värden kraschar inte programmet om man utelämnar ett argument.
+Med namngivna argument behöver man inte hålla koll på ordningen för argumenten vid  anrop av funktionen. Och med standardvärden fungerar programmet även om man utelämnar ett argument.
 
 ```py
 # Funktion med keyword-arguments och default-värden
@@ -667,7 +702,7 @@ def triangle_area(base=10, height=10):
 # Funktionen anropas med de namngivna argumenten
 my_area = triangle_area(base=5, height=7)
 
-# Funktionen anropas utan argument - då används default-värden
+# Funktionen anropas utan argument - då används standardvärdena
 my_area1 = triangle_area()
 ```
 
@@ -716,7 +751,9 @@ products = [
 
 ### 
 
-### **Gå igenom en dictionary med en for-loop**
+### **Gå igenom en dictionary med en `for`\-loop**
+
+Med metoden **`.items()`** kan man iterera över både **nyckeln** (*key*) och **värdet** (*value*).
 
 ```py
 car = {
@@ -728,7 +765,7 @@ car = {
 }
 
 for key, value in car.items():
-    print(key, ':', value)
+    print(key.capitalize(), ':', value)
 ```
 
 ## 
@@ -740,7 +777,7 @@ for key, value in car.items():
 De viktigaste skillnaderna mot vanliga listor:
 
 * **Tuplar** är inte ändringsbara (de är *immutable*). Man kan alltså inte ändra dess värden efter att tupeln är skapad.  
-* **Set** kan endast innehålla unika värden. De kan alltså inte innehålla dubbletter.
+* **Set** kan endast innehålla unika värden. De kan alltså inte innehålla dubbletter. (Set kan liknas vid det matematiska begreppet *mängd*).
 
 ### **Definiera en tupel**
 
@@ -765,6 +802,72 @@ my_set = {'kebab', 'pizza', 'meatballs'}
 | **Använd som dict-nyckel** | Nej | Ja | Nej |
 | **Vanliga användningsområden** | Listor av data som kan ändras, ordning viktig | Koordinater, fasta värden, säkra datastrukturer | Unika värden, mängdoperationer (union, snitt, skillnad) |
 | **Prestanda** | Flexibel men lite långsammare | Snabbare än listor | Snabb för medlemskap och mängdlogik |
+
+## **Kommentera kod**
+
+För att öka tydligheten i sin kod (för sig själv och för andra) bör man använda kommentarer. För mer komplexa program används även kommentarerna för att automatiskt generera dokumentering över koden. 
+
+### **Riktlinjer:**
+
+Kommentera **varför**, inte bara **vad**:
+
+> "Comments that contradict the code are worse than no comments. Always update comments if the code changes\!"
+
+Undvik överflödiga kommentarer:
+
+> "Avoid comments that are obvious from the code itself."
+
+### **Enradskommentarer**
+
+> "Comments should be complete sentences. If a comment is a phrase or sentence, its first word should be capitalized, unless it is an identifier or acronym." — PEP 8, Comments
+
+```py
+# Beräkna summan av alla tal i listan
+total = sum(numbers)
+```
+
+Enradskommentarer bör placeras **på en egen rad** eller **på samma rad som koden**. Då Pythons syntax (i jämförelse med andra språk) är lätt att förstå bör man bara kommentera kod som är otydlig.
+
+### **Blockkommentarer**
+
+> "Block comments generally apply to some (or all) code that follows them, and are indented to the same level as that code. Each line of a block comment starts with a `#` and a single space."  — [PEP 8, Comments](https://peps.python.org/pep-0008/)
+
+```py
+# Loopa igenom alla användare och
+# skriv ut deras namn och ålder
+for user in users:
+    print(user.name, user.age)
+```
+
+### **Docstrings (dokumentationssträngar)**
+
+> "Docstrings are denoted by triple quotes `"""` and are used to describe all public classes and functions." — [PEP 8, Docstrings](https://peps.python.org/pep-0008/)
+
+```py
+def add(a, b):
+    """Returnerar summan av två tal."""
+    return a + b
+```
+
+Eller ännu mer utförligt där även parametrar och returvärden dokumenteras:
+
+```py
+def add(a, b):
+    """
+    Returnerar summan av två tal.
+
+    Parametrar:
+    a (int eller float): Första talet
+    b (int eller float): Andra talet
+
+    Returnerar:
+    int eller float: Summan av a och b
+    """
+    return a + b
+
+```
+
+## 
 
 ## **Modulen random**
 
@@ -977,7 +1080,7 @@ except ValueError:
 
 ### **Felaktig input \- försök igen**
 
-Ett sätt att hantera felaktig input är att be användaren att försöka igen. Det går att göra med en evig loop som bryts (med **break**) när inget fel inträffar.
+Ett sätt att hantera felaktig input är att be användaren att försöka igen. Det går att göra med en evig loop som bryts (med **break**) **när inget fel** inträffar.
 
 ```py
 while True:
@@ -989,7 +1092,6 @@ while True:
     print("Du måste ange ett heltal.")
 
 print(f"Du är {age} år gammal!")
-
 ```
 
 ### **Några vanliga exceptions**

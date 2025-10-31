@@ -4,10 +4,12 @@
     --second-accent: #374467;
     --third-accent: #98c379;
     --dark-background: #0c1227;
+    --heading-accent: #db7b2b;    
     --header-dark: #111;
-    --article-bg: #f4f4f4;
+    --article-bg: #fafafa;
+    --section-bg: #ededed;
     --border1: #ddd;
-    --border-radius: 8px;
+    --border-radius: 4px;
     --bg-muted: #f6f8fa;
     --inline-code: #818b981f;
     --code-comments: #ca7cc8;
@@ -49,12 +51,13 @@ main {
 
 header {
     background-color: #111;
-    padding: 0.7rem;
+    padding: 1rem;
     box-sizing: border-box;
     display: flex;
     gap: 0.5em;
     color: #fff;
     justify-content: space-between;
+    box-shadow: 0px 3px 3px rgba(0,0,0,0.2);
 }
 
 header img {
@@ -113,10 +116,11 @@ main h1 {
 }
 
 h2 {
-    font-size: 2.5em;
-    font-weight: normal;
+    font-size: 2.3em;
+    font-weight: bold;
     margin-bottom: 1.5rem;
     margin-top: 0px;
+    color: var(--heading-accent);
 }
 
 h3 {
@@ -125,6 +129,12 @@ h3 {
 
 p {
     line-height: 1.5;
+}
+
+blockquote {
+    margin-left: 1rem;
+    padding-left: 1rem;
+    border-left: 3px solid var(--third-accent);
 }
 
 
@@ -189,23 +199,36 @@ section {
     margin: 2rem 0;
     width: 100%;
     padding: 3rem 3rem;
-    background-color: #fff;
+    background-color: var(--section-bg);
+    /*
+    background: linear-gradient(#fff, var(--section-bg));
+    */
+    background-size: 100% 300px;
+    background-color: var(--section-bg);    
+    background-repeat: no-repeat;
     border-radius: var(--border-radius);
 }
+
 
 article {
     background-color: var(--article-bg);
-    border: 1px solid #ddd;
     border-radius: var(--border-radius);
+    box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
     padding: 1rem;
     margin-top: 1rem;
-    box-shadow: 2px 2px 9px rgba(0,0,0,0.1);
 }
+
 
 article > h3 {
     margin-top: -4px;
+    padding-left: 0em; 
 }
 
+
+section > p {
+    font-size: 1rem;
+    color: #444;
+}
 
 /* Syntax highlighting */
 .code-container {
@@ -409,6 +432,10 @@ button.copy-btn:hover {
         top: 0;
         box-shadow: 0 4px 4px rgba(0,0,0,0.1);
         z-index: 1000;
+    }
+
+    #main-nav {
+        display: none;
     }
 
     #wrap {

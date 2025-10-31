@@ -8,7 +8,7 @@ silent = False
 
 
 def md_to_html(md_file, template_file, navigation, title="Untitled", insert_tag='main'):
-
+    info(f'--- Generating page: {title} ---')
     # Read Markdown and make a Beautiful soup
     content_soup = md_file_to_soup(md_file)
     info(f'Opening Markdown-file: {md_file}')
