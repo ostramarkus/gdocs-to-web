@@ -1,17 +1,17 @@
 - id: index
   title: Grunderna i Python
-  link-text: Hem
-  md-file: content.md
-  html-file: index.html
+  link_text: Hem
+  md_file: index.md
+  html_file: index.html
 
 - id: fortsattning
   title: Python fortsättning
-  link-text: Python fortsättning
-  md-file: fortsattning.md
-  html-file: fortsattning.html
+  link_text: Python fortsättning
+  md_file: fortsattning.md
+  html_file: fortsattning.html
 
 - id: github
   title: GitHub Codespaces och Git
-  link-text: Github Codespaces
-  md-file: github.md
-  html-file: github.html
+  link_text: Github Codespaces
+  md_file: github.md
+  html_file: github.html

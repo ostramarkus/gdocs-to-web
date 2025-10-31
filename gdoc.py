@@ -6,7 +6,8 @@ from bs4 import BeautifulSoup
 bs4_parser = 'html.parser'
 silent = False
 
-def md_to_html(md_file, template_file, title="Untitled", insert_tag='main'):
+
+def md_to_html(md_file, template_file, navigation, title="Untitled", insert_tag='main'):
 
     # Read Markdown and make a Beautiful soup
     content_soup = md_file_to_soup(md_file)
@@ -39,8 +40,14 @@ def md_to_html(md_file, template_file, title="Untitled", insert_tag='main'):
     main_soup.aside.append(toc_title)
     main_soup.aside.append(toc_soup)
 
+    # Create and insert main navigation
+    info('Creating main navigation')
+    main_nav_soup = create_main_nav(navigation)
+    main_nav_tag = main_soup.select('#main-nav')[0]
+    main_nav_tag.append(main_nav_soup)
+
     # Append the content to <main> of the template
-    info('Appending markdown-content to tag:' + insert_tag)
+    info('Appending markdown-content to tag: ' + insert_tag)
     main_tag = main_soup.find(insert_tag)
     main_tag.append(content_soup)
 
@@ -56,7 +63,6 @@ def html_file_to_soup(filename):
         html_str = html_file.read()
     return make_soup(html_str)
 
-
 def md_file_to_soup(filename):
     ''' Read a Markdown file, convert to HTML, and return a BeautifulSoup object '''
     with open(filename, encoding='utf-8') as md_file:
@@ -64,11 +70,9 @@ def md_file_to_soup(filename):
     html_str = markdown.markdown(md_str, extensions=['fenced_code', 'tables'])
     return make_soup(html_str)
 
-
 def make_soup(html_str):
     ''' Convert an HTML string to a BeautifulSoup object '''
     return BeautifulSoup(html_str, bs4_parser)
-
 
 def clean_up_headers(soup):
     ''' Clean up headers by removing <strong> tags and empty headings '''
@@ -79,7 +83,6 @@ def clean_up_headers(soup):
         if not header.get_text(strip=True):
             header.decompose()    
     return soup
-
 
 def create_sections(soup):
     ''' Create <section> tags around each <h2> and its content '''
@@ -97,7 +100,6 @@ def create_sections(soup):
             section.append(next_node)
             next_node = sibling
     return soup
-
 
 def create_articles(soup):
     ''' Create <article> tags around each <h3> and its content '''
@@ -118,7 +120,6 @@ def create_articles(soup):
             article.append(next_node)
             next_node = sibling
     return soup
-
 
 def remove_trailing_slashes(html_str):
     ''' Remove trailing slashes from void HTML tags '''
@@ -156,19 +157,25 @@ def create_toc(soup):
 
     toc_html = '<ul id="toc">\n'
 
+    # Iterate sections
     for section in toc_data:
-        section_link = f'  <li class="section-link"><a href="#{section['id']}">{section['title']}</a>\n'
+        section_id = section['id']
+        section_title = section['title']
+        section_link = f'  <li class="section-link"><a href="#{section_id}">{section_title}</a>\n'
+
+        # If section has articles - iterate articles
         if len(section['articles']) > 0:
             section_link += '   <ul>\n'
             for article in section['articles']: 
-                article_link = f'      <li class="article-link"><a href="#{article['id']}">{article['title']}</a></li>\n'
+                article_id = article['id']
+                article_title = article['title']
+                article_link = f'      <li class="article-link"><a href="#{article_id}">{article_title}</a></li>\n'
                 section_link += article_link
             section_link += '    </ul>\n'
         section_link += '</li>\n'
         toc_html += section_link
     toc_html += '</ul>'
     return BeautifulSoup(toc_html, bs4_parser)
-
 
 def div_wrap(soup, tag_name, class_name):
     ''' Wrap tables in div '''
@@ -177,6 +184,15 @@ def div_wrap(soup, tag_name, class_name):
         div['class'] = class_name
         tag.wrap(div)
     return soup
+
+
+def create_main_nav(navigation):
+    nav_html= '<ul>'
+    for link in navigation:
+        link_id, link_title, link_path = link
+        nav_html += f'<li id="link-{link_id}"><a href="{link_path}">{link_title}</a></li>'
+    nav_html += '</ul>'
+    return BeautifulSoup(nav_html, bs4_parser)
 
 def info(msg):
     if not silent: print(msg) 

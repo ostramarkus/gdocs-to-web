@@ -74,6 +74,26 @@ header h1 {
     gap: 0.4rem;
 }
 
+#main-nav ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    gap: 3rem;
+}
+
+#main-nav a {
+    color: #ccc;
+    text-decoration: none;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+#main-nav a:hover {
+    color: #fff;
+}
+
 #menu-toggle {
     display: none;
     border: 1px solid #999;
