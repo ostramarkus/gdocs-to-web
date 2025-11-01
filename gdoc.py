@@ -14,9 +14,9 @@ def md_to_html(md_file, template_file, navigation, title="Untitled", insert_tag=
     info(f'Opening Markdown-file: {md_file}')
 
     # Cleanup and sectioning
-    info('Cleaning up headers')
-    content_soup = clean_up_headers(content_soup)
-    info('Divide content in sectionds')
+    info('Cleaning up headings')
+    content_soup = clean_up_headings(content_soup)
+    info('Divide content in sections')
     content_soup = create_sections(content_soup)
     info('Divide content in articles')
     content_soup = create_articles(content_soup)
@@ -74,12 +74,12 @@ def make_soup(html_str):
     ''' Convert an HTML string to a BeautifulSoup object '''
     return BeautifulSoup(html_str, bs4_parser)
 
-def clean_up_headers(soup):
-    ''' Clean up headers by removing <strong> tags and empty headings '''
+def clean_up_headings(soup):
+    ''' Clean up headings by removing <strong> tags and empty headings '''
     for header in soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
         for strong in header.find_all("strong"):
             strong.unwrap()
-        # and removes empty headings
+        # Remove empty headings
         if not header.get_text(strip=True):
             header.decompose()    
     return soup
@@ -193,6 +193,9 @@ def create_main_nav(navigation):
         nav_html += f'<li id="link-{link_id}"><a href="{link_path}">{link_title}</a></li>'
     nav_html += '</ul>'
     return BeautifulSoup(nav_html, bs4_parser)
+
+def get_structure(html_str):
+    pass
 
 def info(msg):
     if not silent: print(msg) 
