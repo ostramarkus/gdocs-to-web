@@ -1,0 +1,202 @@
+[
+  {
+    "swedish": "Abstraktion",
+    "english": "Abstraction",
+    "description": "Att förenkla genom att dölja detaljer (t.ex. funktioner)."
+  },
+  {
+    "swedish": "Argument",
+    "english": "Argument",
+    "description": "Värdet som skickas in i en funktion vid anrop."
+  },
+  {
+    "swedish": "Arv",
+    "english": "Inheritance",
+    "description": "En klass kan ärva egenskaper från en annan klass."
+  },
+  {
+    "swedish": "Attribut",
+    "english": "Attribute",
+    "description": "En variabel som tillhör ett objekt eller en klass."
+  },
+  {
+    "swedish": "Bibliotek",
+    "english": "Library",
+    "description": "En uppsättning färdiga funktioner eller moduler, t.ex. matplotlib."
+  },
+  {
+    "swedish": "Boolesk",
+    "english": "Boolean",
+    "description": "Sanningsvärde: True eller False."
+  },
+  {
+    "swedish": "Datatyp",
+    "english": "Data type",
+    "description": "Typen av värde, t.ex. int, float, str, bool."
+  },
+  {
+    "swedish": "Debugga",
+    "english": "Debug",
+    "description": "Att hitta och rätta fel i koden."
+  },
+  {
+    "swedish": "Dictionary (ordbok)",
+    "english": "Dictionary / dict",
+    "description": "Nyckel–värde-par, t.ex. {'namn': 'Elmo'}."
+  },
+  {
+    "swedish": "Docstring",
+    "english": "Docstring",
+    "description": "Dokumentation inuti en funktion eller klass, t.ex. \"\"\"Beskrivning\"\"\"."
+  },
+  {
+    "swedish": "Fel / undantag",
+    "english": "Error / Exception",
+    "description": "Något som går fel under körning, t.ex. ZeroDivisionError."
+  },
+  {
+    "swedish": "Flyttal",
+    "english": "Float",
+    "description": "Ett tal med decimaler, t.ex. 3.14."
+  },
+  {
+    "swedish": "Funktion",
+    "english": "Function",
+    "description": "En återanvändbar kodbit som utför en uppgift, t.ex. def hej():."
+  },
+  {
+    "swedish": "Heltal",
+    "english": "Integer",
+    "description": "Ett tal utan decimaler, t.ex. 42."
+  },
+  {
+    "swedish": "Hög- och lågnivåspråk",
+    "english": "High- and low-level language",
+    "description": "Hög nivå = lättläst (t.ex. Python), låg nivå = närmare maskinkod."
+  },
+  {
+    "swedish": "Index",
+    "english": "Index",
+    "description": "Position i en lista eller sträng, t.ex. min_lista[0]."
+  },
+  {
+    "swedish": "Inkapsling",
+    "english": "Encapsulation",
+    "description": "Att skydda data genom att begränsa åtkomst till den."
+  },
+  {
+    "swedish": "Iteration",
+    "english": "Iteration",
+    "description": "Ett varv i en loop; att upprepa något flera gånger."
+  },
+  {
+    "swedish": "Klass",
+    "english": "Class",
+    "description": "En mall för att skapa objekt i objektorienterad programmering."
+  },
+  {
+    "swedish": "Kommentar",
+    "english": "Comment",
+    "description": "Förklarande text som inte körs, t.ex. # detta är en kommentar."
+  },
+  {
+    "swedish": "Konkatenering",
+    "english": "Concatenation",
+    "description": "Att slå ihop strängar eller listor, t.ex. 'Hej' + ' då'."
+  },
+  {
+    "swedish": "Lista",
+    "english": "List",
+    "description": "En ordnad samling värden, t.ex. [1, 2, 3]."
+  },
+  {
+    "swedish": "Loop / slinga",
+    "english": "Loop",
+    "description": "Upprepar kod, t.ex. for eller while."
+  },
+  {
+    "swedish": "Metod",
+    "english": "Method",
+    "description": "En funktion som är definierad i en klass."
+  },
+  {
+    "swedish": "Modul",
+    "english": "Module",
+    "description": "En fil med Python-kod som kan importeras (import math)."
+  },
+  {
+    "swedish": "Mängd",
+    "english": "Set",
+    "description": "En samling unika värden, t.ex. {1, 2, 3}."
+  },
+  {
+    "swedish": "Objekt",
+    "english": "Object",
+    "description": "En instans av en klass med data och funktioner."
+  },
+  {
+    "swedish": "Operator",
+    "english": "Operator",
+    "description": "Symbol som utför en operation, t.ex. +, -, *, /."
+  },
+  {
+    "swedish": "Paket",
+    "english": "Package",
+    "description": "En samling moduler organiserade i mappar."
+  },
+  {
+    "swedish": "Parameter",
+    "english": "Parameter",
+    "description": "Ett namn i funktionsdefinitionen som tar emot ett värde."
+  },
+  {
+    "swedish": "Polymorfism",
+    "english": "Polymorphism",
+    "description": "Samma metodnamn kan fungera olika beroende på objektet."
+  },
+  {
+    "swedish": "Returnera",
+    "english": "Return",
+    "description": "Skicka tillbaka ett värde från en funktion."
+  },
+  {
+    "swedish": "Sats",
+    "english": "Statement",
+    "description": "En komplett instruktion, t.ex. en tilldelning eller ett funktionsanrop."
+  },
+  {
+    "swedish": "Slicing",
+    "english": "Slicing",
+    "description": "Att ta ut delar av en lista eller sträng, t.ex. text[0:3]."
+  },
+  {
+    "swedish": "Sträng",
+    "english": "String",
+    "description": "Text inom citattecken, t.ex. 'Hej'."
+  },
+  {
+    "swedish": "Syntax",
+    "english": "Syntax",
+    "description": "Reglerna för hur koden ska skrivas korrekt."
+  },
+  {
+    "swedish": "Tuple",
+    "english": "Tuple",
+    "description": "Som en lista men oföränderlig, t.ex. (1, 2, 3)."
+  },
+  {
+    "swedish": "Uttryck",
+    "english": "Expression",
+    "description": "En kombination av värden och operatorer som ger ett resultat."
+  },
+  {
+    "swedish": "Variabel",
+    "english": "Variable",
+    "description": "En behållare som lagrar data, t.ex. x = 5."
+  },
+  {
+    "swedish": "Villkorssats",
+    "english": "Conditional statement",
+    "description": "Kod som körs om ett villkor är sant, t.ex. if x > 0:."
+  }
+]

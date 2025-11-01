@@ -130,10 +130,22 @@
 </li>
 <li class="section-link"><a href="#kommentera-kod">Kommentera kod</a>
 <ul>
-<li class="article-link"><a href="#riktlinjer">Riktlinjer:</a></li>
-<li class="article-link"><a href="#enradskommentarer">Enradskommentarer</a></li>
+<li class="article-link"><a href="#riktlinjer-for-kommentarer">Riktlinjer f&ouml;r kommentarer</a></li>
+<li class="article-link"><a href="#enrads-kommentarer">Enrads-kommentarer</a></li>
 <li class="article-link"><a href="#blockkommentarer">Blockkommentarer</a></li>
 <li class="article-link"><a href="#docstrings-dokumentationsstrangar">Docstrings (dokumentationsstr&auml;ngar)</a></li>
+</ul>
+</li>
+<li class="section-link"><a href="#filer-lasa-och-skriv">Filer: l&auml;sa och skriv</a>
+<ul>
+<li class="article-link"><a href="#oppna-och-las-in-en-hel-textfil">&Ouml;ppna och l&auml;s in en hel textfil</a></li>
+<li class="article-link"><a href="#las-en-textfil-rad-for-rad">L&auml;s en textfil rad f&ouml;r rad</a></li>
+<li class="article-link"><a href="#las-en-textfil-rad-for-rad">L&auml;s en textfil rad f&ouml;r rad</a></li>
+<li class="article-link"><a href="#las-in-en-textfil-till-en-lista">L&auml;s in en textfil till en lista</a></li>
+<li class="article-link"><a href="#skriv-till-en-textfil">Skriv till en textfil</a></li>
+<li class="article-link"><a href="#lagg-till-i-befintlig-fil">L&auml;gg till i befintlig fil</a></li>
+<li class="article-link"><a href="#infoga-ny-rad-med-tecknen-n">Infoga ny rad med tecknen: \n</a></li>
+<li class="article-link"><a href="#lageskoder-vid-oppning-av-filer">L&auml;geskoder vid &ouml;ppning av filer</a></li>
 </ul>
 </li>
 <li class="section-link"><a href="#modulen-random">Modulen random</a>
@@ -142,6 +154,7 @@
 <li class="article-link"><a href="#slumpar-ett-decimaltal-mellan-0-och-1">Slumpar ett decimaltal mellan 0 och 1</a></li>
 <li class="article-link"><a href="#slumpar-ett-heltal-mellan-vissa-varden">Slumpar ett heltal mellan vissa v&auml;rden</a></li>
 <li class="article-link"><a href="#slumpar-ett-alternativ-fran-en-lista">Slumpar ett alternativ fr&aring;n en lista</a></li>
+<li class="article-link"><a href="#slumpmassigt-urval-ur-en-lista">Slumpm&auml;ssigt urval ur en lista</a></li>
 </ul>
 </li>
 <li class="section-link"><a href="#modulen-datetime">Modulen datetime</a>
@@ -155,16 +168,10 @@
 <li class="article-link"><a href="#oversikt-over-modulen-datetime">&Ouml;versikt &ouml;ver modulen datetime</a></li>
 </ul>
 </li>
-<li class="section-link"><a href="#filer-lasa-och-skriv">Filer: l&auml;sa och skriv</a>
+<li class="section-link"><a href="#modulen-csv">Modulen CSV</a>
 <ul>
-<li class="article-link"><a href="#oppna-och-las-in-en-hel-textfil">&Ouml;ppna och l&auml;s in en hel textfil</a></li>
-<li class="article-link"><a href="#oppna-och-las-en-textfil-rad-for-rad">&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</a></li>
-<li class="article-link"><a href="#oppna-och-las-en-textfil-rad-for-rad">&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</a></li>
-<li class="article-link"><a href="#oppna-och-las-in-en-textfil-till-en-lista">&Ouml;ppna och l&auml;s in en textfil till en lista</a></li>
-<li class="article-link"><a href="#oppna-och-skriv-till-en-textfil">&Ouml;ppna och skriv till en textfil</a></li>
-<li class="article-link"><a href="#oppna-och-lagg-till-i-befintlig-fil">&Ouml;ppna och l&auml;gg till i befintlig fil</a></li>
-<li class="article-link"><a href="#skriva-en-ny-rad-med-tecknen-n">Skriva en ny rad med tecknen: \n</a></li>
-<li class="article-link"><a href="#lageskoder-vid-oppning-av-filer">L&auml;geskoder vid &ouml;ppning av filer</a></li>
+<li class="article-link"><a href="#lasa-och-tolka-csv-fil-som-lista">L&auml;sa och tolka CSV-fil som lista</a></li>
+<li class="article-link"><a href="#lasa-och-tolka-csv-fil-som-dictionary">L&auml;sa och tolka CSV-fil som dictionary</a></li>
 </ul>
 </li>
 <li class="section-link"><a href="#felhantering">Felhantering</a>
@@ -398,7 +405,7 @@ print(f'Du har k&ouml;pt {product} f&ouml;r {price * quantity:.2f} kr.')
 </tbody>
 </table></div>
 </article><article id="ta-ut-delar-av-en-strang"><h3>Ta ut delar av en str&auml;ng</h3>
-<p>Str&auml;ngar kan p&aring; m&aring;nga s&auml;tt hanteras som listor. Man kan till exempel ta utdelar av en str&auml;ng med hakklammer <strong><code>[]</code></strong>. Detta kallas f&ouml;r <strong>slicing</strong>.</p>
+<p>Str&auml;ngar kan p&aring; m&aring;nga s&auml;tt hanteras som listor. Man kan till exempel n&aring; delar av en str&auml;ng med hakklammer <strong><code>[]</code></strong> och kolon: :. Detta kallas f&ouml;r <strong>slicing</strong>.</p>
 <div class="code-container"><pre><code class="language-py">name = 'Markus'
 first_three_letters = name[0:3] 
 
@@ -451,7 +458,7 @@ my_list = list(my_string)
 <div class="code-container"><pre><code class="language-py">menu = ['kebab', 'pizza', 'sushi']
 </code></pre></div>
 </article><article id="na-ett-listvarde"><h3>N&aring; ett listv&auml;rde</h3>
-<p>F&ouml;r att n&aring; ett v&auml;rde i listan anv&auml;nder man ett positionsnummer. Positionsnummer kallas &auml;ven <strong>index</strong>. Den f&ouml;rsta positionen har <strong>index</strong> 0. </p>
+<p>F&ouml;r att n&aring; ett v&auml;rde i listan anv&auml;nder man ett positionsnummer. Positionsnummer kallas &auml;ven <strong>index</strong>. Den f&ouml;rsta positionen har <strong>index</strong> <strong><code>0</code></strong>. </p>
 <div class="code-container"><pre><code class="language-py">menu = ['kebab', 'pizza', 'sushi']
 first_dish = menu[0]
 
@@ -465,7 +472,7 @@ last_dish = menu[-1]
 # last_dish &rarr; 'sushi'
 </code></pre></div>
 </article><article id="valj-delar-av-en-lista"><h3>V&auml;lj delar av en lista</h3>
-<p>Med kolon <strong>:</strong> kan man ange ett intervall av positioner som man vill n&aring;. Detta kallas f&ouml;r <strong>slicing</strong>.</p>
+<p>Med kolon <strong>:</strong> kan man ange ett intervall av index som man vill n&aring;. Detta kallas f&ouml;r <strong>slicing</strong>.</p>
 <div class="code-container"><pre><code class="language-py">menu = ['kebab', 'pizza', 'sushi', 'tacos']
 first_three_dishes = menu[0:3]
 
@@ -677,7 +684,7 @@ else:
 </article></section><section id="loopar"><h2>Loopar</h2>
 <p>Loopar anv&auml;nds n&auml;r man vill upprepa kod i sitt program. Den kod som ska utf&ouml;ras i loopen <em>indenteras</em> med 4 mellanslag.</p>
 <article id="en-for-loop-med-range"><h3>En <code>for</code>-loop med <code>range()</code></h3>
-<p>F&ouml;r att ange hur m&aring;nga g&aring;nger en <strong><code>for</code></strong>-loop ska k&ouml;ras kan man anv&auml;nda en r&auml;knare (variabeln <strong><code>i</code></strong>) och funktionen <strong><code>range()</code></strong> som skapar en talserie mellan tv&aring; heltal.</p>
+<p>F&ouml;r att ange hur m&aring;nga g&aring;nger en <strong><code>for</code></strong>-loop ska k&ouml;ras &auml;r det vanligt att anv&auml;nda en r&auml;knare (variabeln <strong><code>i</code></strong>) och funktionen <strong><code>range()</code></strong> som skapar en talserie mellan tv&aring; heltal.</p>
 <div class="code-container"><pre><code class="language-py">for i in range(0, 10):
    print('I can count to:', i)
 </code></pre></div>
@@ -806,7 +813,7 @@ print(car['max_speed'])
 </code></pre></div>
 
 </article><article id="ga-igenom-en-dictionary-med-en-for-loop"><h3>G&aring; igenom en dictionary med en <code>for</code>-loop</h3>
-<p>Med metoden <strong><code>.items()</code></strong> kan man iterera &ouml;ver b&aring;de <strong>nyckeln</strong> (<em>key</em>) och <strong>v&auml;rdet</strong> (<em>value</em>).</p>
+<p>Med metoden <strong><code>items()</code></strong> kan man iterera &ouml;ver b&aring;de <strong>nyckeln</strong> (<em>key</em>) och <strong>v&auml;rdet</strong> (<em>value</em>).</p>
 <div class="code-container"><pre><code class="language-py">car = {
     'brand': 'Volvo', 
     'color': 'black', 
@@ -888,42 +895,35 @@ for key, value in car.items():
 </tbody>
 </table></div>
 </article></section><section id="kommentera-kod"><h2>Kommentera kod</h2>
-<p>F&ouml;r att &ouml;ka tydligheten i sin kod (f&ouml;r sig sj&auml;lv och f&ouml;r andra) b&ouml;r man anv&auml;nda kommentarer. F&ouml;r mer komplexa program anv&auml;nds &auml;ven kommentarerna f&ouml;r att automatiskt generera dokumentering &ouml;ver koden. </p>
-<article id="riktlinjer"><h3>Riktlinjer:</h3>
-<p>Kommentera <strong>varf&ouml;r</strong>, inte bara <strong>vad</strong>:</p>
-<blockquote>
+<p>F&ouml;r att &ouml;ka tydligheten i koden (f&ouml;r sig sj&auml;lv och f&ouml;r andra) b&ouml;r man anv&auml;nda kommentarer. F&ouml;r mer komplexa program brukar kommenterar f&ouml;r funktioner och klasser vara mer utf&ouml;rlig och kommentarerna anv&auml;nds &auml;ven f&ouml;r att automatiskt generera dokumentation &ouml;ver koden. (Dokumentation \= text som i detalj beskriver hur koden fungerar.)</p>
+<article id="riktlinjer-for-kommentarer"><h3>Riktlinjer f&ouml;r kommentarer</h3>
+<p>Se till att <strong>uppdatera kommentarer</strong> ifall koden &auml;ndras:</p>
 <p>"Comments that contradict the code are worse than no comments. Always update comments if the code changes!"</p>
-</blockquote>
-<p>Undvik &ouml;verfl&ouml;diga kommentarer:</p>
-<blockquote>
+<p><strong>Undvik &ouml;verfl&ouml;diga</strong> kommentarer:</p>
 <p>"Avoid comments that are obvious from the code itself."</p>
-</blockquote>
-</article><article id="enradskommentarer"><h3>Enradskommentarer</h3>
-<blockquote>
-<p>"Comments should be complete sentences. If a comment is a phrase or sentence, its first word should be capitalized, unless it is an identifier or acronym." &mdash; PEP 8, Comments</p>
-</blockquote>
+<p>Anv&auml;nd helst <strong>engelska</strong> i dina kommentarer:</p>
+<p>"Python coders from non-English speaking countries: please write your comments in English, unless you are 120% sure that the code will never be read by people who don&rsquo;t speak your language."</p>
+</article><article id="enrads-kommentarer"><h3>Enrads-kommentarer</h3>
+<p>"Comments should be complete sentences. If a comment is a phrase or sentence, its first word should be capitalized, unless it is an identifier or acronym."</p>
 <div class="code-container"><pre><code class="language-py"># Ber&auml;kna summan av alla tal i listan
 total = sum(numbers)
 </code></pre></div>
-<p>Enradskommentarer b&ouml;r placeras <strong>p&aring; en egen rad</strong> eller <strong>p&aring; samma rad som koden</strong>. D&aring; Pythons syntax (i j&auml;mf&ouml;relse med andra spr&aring;k) &auml;r l&auml;tt att f&ouml;rst&aring; b&ouml;r man bara kommentera kod som &auml;r otydlig.</p>
+<p>Enrads-kommentarer b&ouml;r placeras <strong>p&aring; en egen rad</strong> eller <strong>p&aring; samma rad som koden</strong>. Eftersom Pythonkod (i j&auml;mf&ouml;relse med andra spr&aring;k) &auml;r l&auml;tt att l&auml;sa och f&ouml;rst&aring; b&ouml;r man bara kommentera kod som verkligen beh&ouml;ver f&ouml;rklaras.</p>
 </article><article id="blockkommentarer"><h3>Blockkommentarer</h3>
-<blockquote>
 <p>"Block comments generally apply to some (or all) code that follows them, and are indented to the same level as that code. Each line of a block comment starts with a <code>#</code> and a single space."  &mdash; <a href="https://peps.python.org/pep-0008/">PEP 8, Comments</a></p>
-</blockquote>
 <div class="code-container"><pre><code class="language-py"># Loopa igenom alla anv&auml;ndare och
 # skriv ut deras namn och &aring;lder
 for user in users:
     print(user.name, user.age)
 </code></pre></div>
 </article><article id="docstrings-dokumentationsstrangar"><h3>Docstrings (dokumentationsstr&auml;ngar)</h3>
-<blockquote>
-<p>"Docstrings are denoted by triple quotes <code>"""</code> and are used to describe all public classes and functions." &mdash; <a href="https://peps.python.org/pep-0008/">PEP 8, Docstrings</a></p>
-</blockquote>
+<p>Docstrings &auml;r mer utf&ouml;rliga kommentarer som f&ouml;rklarar en funktion, modul eller </p>
+<p>"Docstrings are denoted by triple quotes <code>"""</code> and are used to describe all public classes and functions."</p>
 <div class="code-container"><pre><code class="language-py">def add(a, b):
     """Returnerar summan av tv&aring; tal."""
     return a + b
 </code></pre></div>
-<p>Eller &auml;nnu mer utf&ouml;rligt d&auml;r &auml;ven parametrar och returv&auml;rden dokumenteras:</p>
+<p>Eller &auml;nnu mer utf&ouml;rligt d&auml;r &auml;ven <strong>parametrar</strong> och <strong>returv&auml;rden</strong> dokumenteras:</p>
 <div class="code-container"><pre><code class="language-py">def add(a, b):
     """
     Returnerar summan av tv&aring; tal.
@@ -938,9 +938,91 @@ for user in users:
     return a + b
 
 </code></pre></div>
+<p>Alla citat ovan kommer fr&aring;n Pythons officiella stilguide: PEP (Python Enhancment Proposals) &mdash; <a href="https://peps.python.org/pep-0008/">PEP 8, Docstrings</a>.</p>
+
+</article></section><section id="filer-lasa-och-skriv"><h2>Filer: l&auml;sa och skriv</h2>
+<article id="oppna-och-las-in-en-hel-textfil"><h3>&Ouml;ppna och l&auml;s in en hel textfil</h3>
+<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
+    content = file.read()
+
+print(content)
+</code></pre></div>
+</article><article id="las-en-textfil-rad-for-rad"><h3>L&auml;s en textfil rad f&ouml;r rad</h3>
+<p>Med en <strong><code>for</code></strong>-loop kan vi g&aring; igenom textfilen rad-f&ouml;r-rad. Genom att anv&auml;nda metoden <strong><code>strip()</code></strong> tar vi bort tecknet f&ouml;r "ny rad" i slutet p&aring; varje textrad.</p>
+<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
+    for line in file:
+        print(line.strip())
+</code></pre></div>
+</article><article id="las-en-textfil-rad-for-rad"><h3>L&auml;s en textfil rad f&ouml;r rad</h3>
+<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
+    for line in file:
+        print(line)
+</code></pre></div>
+</article><article id="las-in-en-textfil-till-en-lista"><h3>L&auml;s in en textfil till en lista</h3>
+<div class="code-container"><pre><code class="language-py">with open('names.txt') as name_file:
+    names = name_file.readlines()
+</code></pre></div>
+</article><article id="skriv-till-en-textfil"><h3>Skriv till en textfil</h3>
+<p>Detta tar bort eventuellt tidigare inneh&aring;ll</p>
+<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'w') as textfile:
+    textfile.write('Hello world!')
+</code></pre></div>
+</article><article id="lagg-till-i-befintlig-fil"><h3>L&auml;gg till i befintlig fil</h3>
+<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'a') as textfile:
+    textfile.write('Hello world!')
+</code></pre></div>
+</article><article id="infoga-ny-rad-med-tecknen-n"><h3>Infoga ny rad med tecknen: <code>\n</code></h3>
+<p>Om man vill l&auml;gga till en radbrytning i texten som man skriver kan man anv&auml;nda teckenkombinationen: <strong><code>\n</code></strong></p>
+<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'a') as textfile:
+    textfile.write('Hello world!\n')
+    textfile.write('Hello again!')
+</code></pre></div>
+</article><article id="lageskoder-vid-oppning-av-filer"><h3>L&auml;geskoder vid &ouml;ppning av filer</h3>
+<div class="table-container"><table>
+<thead>
+<tr>
+<th style="text-align: left;">L&auml;geskod</th>
+<th style="text-align: left;">Betydelse</th>
+<th style="text-align: left;">Exempel</th>
+<th style="text-align: left;">Kommentar</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: left;"><code>"r"</code></td>
+<td style="text-align: left;">L&auml;sning (read)</td>
+<td style="text-align: left;"><code>open("fil.txt", "r")</code></td>
+<td style="text-align: left;">Filen m&aring;ste redan finnas</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>"w"</code></td>
+<td style="text-align: left;">Skrivning (write)</td>
+<td style="text-align: left;"><code>open("fil.txt", "w")</code></td>
+<td style="text-align: left;">Skriver &ouml;ver hela filen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>"a"</code></td>
+<td style="text-align: left;">Append (l&auml;gg till)</td>
+<td style="text-align: left;"><code>open("fil.txt", "a")</code></td>
+<td style="text-align: left;">Skriver i slutet av filen</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>"b"</code></td>
+<td style="text-align: left;">Bin&auml;rt l&auml;ge</td>
+<td style="text-align: left;"><code>open("bild.png", "rb")</code></td>
+<td style="text-align: left;">F&ouml;r filer som inte &auml;r text</td>
+</tr>
+<tr>
+<td style="text-align: left;"><code>"x"</code></td>
+<td style="text-align: left;">Skapa ny fil</td>
+<td style="text-align: left;"><code>open("nyfil.txt", "x")</code></td>
+<td style="text-align: left;">Fel om filen redan finns</td>
+</tr>
+</tbody>
+</table></div>
 
 </article></section><section id="modulen-random"><h2>Modulen random</h2>
-<p>Modulen <strong><code>random</code></strong> anv&auml;nds f&ouml;r att hantera slumptal.</p>
+<p>Med modulen <strong><code>random</code></strong> kan man anv&auml;nda slump i sina program.</p>
 <article id="importera-moduler"><h3>Importera moduler</h3>
 <p>Moduler som <strong><code>random</code></strong> beh&ouml;ver importeras innan de anv&auml;nds. Import av moduler g&ouml;rs h&ouml;gst upp i ens kod.</p>
 <div class="code-container"><pre><code class="language-py">import random
@@ -955,6 +1037,20 @@ for user in users:
 <div class="code-container"><pre><code class="language-py">menu = ["pizza", "kebab", "pasta"]
 food = random.choice(menu)
 </code></pre></div>
+</article><article id="slumpmassigt-urval-ur-en-lista"><h3>Slumpm&auml;ssigt urval ur en lista</h3>
+<p>Om man vill slumpa fram flera v&auml;rden fr&aring;n en lista (utan risk f&ouml;r dubbletter) kan man anv&auml;nda metoden <strong><code>sample()</code></strong> - det man f&aring;r tillbaka &auml;r en lista med ett slumpm&auml;ssigt urval.</p>
+<div class="code-container"><pre><code class="language-py">import random 
+
+# Alla elever i klassen
+students = ['Anna', 'Bertil', 'Ceasar', 'David', 
+            'Erik', 'Frida', 'Gert', 'Henrietta']
+
+# Tre slumpm&auml;ssiga elever
+volunteers = random.sample(students, 3)
+
+print(volunteers)
+</code></pre></div>
+
 </article></section><section id="modulen-datetime"><h2>Modulen datetime</h2>
 <p>Modulen <strong><code>datetime</code></strong> anv&auml;nds f&ouml;r att hantera tid och datum.</p>
 <article id="ta-fram-dagens-datum"><h3>Ta fram dagens datum</h3>
@@ -1034,86 +1130,87 @@ print(now.date())
 </tr>
 </tbody>
 </table></div>
-</article></section><section id="filer-lasa-och-skriv"><h2>Filer: l&auml;sa och skriv</h2>
-<article id="oppna-och-las-in-en-hel-textfil"><h3>&Ouml;ppna och l&auml;s in en hel textfil</h3>
-<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
-    content = file.read()
-
-print(content)
-</code></pre></div>
-</article><article id="oppna-och-las-en-textfil-rad-for-rad"><h3>&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</h3>
-<p>Genom att anv&auml;nda metoden <strong><code>strip()</code></strong> tar vi bort tecknet f&ouml;r "ny rad" i slutet p&aring; varje textrad.</p>
-<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
-    for line in file:
-        print(line.strip())
-</code></pre></div>
-</article><article id="oppna-och-las-en-textfil-rad-for-rad"><h3>&Ouml;ppna och l&auml;s en textfil rad f&ouml;r rad</h3>
-<div class="code-container"><pre><code class="language-py">with open('names.txt') as file:
-    for line in file:
-        print(line)
-</code></pre></div>
-</article><article id="oppna-och-las-in-en-textfil-till-en-lista"><h3>&Ouml;ppna och l&auml;s in en textfil till en lista</h3>
-<div class="code-container"><pre><code class="language-py">with open('names.txt') as name_file:
-    names = name_file.readlines()
-</code></pre></div>
-</article><article id="oppna-och-skriv-till-en-textfil"><h3>&Ouml;ppna och skriv till en textfil</h3>
-<p>Detta tar bort eventuellt tidigare inneh&aring;ll</p>
-<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'w') as textfile:
-    textfile.write('Hello world!')
-</code></pre></div>
-</article><article id="oppna-och-lagg-till-i-befintlig-fil"><h3>&Ouml;ppna och l&auml;gg till i befintlig fil</h3>
-<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'a') as textfile:
-    textfile.write('Hello world!')
-</code></pre></div>
-</article><article id="skriva-en-ny-rad-med-tecknen-n"><h3>Skriva en ny rad med tecknen: <code>\n</code></h3>
-<p>Om man vill l&auml;gga till en radbrytning i texten som man skriver kan man anv&auml;nda teckenkombinationen: <strong><code>\n</code></strong></p>
-<div class="code-container"><pre><code class="language-py">with open('textfile.txt', 'a') as textfile:
-    textfile.write('Hello world!\n')
-    textfile.write('Hello again!')
-</code></pre></div>
-</article><article id="lageskoder-vid-oppning-av-filer"><h3>L&auml;geskoder vid &ouml;ppning av filer</h3>
+</article></section><section id="modulen-csv"><h2>Modulen CSV</h2>
+<p><strong>CSV</strong> (comma separated values) &auml;r ett vanligt f&ouml;rekommande textformat f&ouml;r informationsutbyte mellan olika program och system. CSV passar b&auml;st f&ouml;r tabell-data och man kan exportera CSV-filer fr&aring;n b&aring;de Excel och Google Sheets.</p>
+<p>I CSV representeras en tabellrad av en textrad och varje cell/kolumn separeras med ett komma (eller annat valfritt tecken). </p>
+<p>Ett kalkylark med f&ouml;ljande inneh&aring;ll:</p>
 <div class="table-container"><table>
 <thead>
 <tr>
-<th style="text-align: left;">L&auml;geskod</th>
-<th style="text-align: left;">Betydelse</th>
-<th style="text-align: left;">Exempel</th>
-<th style="text-align: left;">Kommentar</th>
+<th>id</th>
+<th style="text-align: left;">name</th>
+<th>age</th>
+<th style="text-align: left;">department</th>
+<th>salary</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align: left;"><code>"r"</code></td>
-<td style="text-align: left;">L&auml;sning (read)</td>
-<td style="text-align: left;"><code>open("fil.txt", "r")</code></td>
-<td style="text-align: left;">Filen m&aring;ste redan finnas</td>
+<td>101</td>
+<td style="text-align: left;">Alice</td>
+<td>28</td>
+<td style="text-align: left;">Engineering</td>
+<td>70000</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>"w"</code></td>
-<td style="text-align: left;">Skrivning (write)</td>
-<td style="text-align: left;"><code>open("fil.txt", "w")</code></td>
-<td style="text-align: left;">Skriver &ouml;ver hela filen</td>
+<td>102</td>
+<td style="text-align: left;">Bob</td>
+<td>35</td>
+<td style="text-align: left;">Marketing</td>
+<td>65000</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>"a"</code></td>
-<td style="text-align: left;">Append (l&auml;gg till)</td>
-<td style="text-align: left;"><code>open("fil.txt", "a")</code></td>
-<td style="text-align: left;">Skriver i slutet av filen</td>
+<td>103</td>
+<td style="text-align: left;">Charlie</td>
+<td>22</td>
+<td style="text-align: left;">Sales</td>
+<td>40000</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>"b"</code></td>
-<td style="text-align: left;">Bin&auml;rt l&auml;ge</td>
-<td style="text-align: left;"><code>open("bild.png", "rb")</code></td>
-<td style="text-align: left;">F&ouml;r filer som inte &auml;r text</td>
+<td>104</td>
+<td style="text-align: left;">Diana</td>
+<td>45</td>
+<td style="text-align: left;">HR</td>
+<td>80000</td>
 </tr>
 <tr>
-<td style="text-align: left;"><code>"x"</code></td>
-<td style="text-align: left;">Skapa ny fil</td>
-<td style="text-align: left;"><code>open("nyfil.txt", "x")</code></td>
-<td style="text-align: left;">Fel om filen redan finns</td>
+<td>105</td>
+<td style="text-align: left;">Edward</td>
+<td>29</td>
+<td style="text-align: left;">Engineering</td>
+<td>72000</td>
 </tr>
 </tbody>
 </table></div>
+<p>&hellip; ser ut s&aring; h&auml;r i CSV-format:</p>
+<div class="code-container"><pre><code>id,name,age,department,salary
+101,Alice,28,Engineering,70000
+102,Bob,35,Marketing,65000
+103,Charlie,22,Sales,40000
+104,Diana,45,HR,80000
+105,Edward,29,Engineering,72000
+</code></pre></div>
+<article id="lasa-och-tolka-csv-fil-som-lista"><h3>L&auml;sa och tolka CSV-fil som lista</h3>
+<p>Med metoden <strong><code>reader()</code></strong> fr&aring;n modulen <strong><code>csv</code></strong> l&auml;ses varje rad i CSV-filen in som en lista. Genom funktionen <strong><code>next()</code></strong> hoppas f&ouml;rsta raden &ouml;ver (som inneh&aring;ller kolumnrubrikerna.</p>
+<div class="code-container"><pre><code class="language-py">import csv
+
+with open('employees.csv', newline="") as csvfile:
+    reader = csv.reader(csvfile)
+    next(reader)
+    for employee in reader:
+        print(employee[1])
+</code></pre></div>
+</article><article id="lasa-och-tolka-csv-fil-som-dictionary"><h3>L&auml;sa och tolka CSV-fil som dictionary</h3>
+<p>Med klassen <strong><code>DictReader()</code></strong> fr&aring;n modulen <strong><code>csv</code></strong> l&auml;ses varje rad in som en <strong>dictionary</strong>. </p>
+<div class="code-container"><pre><code class="language-py">import csv
+
+with open('employees.csv', newline="") as csvfile:
+  reader = csv.DictReader(csvfile)
+  for employee in reader:
+    print(employee['name'])
+    print(employee['salary'])
+</code></pre></div>
+
 </article></section><section id="felhantering"><h2>Felhantering</h2>
 <p>En viktig del i programmering &auml;r att hantera eventuella fel som kan uppst&aring; i ens program. </p>
 <article id="tre-typer-av-fel"><h3>Tre typer av fel</h3>

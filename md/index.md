@@ -194,7 +194,7 @@ print(f'Du har köpt {product} för {price * quantity:.2f} kr.')
 
 ### **Ta ut delar av en sträng**
 
-Strängar kan på många sätt hanteras som listor. Man kan till exempel ta utdelar av en sträng med hakklammer **`[]`**. Detta kallas för **slicing**.
+Strängar kan på många sätt hanteras som listor. Man kan till exempel nå delar av en sträng med hakklammer **`[]`** och kolon: :. Detta kallas för **slicing**.
 
 ```py
 name = 'Markus'
@@ -274,7 +274,7 @@ menu = ['kebab', 'pizza', 'sushi']
 
 ### **Nå ett listvärde**
 
-För att nå ett värde i listan använder man ett positionsnummer. Positionsnummer kallas även **index**. Den första positionen har **index** 0\. 
+För att nå ett värde i listan använder man ett positionsnummer. Positionsnummer kallas även **index**. Den första positionen har **index** **`0`**. 
 
 ```py
 menu = ['kebab', 'pizza', 'sushi']
@@ -296,7 +296,7 @@ last_dish = menu[-1]
 
 ### **Välj delar av en lista**
 
-Med kolon **:** kan man ange ett intervall av positioner som man vill nå. Detta kallas för **slicing**.
+Med kolon **:** kan man ange ett intervall av index som man vill nå. Detta kallas för **slicing**.
 
 ```py
 menu = ['kebab', 'pizza', 'sushi', 'tacos']
@@ -559,7 +559,7 @@ Loopar används när man vill upprepa kod i sitt program. Den kod som ska utför
 
 ### **En `for`\-loop med `range()`**
 
-För att ange hur många gånger en **`for`**\-loop ska köras kan man använda en räknare (variabeln **`i`**) och funktionen **`range()`** som skapar en talserie mellan två heltal.
+För att ange hur många gånger en **`for`**\-loop ska köras är det vanligt att använda en räknare (variabeln **`i`**) och funktionen **`range()`** som skapar en talserie mellan två heltal.
 
 ```py
 for i in range(0, 10):
@@ -753,7 +753,7 @@ products = [
 
 ### **Gå igenom en dictionary med en `for`\-loop**
 
-Med metoden **`.items()`** kan man iterera över både **nyckeln** (*key*) och **värdet** (*value*).
+Med metoden **`items()`** kan man iterera över både **nyckeln** (*key*) och **värdet** (*value*).
 
 ```py
 car = {
@@ -805,32 +805,36 @@ my_set = {'kebab', 'pizza', 'meatballs'}
 
 ## **Kommentera kod**
 
-För att öka tydligheten i sin kod (för sig själv och för andra) bör man använda kommentarer. För mer komplexa program används även kommentarerna för att automatiskt generera dokumentering över koden. 
+För att öka tydligheten i koden (för sig själv och för andra) bör man använda kommentarer. För mer komplexa program brukar kommenterar för funktioner och klasser vara mer utförlig och kommentarerna används även för att automatiskt generera dokumentation över koden. (Dokumentation \= text som i detalj beskriver hur koden fungerar.)
 
-### **Riktlinjer:**
+### **Riktlinjer för kommentarer**
 
-Kommentera **varför**, inte bara **vad**:
+ Se till att **uppdatera kommentarer** ifall koden ändras:
 
-> "Comments that contradict the code are worse than no comments. Always update comments if the code changes\!"
+"Comments that contradict the code are worse than no comments. Always update comments if the code changes\!"
 
-Undvik överflödiga kommentarer:
+**Undvik överflödiga** kommentarer:
 
-> "Avoid comments that are obvious from the code itself."
+"Avoid comments that are obvious from the code itself."
 
-### **Enradskommentarer**
+Använd helst **engelska** i dina kommentarer:
 
-> "Comments should be complete sentences. If a comment is a phrase or sentence, its first word should be capitalized, unless it is an identifier or acronym." — PEP 8, Comments
+"Python coders from non-English speaking countries: please write your comments in English, unless you are 120% sure that the code will never be read by people who don’t speak your language."
+
+### **Enrads-kommentarer**
+
+"Comments should be complete sentences. If a comment is a phrase or sentence, its first word should be capitalized, unless it is an identifier or acronym."
 
 ```py
 # Beräkna summan av alla tal i listan
 total = sum(numbers)
 ```
 
-Enradskommentarer bör placeras **på en egen rad** eller **på samma rad som koden**. Då Pythons syntax (i jämförelse med andra språk) är lätt att förstå bör man bara kommentera kod som är otydlig.
+Enrads-kommentarer bör placeras **på en egen rad** eller **på samma rad som koden**. Eftersom Pythonkod (i jämförelse med andra språk) är lätt att läsa och förstå bör man bara kommentera kod som verkligen behöver förklaras.
 
 ### **Blockkommentarer**
 
-> "Block comments generally apply to some (or all) code that follows them, and are indented to the same level as that code. Each line of a block comment starts with a `#` and a single space."  — [PEP 8, Comments](https://peps.python.org/pep-0008/)
+"Block comments generally apply to some (or all) code that follows them, and are indented to the same level as that code. Each line of a block comment starts with a `#` and a single space."  — [PEP 8, Comments](https://peps.python.org/pep-0008/)
 
 ```py
 # Loopa igenom alla användare och
@@ -841,7 +845,9 @@ for user in users:
 
 ### **Docstrings (dokumentationssträngar)**
 
-> "Docstrings are denoted by triple quotes `"""` and are used to describe all public classes and functions." — [PEP 8, Docstrings](https://peps.python.org/pep-0008/)
+Docstrings är mer utförliga kommentarer som förklarar en funktion, modul eller 
+
+"Docstrings are denoted by triple quotes `"""` and are used to describe all public classes and functions."
 
 ```py
 def add(a, b):
@@ -849,7 +855,7 @@ def add(a, b):
     return a + b
 ```
 
-Eller ännu mer utförligt där även parametrar och returvärden dokumenteras:
+Eller ännu mer utförligt där även **parametrar** och **returvärden** dokumenteras:
 
 ```py
 def add(a, b):
@@ -867,11 +873,87 @@ def add(a, b):
 
 ```
 
+Alla citat ovan kommer från Pythons officiella stilguide: PEP (Python Enhancment Proposals) — [PEP 8, Docstrings](https://peps.python.org/pep-0008/).
+
+## 
+
+## **Filer: läsa och skriv**
+
+### **Öppna och läs in en hel textfil**
+
+```py
+with open('names.txt') as file:
+    content = file.read()
+
+print(content)
+```
+
+### **Läs en textfil rad för rad**
+
+Med en **`for`**\-loop kan vi gå igenom textfilen rad-för-rad. Genom att använda metoden **`strip()`** tar vi bort tecknet för "ny rad" i slutet på varje textrad.
+
+```py
+with open('names.txt') as file:
+    for line in file:
+        print(line.strip())
+```
+
+### **Läs en textfil rad för rad**
+
+```py
+with open('names.txt') as file:
+    for line in file:
+        print(line)
+```
+
+### **Läs in en textfil till en lista**
+
+```py
+with open('names.txt') as name_file:
+    names = name_file.readlines()
+```
+
+### **Skriv till en textfil**
+
+Detta tar bort eventuellt tidigare innehåll
+
+```py
+with open('textfile.txt', 'w') as textfile:
+    textfile.write('Hello world!')
+```
+
+### **Lägg till i befintlig fil**
+
+```py
+with open('textfile.txt', 'a') as textfile:
+    textfile.write('Hello world!')
+```
+
+### **Infoga ny rad med tecknen: `\n`**
+
+Om man vill lägga till en radbrytning i texten som man skriver kan man använda teckenkombinationen: **`\n`**
+
+```py
+with open('textfile.txt', 'a') as textfile:
+    textfile.write('Hello world!\n')
+    textfile.write('Hello again!')
+```
+
+### **Lägeskoder vid öppning av filer**
+
+| Lägeskod | Betydelse | Exempel | Kommentar |
+| :---- | :---- | :---- | :---- |
+| `"r"` | Läsning (read) | `open("fil.txt", "r")` | Filen måste redan finnas |
+| `"w"` | Skrivning (write) | `open("fil.txt", "w")` | Skriver över hela filen |
+| `"a"` | Append (lägg till) | `open("fil.txt", "a")` | Skriver i slutet av filen |
+| `"b"` | Binärt läge | `open("bild.png", "rb")` | För filer som inte är text |
+| `"x"` | Skapa ny fil | `open("nyfil.txt", "x")` | Fel om filen redan finns |
+
 ## 
 
 ## **Modulen random**
 
-Modulen **`random`** används för att hantera slumptal.
+Med modulen **`random`** kan man använda slump i sina program.
 
 ### **Importera moduler**
 
@@ -899,6 +981,25 @@ r2 = random.randrange(10, 20)
 menu = ["pizza", "kebab", "pasta"]
 food = random.choice(menu)
 ```
+
+### **Slumpmässigt urval ur en lista**
+
+Om man vill slumpa fram flera värden från en lista (utan risk för dubbletter) kan man använda metoden **`sample()`** \- det man får tillbaka är en lista med ett slumpmässigt urval.
+
+```py
+import random 
+
+# Alla elever i klassen
+students = ['Anna', 'Bertil', 'Ceasar', 'David', 
+            'Erik', 'Frida', 'Gert', 'Henrietta']
+
+# Tre slumpmässiga elever
+volunteers = random.sample(students, 3)
+
+print(volunteers)
+```
+
+## 
 
 ## **Modulen datetime**
 
@@ -979,77 +1080,62 @@ print(now.date())
 | **`time`** | `hour`, `minute`, `second`, `microsecond` | `isoformat()`, `replace()` |
 | **`timedelta`** | `days`, `seconds`, `microseconds` | `total_seconds()` \+ stöder aritmetik med datum/tid (\+, \-) |
 
-## **Filer: läsa och skriv**
+## **Modulen CSV**
 
-### **Öppna och läs in en hel textfil**
+**CSV** (comma separated values) är ett vanligt förekommande textformat för informationsutbyte mellan olika program och system. CSV passar bäst för tabell-data och man kan exportera CSV-filer från både Excel och Google Sheets.
 
-```py
-with open('names.txt') as file:
-    content = file.read()
+I CSV representeras en tabellrad av en textrad och varje cell/kolumn separeras med ett komma (eller annat valfritt tecken). 
 
-print(content)
+Ett kalkylark med följande innehåll:
+
+| id | name | age | department | salary |
+| ----- | :---- | ----- | :---- | ----- |
+| 101 | Alice | 28 | Engineering | 70000 |
+| 102 | Bob | 35 | Marketing | 65000 |
+| 103 | Charlie | 22 | Sales | 40000 |
+| 104 | Diana | 45 | HR | 80000 |
+| 105 | Edward | 29 | Engineering | 72000 |
+
+… ser ut så här i CSV-format:
+
+```
+id,name,age,department,salary
+101,Alice,28,Engineering,70000
+102,Bob,35,Marketing,65000
+103,Charlie,22,Sales,40000
+104,Diana,45,HR,80000
+105,Edward,29,Engineering,72000
 ```
 
-### **Öppna och läs en textfil rad för rad**
+### **Läsa och tolka CSV-fil som lista**
 
-Genom att använda metoden **`strip()`** tar vi bort tecknet för "ny rad" i slutet på varje textrad.
-
-```py
-with open('names.txt') as file:
-    for line in file:
-        print(line.strip())
-```
-
-### **Öppna och läs en textfil rad för rad**
+Med metoden **`reader()`** från modulen **`csv`** läses varje rad i CSV-filen in som en lista. Genom funktionen **`next()`** hoppas första raden över (som innehåller kolumnrubrikerna.
 
 ```py
-with open('names.txt') as file:
-    for line in file:
-        print(line)
+import csv
+
+with open('employees.csv', newline="") as csvfile:
+    reader = csv.reader(csvfile)
+    next(reader)
+    for employee in reader:
+        print(employee[1])
 ```
 
-### **Öppna och läs in en textfil till en lista**
+### **Läsa och tolka CSV-fil som dictionary**
+
+Med klassen **`DictReader()`** från modulen **`csv`** läses varje rad in som en **dictionary**. 
 
 ```py
-with open('names.txt') as name_file:
-    names = name_file.readlines()
+import csv
+
+with open('employees.csv', newline="") as csvfile:
+  reader = csv.DictReader(csvfile)
+  for employee in reader:
+    print(employee['name'])
+    print(employee['salary'])
 ```
 
-### **Öppna och skriv till en textfil**
-
-Detta tar bort eventuellt tidigare innehåll
-
-```py
-with open('textfile.txt', 'w') as textfile:
-    textfile.write('Hello world!')
-```
-
-### **Öppna och lägg till i befintlig fil**
-
-```py
-with open('textfile.txt', 'a') as textfile:
-    textfile.write('Hello world!')
-```
-
-### **Skriva en ny rad med tecknen: `\n`**
-
-Om man vill lägga till en radbrytning i texten som man skriver kan man använda teckenkombinationen: **`\n`**
-
-```py
-with open('textfile.txt', 'a') as textfile:
-    textfile.write('Hello world!\n')
-    textfile.write('Hello again!')
-```
-
-### **Lägeskoder vid öppning av filer**
-
-| Lägeskod | Betydelse | Exempel | Kommentar |
-| :---- | :---- | :---- | :---- |
-| `"r"` | Läsning (read) | `open("fil.txt", "r")` | Filen måste redan finnas |
-| `"w"` | Skrivning (write) | `open("fil.txt", "w")` | Skriver över hela filen |
-| `"a"` | Append (lägg till) | `open("fil.txt", "a")` | Skriver i slutet av filen |
-| `"b"` | Binärt läge | `open("bild.png", "rb")` | För filer som inte är text |
-| `"x"` | Skapa ny fil | `open("nyfil.txt", "x")` | Fel om filen redan finns |
+## 
 
 ## **Felhantering**
 
