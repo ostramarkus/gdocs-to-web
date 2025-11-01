@@ -6,8 +6,8 @@
     --dark-background: #0c1227;
     --heading-accent: #db7b2b;    
     --header-dark: #111;
-    --article-bg: #fafafa;
-    --section-bg: #ededed;
+    --article-bg: #f6f6f6;
+    --section-bg: #fff;
     --border1: #ddd;
     --border-radius: 4px;
     --bg-muted: #f6f8fa;
@@ -99,8 +99,8 @@ header h1 {
 
 #menu-toggle {
     display: none;
-    border: 1px solid #999;
-    padding: 0.2rem 0.3em;
+    font-size: 1.3rem;
+    padding: 0.1rem 0.3rem;
     border-radius: 3px;
     cursor: pointer;
 }
