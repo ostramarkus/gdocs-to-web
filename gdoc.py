@@ -178,7 +178,7 @@ def create_toc(soup):
     return BeautifulSoup(toc_html, bs4_parser)
 
 def div_wrap(soup, tag_name, class_name):
-    ''' Wrap tables in div '''
+    """Wrap element in <div>"""
     for tag in soup.find_all(tag_name):
         div = soup.new_tag("div")
         div['class'] = class_name
