@@ -152,6 +152,10 @@ class Document:
         soup.find('h1').string = title
         soup.find('title').string = title
 
+    def as_html(self):
+        html_output = self.soup.decode(formatter="html")
+        html_output = remove_trailing_slashes(html_output)
+        return html_output
 
 class TOC:
     """Class representiong a table of contents for a Document"""
