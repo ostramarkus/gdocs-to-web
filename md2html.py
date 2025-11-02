@@ -18,22 +18,19 @@ class Document:
 
         # Load and process content Markdown
         self.content_soup = self.load_markdown(md_path)
-        soup_processor = (SoupProcessor(self.content_soup)
+        self.content_soup = (SoupProcessor(self.content_soup)
             .wrap_elements('h2', 'section', ['h2'])
             .wrap_elements('h3', 'section', ['h2', 'h3'])
-            .insert_title(self.title)
-            )
-    
+            .div_wrap('table', class_name='table-container')
+            .div_wrap('pre', class_name='code-container')      
+            .soup
+        )
 
+        template = Template(self, template_path)
+        template.set_title(self.title)
+        template.insert_content(self.content_soup, 'main')
 
-        self.content_soup = self.process_content(self.content_soup)
-
-        # Load and process HTML template
-        self.template_soup = self.html_file_to_soup(template_path)
-
-
-        self.template_soup = self.insert_title(self.title, self.template_soup)
-
+        
         # Create and insert table of contents
         toc = TOC(self)
         toc_title = self.template_soup.new_tag('h4')
@@ -42,26 +39,10 @@ class Document:
         self.template_soup.aside.append(toc_title)
         self.template_soup.aside.append(toc.as_soup())
 
-        print(type(self.template_soup))
- 
         # Merge content with template
         self.soup = self.template_soup
         main_tag = self.soup.find(insert_tag)
         main_tag.append(self.content_soup)
-
-
-    def process_content(self, soup):
-        """Clean up and divide document"""
-        soup = self.clean_up_headings(soup)
-
-        # TODO : One method for both sections and articles: divide('h3', stop=['h2', 'h3'])
-        soup = self.create_sections(soup)
-        soup = self.create_articles(soup)
-
-        soup = self.div_wrap(soup, 'table', class_name='table-container')
-        soup = self.div_wrap(soup, 'pre', class_name='code-container')         
-        return soup
-
 
     def insert_main_nav(self, nav_data, soup, id='#main-nav'):
         """Create and insert main navigation. Return as soup"""
@@ -69,7 +50,6 @@ class Document:
         main_nav_tag = soup.select(id)[0]
         main_nav_tag.append(main_nav_soup)
         return soup
-
 
     def create_main_nav_soup(self, nav_data):
         """Create HTML for main navigation. Return as soup."""
@@ -80,7 +60,6 @@ class Document:
         nav_html += '</ul>'
         return BeautifulSoup(nav_html, self.bs4_parser)
 
-
     def load_markdown(self, md_path):
         """Loads a Markdown file and return soup."""
         try:
@@ -89,18 +68,6 @@ class Document:
                 html_str = markdown.markdown(md_str, extensions=['fenced_code', 'tables'])
         except FileNotFoundError:
             print('File', md_path, 'not found.')
-        return self.make_soup(html_str)
-
-
-    def make_soup(self, html_str):
-        """Convert an HTML string to a BeautifulSoup object."""
-        return BeautifulSoup(html_str, self.bs4_parser)
-
-
-    def html_file_to_soup(self, path):
-        """Read an HTML file and return a BeautifulSoup object"""
-        with open(path, encoding='utf-8') as html_file:
-            html_str = html_file.read()
         return self.make_soup(html_str)
 
     def remove_trailing_slashes(self, html_str):
@@ -123,7 +90,7 @@ class Document:
         with open(save_path, 'w', encoding='utf-8') as output_file:
             output_file.write(html_str)
 
-    def __str__(self):
+    def __repr__(self):
         return self.as_html()
 
 class SoupProcessor:
@@ -154,12 +121,6 @@ class SoupProcessor:
                 header.decompose()    
         return self
 
-    def insert_title(self, title):
-        """Insert document title in <title> and <h1>"""
-        self.soup.find('h1').string = title
-        self.soup.find('title').string = title
-        return self
-
     def div_wrap(self, tag_name, class_name='generic-div'):
         """Wrap elements in div"""
         for tag in self.soup.find_all(tag_name):
@@ -167,6 +128,29 @@ class SoupProcessor:
             div['class'] = class_name
             tag.wrap(div)
         return self
+
+
+class Template:
+    """A class representing a HTML template"""
+    def __init__(self, document, template_path):
+        self.document = document
+        self.template_soup = self.load_template(template_path)
+
+    def html_file_to_soup(self, path):
+        """Read an HTML file and return a BeautifulSoup object"""
+        with open(path, encoding='utf-8') as html_file:
+            html_str = html_file.read()
+        return self.make_soup(html_str)
+
+    def set_title(self):
+        self.template_soup.find('title').string = self.document.title
+
+    def make_soup(self, html_str):
+        """Convert an HTML string to a BeautifulSoup object."""
+        return BeautifulSoup(html_str, self.document.bs4_parser)
+
+    def insert_content(self, content_soup, tag_name):
+        pass
 
 class TOC:
     """Class representiong a table of contents for a Document"""
