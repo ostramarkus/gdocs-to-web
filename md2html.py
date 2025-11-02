@@ -5,7 +5,7 @@ from bs4 import BeautifulSoup
 
 class Document:
     """Main class for md2html. Represents a document to be converted."""
-    def __init__(self, md_path, template_path, title="Untitled"):
+    def __init__(self, md_path, template_path, title="Untitled", insert_tag="main"):
         self.bs4_parser = 'html.parser'
         self.md_path = md_path
         self.template_path = template_path
@@ -14,26 +14,37 @@ class Document:
 
         self.content_soup = None 
         self.template_soup = None
-        
+        self.soup = None
+
         # Load and process content Markdown
         self.content_soup = self.load_markdown(md_path)
         self.content_soup = self.process_content(self.content_soup)
-
-        # TODO: create and insert TOC
-        toc = TOC(self)
-        print(toc)
 
         # Load and process HTML template
         self.template_soup = self.html_file_to_soup(template_path)
         self.template_soup = self.insert_title(self.title, self.template_soup)
 
+        # Create and insert table of contents
+        toc = TOC(self)
+        toc_title = self.template_soup.new_tag('h4')
+        toc_title.string = self.title
+
+        self.template_soup.aside.append(toc_title)
+        self.template_soup.aside.append(toc.as_soup())
+
+        # Merge content with template
+        main_tag = self.template_soup.find(insert_tag)
+        main_tag.append(self.content_soup)
+
 
     def process_content(self, soup):
         """Clean up and divide document"""
         soup = self.clean_up_headings(soup)
+
+        # TODO : One method for both sections and articles: divide('h3', stop=['h2', 'h3'])
         soup = self.create_sections(soup)
         soup = self.create_articles(soup)
-        # TODO : One method for both sections and articles: divide('h3', stop=['h2', 'h3'])
+
         soup = self.div_wrap(soup, 'table', class_name='table-container')
         soup = self.div_wrap(soup, 'pre', class_name='code-container')         
         return soup
@@ -143,6 +154,7 @@ class Document:
 
 
 class TOC:
+    """Class representiong a table of contents for a Document"""
     def __init__(self, document):
         self.document = document
         self.bs4_parser = document.bs4_parser
