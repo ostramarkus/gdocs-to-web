@@ -136,11 +136,26 @@ class Document:
                 next_node = sibling
         return soup
 
+
+    def div_wrap(self, soup, tag_name, class_name='generic-div'):
+        """Wrap tables in div"""
+        for tag in soup.find_all(tag_name):
+            div = soup.new_tag("div")
+            div['class'] = class_name
+            tag.wrap(div)
+        return soup
+
     def html_file_to_soup(self, path):
         """Read an HTML file and return a BeautifulSoup object"""
         with open(path, encoding='utf-8') as html_file:
             html_str = html_file.read()
         return self.make_soup(html_str)
+
+    def insert_title(self, title, soup):
+        """Insert document title in <title> and <h1>"""
+        soup.find('h1').string = title
+        soup.find('title').string = title
+        return soup
 
     def remove_trailing_slashes(self, html_str):
         """Remove trailing slashes from void HTML tags"""
@@ -164,48 +179,6 @@ class Document:
 
     def __str__(self):
         return self.as_html()
-
-class SoupProcessor:
-    """Processes Beautiful Soup objects"""
-    def __init__(self, soup):
-        self.soup = soup   
-
-    def wrap_elements(self, header_tag, wrapper_tag, stop_tags):
-        for header in list(self.soup.find_all(header_tag)):
-            wrapper = self.soup.new_tag(wrapper_tag)
-            wrapper['id'] = slugify(header.text)
-            header.insert_before(wrapper)
-            wrapper.append(header)
-            next_node = wrapper.next_sibling
-            while next_node and next_node.name not in stop_tags:
-                sibling = next_node.next_sibling
-                wrapper.append(next_node)
-                next_node = sibling
-        return self
-
-    def clean_up_headings(self):
-        """Clean up headings by removing <strong> tags and empty headings."""
-        for header in self.soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
-            for strong in header.find_all("strong"):
-                strong.unwrap()
-            # Remove empty headings
-            if not header.get_text(strip=True):
-                header.decompose()    
-        return self
-
-    def insert_title(self, title):
-        """Insert document title in <title> and <h1>"""
-        self.soup.find('h1').string = title
-        self.soup.find('title').string = title
-        return self
-
-    def div_wrap(self, tag_name, class_name='generic-div'):
-        """Wrap elements in div"""
-        for tag in self.soup.find_all(tag_name):
-            div = self.soup.new_tag("div")
-            div['class'] = class_name
-            tag.wrap(div)
-        return self
 
 class TOC:
     """Class representiong a table of contents for a Document"""

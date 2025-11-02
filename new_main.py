@@ -11,14 +11,12 @@ def main():
 
     # Iterate each page - process and save
     for page in site_config:
-        md_content_file = 'md/' + page['md_file']
-        html_template_file = 'templates/main.html'
+        md_path = 'md/' + page['md_file']
+        template_path = 'templates/main.html'
         title = page['title']
 
-        # testpage.insert_main_nav(navigation)
-        
-        # print(testpage.content_soup)
-        # print(testpage.template_soup)
+        document = md2html.Document(md_path, template_path, title=title)
+        document.save_html('public_html/' + page['html_file'])
 
 if __name__ == '__main__':
     main()
