@@ -4,7 +4,7 @@
     --second-accent: #374467;
     --third-accent: #98c379;
     --dark-background: #0c1227;
-    --heading-accent: #db7b2b;    
+    --heading-accent: #db7b2b;
     --header-dark: #111;
     --article-bg: #f6f6f6;
     --section-bg: #fff;
@@ -13,6 +13,10 @@
     --bg-muted: #f6f8fa;
     --inline-code: #818b981f;
     --code-comments: #ca7cc8;
+
+    --basic: var(--third-accent);
+    --intermediate: #f0cb51;
+    --advanced: #e25050;
 }
 
 /* Debug
@@ -126,6 +130,25 @@ h2 {
 h3 {
     font-size: 1rem;
 }
+
+article:has(.tag_basic),
+article:has(.tag_intermediate),
+article:has(.tag_advanced) {
+    border-left: 3px solid var(--third-accent);
+}
+
+article:has(.tag_basic) {
+    border-color: var(--basic);    
+}
+
+article:has(.tag_intermediate) {
+    border-color: var(--intermediate);
+}
+
+article:has(.tag_advanced) {
+    border-color: var(--advanced);
+}
+
 
 p {
     line-height: 1.5;
@@ -248,7 +271,6 @@ pre {
     border-radius: var(--border-radius);
     box-sizing: border-box;
     background-color: var(--dark-background);
-    border-left: 5px solid var(--third-accent);
 }
 
 .hljs-comment {
@@ -327,7 +349,7 @@ pre {
 .section-link ul {
     box-sizing: border-box;
     padding: 0;
-    list-style: square;
+    list-style: disc;
     padding-left: 1em;
     margin-left: 1em;
     display: none;
@@ -344,6 +366,18 @@ pre {
 
 .article-link::marker {
     color: var(--first-accent);
+}
+
+.article-link:has(.tag_basic)::marker {
+    color: var(--basic);
+}
+
+.article-link:has(.tag_intermediate)::marker {
+    color: var(--intermediate);
+}
+
+.article-link:has(.tag_advanced)::marker {
+    color: var(--advanced);
 }
 
 .section-link .closed {

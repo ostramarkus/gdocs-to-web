@@ -14,35 +14,39 @@ class Document:
 
         self.content_soup = None 
         self.template_soup = None
+        self.toc = None
         self.soup = None
 
         # Load and process content Markdown
         self.content_soup = self.load_markdown(md_path)
         self.content_soup = (SoupProcessor(self.content_soup)
+            .clean_up_headings()
             .wrap_elements('h2', 'section', ['h2'])
-            .wrap_elements('h3', 'section', ['h2', 'h3'])
+            .wrap_elements('h3', 'article', ['h2', 'h3'])
             .div_wrap('table', class_name='table-container')
-            .div_wrap('pre', class_name='code-container')      
+            .div_wrap('pre', class_name='code-container')
+            .span_wrap('h3', '⏺', 'tag_basic')
+            .span_wrap('h3', '⏹', 'tag_intermediate')
+            .span_wrap('h3', '◆', 'tag_advanced')               
             .soup
         )
 
+        # Create table of contents
+        self.toc = TOC(self)
+        toc_title = self.toc.soup.new_tag('h4')
+        toc_title.string = self.title
+
+        # Load template and insert content
         template = Template(self, template_path)
         template.set_title(self.title)
         template.insert_content(self.content_soup, 'main')
 
-        
-        # Create and insert table of contents
-        toc = TOC(self)
-        toc_title = self.template_soup.new_tag('h4')
-        toc_title.string = self.title
-
-        self.template_soup.aside.append(toc_title)
-        self.template_soup.aside.append(toc.as_soup())
+        template.soup.aside.append(toc_title)
+        template.soup.aside.append(self.toc.as_soup())
 
         # Merge content with template
-        self.soup = self.template_soup
-        main_tag = self.soup.find(insert_tag)
-        main_tag.append(self.content_soup)
+        self.soup = template.soup
+
 
     def insert_main_nav(self, nav_data, soup, id='#main-nav'):
         """Create and insert main navigation. Return as soup"""
@@ -68,7 +72,8 @@ class Document:
                 html_str = markdown.markdown(md_str, extensions=['fenced_code', 'tables'])
         except FileNotFoundError:
             print('File', md_path, 'not found.')
-        return self.make_soup(html_str)
+            exit()
+        return BeautifulSoup(html_str, self.bs4_parser)
 
     def remove_trailing_slashes(self, html_str):
         """Remove trailing slashes from void HTML tags"""
@@ -129,12 +134,18 @@ class SoupProcessor:
             tag.wrap(div)
         return self
 
+    def span_wrap(self, tag_name, char, class_name):
+        for element in self.soup.find_all(tag_name):
+            if element.text[0] == char:
+                element['class'] = class_name
+                element.string = element.text[2:]
+        return self
 
 class Template:
     """A class representing a HTML template"""
     def __init__(self, document, template_path):
         self.document = document
-        self.template_soup = self.load_template(template_path)
+        self.soup = self.load_template(template_path)
 
     def html_file_to_soup(self, path):
         """Read an HTML file and return a BeautifulSoup object"""
@@ -142,15 +153,18 @@ class Template:
             html_str = html_file.read()
         return self.make_soup(html_str)
 
-    def set_title(self):
-        self.template_soup.find('title').string = self.document.title
+    def set_title(self, title):
+        self.soup.find('title').string = title
 
-    def make_soup(self, html_str):
-        """Convert an HTML string to a BeautifulSoup object."""
+    def load_template(self, template_path):
+        """Read an HTML file and return a BeautifulSoup object"""
+        with open(template_path, encoding='utf-8') as html_file:
+            html_str = html_file.read()
         return BeautifulSoup(html_str, self.document.bs4_parser)
 
-    def insert_content(self, content_soup, tag_name):
-        pass
+    def insert_content(self, content_soup, tag_name='main'):
+        self.soup.find(tag_name).append(content_soup)
+        return self
 
 class TOC:
     """Class representiong a table of contents for a Document"""
@@ -160,6 +174,7 @@ class TOC:
 
         self.structure = self.get_structure(document.content_soup)
         self.html = self.create_html(self.structure)
+        self.soup = self.as_soup()
 
     def get_structure(self, soup):
         """Extract TOC structure from the soup object."""
@@ -168,21 +183,30 @@ class TOC:
         structure = []
         for section in soup.find_all('section'):
             section_id = section['id']
-            section_title = section.find('h2').text
+            section_title_tag = section.find('h2')
+            if section_title_tag:
+                section_title = section_title_tag.text
+            else:
+                continue
+                
             section_data = {'id': section_id, 'title': section_title}
 
             # Iterate all <srticle> save id-attribute and inner text of <h3>            
             section_articles = []
             for article in section.find_all('article'):
                 article_id = article['id']
-                article_title = article.find('h3').text
-                article_data = {'id': article_id, 'title': article_title}
+                article_heading = article.find('h3')
+                article_title = article_heading.text
+                try:
+                    article_tag = article_heading['class']
+                except KeyError:
+                    article_tag = 'generic'
+                article_data = {'id': article_id, 'title': article_title, 'tag': article_tag}
                 section_articles.append(article_data)
             
             section_data['articles'] = section_articles
             structure.append(section_data)
         return structure
-
 
     def create_html(self, toc_data):
         """Create a Table of Contents (TOC) as a BeautifulSoup object"""
@@ -200,7 +224,8 @@ class TOC:
                 for article in section['articles']: 
                     article_id = article['id']
                     article_title = article['title']
-                    article_link = f'      <li class="article-link"><a href="#{article_id}">{article_title}</a></li>\n'
+                    article_tag = article['tag']
+                    article_link = f'      <li class="article-link"><a href="#{article_id}" class="{article_tag}">{article_title}</a></li>\n'
                     section_link += article_link
                 section_link += '    </ul>\n'
             section_link += '</li>\n'
