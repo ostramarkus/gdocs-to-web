@@ -18,10 +18,20 @@ class Document:
 
         # Load and process content Markdown
         self.content_soup = self.load_markdown(md_path)
+        soup_processor = (SoupProcessor(self.content_soup)
+            .wrap_elements('h2', 'section', ['h2'])
+            .wrap_elements('h3', 'section', ['h2', 'h3'])
+            .insert_title(self.title)
+            )
+    
+
+
         self.content_soup = self.process_content(self.content_soup)
 
         # Load and process HTML template
         self.template_soup = self.html_file_to_soup(template_path)
+
+
         self.template_soup = self.insert_title(self.title, self.template_soup)
 
         # Create and insert table of contents
@@ -33,7 +43,7 @@ class Document:
         self.template_soup.aside.append(toc.as_soup())
 
         print(type(self.template_soup))
-
+ 
         # Merge content with template
         self.soup = self.template_soup
         main_tag = self.soup.find(insert_tag)
@@ -86,55 +96,6 @@ class Document:
         """Convert an HTML string to a BeautifulSoup object."""
         return BeautifulSoup(html_str, self.bs4_parser)
 
-
-    def clean_up_headings(self, soup):
-        """Clean up headings by removing <strong> tags and empty headings."""
-        for header in soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
-            for strong in header.find_all("strong"):
-                strong.unwrap()
-            # Remove empty headings
-            if not header.get_text(strip=True):
-                header.decompose()    
-        return soup
-
-
-    def create_sections(self, soup):
-        """Create <section> tags around each <h2> and its content"""
-        for h2 in list(soup.find_all("h2")):  # copy list to avoid iteration issues
-            section = soup.new_tag("section")
-            header_slug = slugify(h2.text)
-            section['id'] = header_slug
-            h2.insert_before(section)   # insert <section> before <h2>
-            section.append(h2)          # move <h2> into section
-
-            # Move all following siblings into section until next <h2> or end of document
-            next_node = section.next_sibling
-            while next_node and not (next_node.name == "h2"):
-                sibling = next_node.next_sibling
-                section.append(next_node)
-                next_node = sibling
-        return soup
-
-
-    def create_articles(self, soup):
-        """Create <article> tags around each <h3> and its content"""
-        for h3 in list(soup.find_all("h3")):  # Make a copy of the list to avoid iteration issues
-            article = soup.new_tag("article")
-            header_slug = slugify(h3.text)
-            article['id'] = header_slug
-            # Insert <article> before <h3>
-            h3.insert_before(article)
-            
-            # Move <h3> into the <article>
-            article.append(h3)
-
-            # Move all following siblings into the <article> until next <h2> or <h3>
-            next_node = article.next_sibling
-            while next_node and not (next_node.name in ["h2", "h3"]):
-                sibling = next_node.next_sibling
-                article.append(next_node)
-                next_node = sibling
-        return soup
 
     def html_file_to_soup(self, path):
         """Read an HTML file and return a BeautifulSoup object"""
