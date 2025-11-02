@@ -11,15 +11,17 @@ class Document:
         self.template_path = template_path
         self.title = title
         self.verbose = False
-        self.markdown = None
+
         self.content_soup = None 
         self.template_soup = None
         
         # Load and process content Markdown
-        content_soup = self.load_markdown(md_path)
-        self.content_soup = self.process_content(content_soup)
+        self.content_soup = self.load_markdown(md_path)
+        self.content_soup = self.process_content(self.content_soup)
 
         # TODO: create and insert TOC
+        toc = TOC(self)
+        print(toc)
 
         # Load and process HTML template
         self.template_soup = self.html_file_to_soup(template_path)
@@ -35,6 +37,7 @@ class Document:
         soup = self.div_wrap(soup, 'table', class_name='table-container')
         soup = self.div_wrap(soup, 'pre', class_name='code-container')         
         return soup
+
 
     def insert_main_nav(self, nav_data, soup, id='#main-nav'):
         """Create and insert main navigation. Return as soup"""
@@ -53,6 +56,7 @@ class Document:
         nav_html += '</ul>'
         return BeautifulSoup(nav_html, self.bs4_parser)
 
+
     def load_markdown(self, md_path):
         """Loads a Markdown file and return soup."""
         try:
@@ -62,10 +66,12 @@ class Document:
         except FileNotFoundError:
             print('File', md_path, 'not found.')
         return self.make_soup(html_str)
-    
+
+
     def make_soup(self, html_str):
         """Convert an HTML string to a BeautifulSoup object."""
         return BeautifulSoup(html_str, self.bs4_parser)
+
 
     def clean_up_headings(self, soup):
         """Clean up headings by removing <strong> tags and empty headings."""
@@ -76,6 +82,7 @@ class Document:
             if not header.get_text(strip=True):
                 header.decompose()    
         return soup
+
 
     def create_sections(self, soup):
         """Create <section> tags around each <h2> and its content"""
@@ -93,6 +100,7 @@ class Document:
                 section.append(next_node)
                 next_node = sibling
         return soup
+
 
     def create_articles(self, soup):
         """Create <article> tags around each <h3> and its content"""
@@ -114,6 +122,7 @@ class Document:
                 next_node = sibling
         return soup
 
+
     def div_wrap(self, soup, tag_name, class_name='generic-div'):
         """Wrap tables in div"""
         for tag in soup.find_all(tag_name):
@@ -127,12 +136,46 @@ class Document:
         with open(filename, encoding='utf-8') as html_file:
             html_str = html_file.read()
         return self.make_soup(html_str)
-    
-    def create_toc(self, soup):
-        """Create a Table of Contents (TOC) as a BeautifulSoup object"""
-        toc_data = self.get_toc_data(soup)
 
-        toc_html = '<ul id="toc">\n'
+    def insert_title(self, title, soup):
+        soup.find('h1').string = title
+        soup.find('title').string = title
+
+
+class TOC:
+    def __init__(self, document):
+        self.document = document
+        self.bs4_parser = document.bs4_parser
+
+        self.structure = self.get_structure(document.content_soup)
+        self.html = self.create_html(self.structure)
+
+    def get_structure(self, soup):
+        """Extract TOC structure from the soup object."""
+
+        # Iterate all <section> save id-attribute and inner text of <h2>
+        structure = []
+        for section in soup.find_all('section'):
+            section_id = section['id']
+            section_title = section.find('h2').text
+            section_data = {'id': section_id, 'title': section_title}
+
+            # Iterate all <srticle> save id-attribute and inner text of <h3>            
+            section_articles = []
+            for article in section.find_all('article'):
+                article_id = article['id']
+                article_title = article.find('h3').text
+                article_data = {'id': article_id, 'title': article_title}
+                section_articles.append(article_data)
+            
+            section_data['articles'] = section_articles
+            structure.append(section_data)
+        return structure
+
+
+    def create_html(self, toc_data):
+        """Create a Table of Contents (TOC) as a BeautifulSoup object"""
+        html_str = '<ul id="toc">\n'
 
         # Iterate sections
         for section in toc_data:
@@ -150,29 +193,12 @@ class Document:
                     section_link += article_link
                 section_link += '    </ul>\n'
             section_link += '</li>\n'
-            toc_html += section_link
-        toc_html += '</ul>'
-        return BeautifulSoup(toc_html, self.bs4_parser)
+            html_str += section_link
+        html_str += '</ul>'
+        return html_str
 
-    def get_toc_data(soup):
-        """Extract TOC data from the soup object."""
-        toc_data = []
-        for section in soup.find_all('section'):
-            section_id = section['id']
-            section_title = section.find('h2').text
-            section_data = {'id': section_id, 'title': section_title}
+    def as_soup(self):
+        return BeautifulSoup(self.toc_html, self.bs4_parser)
 
-            section_articles = []
-            for article in section.find_all('article'):
-                article_id = article['id']
-                article_title = article.find('h3').text
-                article_data = {'id': article_id, 'title': article_title}
-                section_articles.append(article_data)
-            
-            section_data['articles'] = section_articles
-            toc_data.append(section_data)
-        return toc_data
-
-    def insert_title(self, title, soup):
-        soup.find('h1').string = title
-        soup.find('title').string = title
+    def __str__(self):
+        return self.html
