@@ -18,18 +18,7 @@ class Document:
         self.soup = None
 
         # Load and process content Markdown
-        self.content_soup = self.load_markdown(md_path)
-        self.content_soup = (SoupProcessor(self.content_soup)
-            .clean_up_headings()
-            .wrap_elements('h2', 'section', ['h2'])
-            .wrap_elements('h3', 'article', ['h2', 'h3'])
-            .div_wrap('table', class_name='table-container')
-            .div_wrap('pre', class_name='code-container')
-            .span_wrap('h3', '⏺', 'tag_basic')
-            .span_wrap('h3', '⏹', 'tag_intermediate')
-            .span_wrap('h3', '◆', 'tag_advanced')               
-            .soup
-        )
+        self.content_soup = self.process_content()
 
         # Create table of contents
         self.toc = TOC(self)
@@ -41,12 +30,28 @@ class Document:
         template.set_title(self.title)
         template.insert_content(self.content_soup, 'main')
 
+        if not template.soup.aside:
+            raise ValueError("Template missing <aside> for table of contents.")
+
         template.soup.aside.append(toc_title)
         template.soup.aside.append(self.toc.soup)
 
         # Assing merged document to 'soup' attribute
         self.soup = template.soup
 
+    def process_content(self):
+        """Clean and structure Markdown soup before merging with template."""
+        return (SoupProcessor(self.load_markdown(self.md_path))
+            .clean_up_headings()
+            .wrap_elements('h2', 'section', ['h2'])
+            .wrap_elements('h3', 'article', ['h2', 'h3'])
+            .div_wrap('table', class_name='table-container')
+            .div_wrap('pre', class_name='code-container')
+            .span_wrap('h3', '⏺', 'tag_basic')
+            .span_wrap('h3', '⏹', 'tag_intermediate')
+            .span_wrap('h3', '◆', 'tag_advanced')
+            .soup
+        )
 
     def insert_main_nav(self, nav_data, id='#main-nav'):
         """Create and insert main navigation. Return as soup"""
@@ -97,7 +102,7 @@ class Document:
             output_file.write(html_str)
 
     def __repr__(self):
-        return self.as_html()
+        return f"<Document title='{self.title}' path='{self.md_path}'>"
 
 class SoupProcessor:
     """Processes Beautiful Soup objects"""
