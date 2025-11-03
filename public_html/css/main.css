@@ -149,6 +149,9 @@ article:has(.tag_advanced) {
     border-color: var(--advanced);
 }
 
+article li {
+    margin-bottom: 0.4em;
+}
 
 p {
     line-height: 1.5;
@@ -526,6 +529,27 @@ button.copy-btn:hover {
 
     #toc .section-link a.section-open:before {
         content: none;
+    }
+
+    article:has(.tag_basic),
+    article:has(.tag_intermediate),
+    article:has(.tag_advanced) {
+        border: none;
+    }
+
+    .tag_basic::before {
+        content: '⏺ ';
+        color: var(--basic);
+    }
+
+    .tag_intermediate::before {
+        content: '⏹ ';
+        color: var(--intermediate);
+    }
+
+    .tag_advanced::before {
+        content: '◆ ';
+        color: var(--advanced);
     }
 
     article {

@@ -33,7 +33,7 @@ class Document:
 
         # Create table of contents
         self.toc = TOC(self)
-        toc_title = self.toc.soup.new_tag('h4')
+        toc_title = self.content_soup.new_tag('h4')
         toc_title.string = self.title
 
         # Load template and insert content
@@ -42,18 +42,18 @@ class Document:
         template.insert_content(self.content_soup, 'main')
 
         template.soup.aside.append(toc_title)
-        template.soup.aside.append(self.toc.as_soup())
+        template.soup.aside.append(self.toc.soup)
 
-        # Merge content with template
+        # Assing merged document to 'soup' attribute
         self.soup = template.soup
 
 
-    def insert_main_nav(self, nav_data, soup, id='#main-nav'):
+    def insert_main_nav(self, nav_data, id='#main-nav'):
         """Create and insert main navigation. Return as soup"""
         main_nav_soup = self.create_main_nav_soup(nav_data)
-        main_nav_tag = soup.select(id)[0]
+        main_nav_tag = self.soup.select(id)[0]
         main_nav_tag.append(main_nav_soup)
-        return soup
+        return self
 
     def create_main_nav_soup(self, nav_data):
         """Create HTML for main navigation. Return as soup."""
@@ -65,7 +65,7 @@ class Document:
         return BeautifulSoup(nav_html, self.bs4_parser)
 
     def load_markdown(self, md_path):
-        """Loads a Markdown file and return soup."""
+        """Load a Markdown file and return soup."""
         try:
             with open(md_path, encoding='utf-8') as md_file:
                 md_str = md_file.read()
@@ -91,6 +91,7 @@ class Document:
         return html_output
 
     def save_html(self, save_path):
+        """Save document as HTML-file"""
         html_str = self.as_html()
         with open(save_path, 'w', encoding='utf-8') as output_file:
             output_file.write(html_str)
@@ -171,10 +172,9 @@ class TOC:
     def __init__(self, document):
         self.document = document
         self.bs4_parser = document.bs4_parser
-
+        self.soup = BeautifulSoup('', self.bs4_parser)
         self.structure = self.get_structure(document.content_soup)
-        self.html = self.create_html(self.structure)
-        self.soup = self.as_soup()
+        self.soup = self.create_toc_soup(self.structure)
 
     def get_structure(self, soup):
         """Extract TOC structure from the soup object."""
@@ -208,33 +208,32 @@ class TOC:
             structure.append(section_data)
         return structure
 
-    def create_html(self, toc_data):
-        """Create a Table of Contents (TOC) as a BeautifulSoup object"""
-        html_str = '<ul id="toc">\n'
-
-        # Iterate sections
+    def create_toc_soup(self, toc_data):
+        ul = BeautifulSoup('<ul id="toc"></ul>', self.bs4_parser).ul
         for section in toc_data:
-            section_id = section['id']
-            section_title = section['title']
-            section_link = f'  <li class="section-link"><a href="#{section_id}">{section_title}</a>\n'
+            li = self._build_section(section)
+            ul.append(li)
+        return ul
 
-            # If section has articles - iterate articles
-            if len(section['articles']) > 0:
-                section_link += '   <ul>\n'
-                for article in section['articles']: 
-                    article_id = article['id']
-                    article_title = article['title']
-                    article_tag = article['tag']
-                    article_link = f'      <li class="article-link"><a href="#{article_id}" class="{article_tag}">{article_title}</a></li>\n'
-                    section_link += article_link
-                section_link += '    </ul>\n'
-            section_link += '</li>\n'
-            html_str += section_link
-        html_str += '</ul>'
-        return html_str
+    def _build_section(self, section):
+        li = BeautifulSoup('', self.bs4_parser).new_tag('li', **{'class': 'section-link'})
+        a = self.soup.new_tag('a', href=f"#{section['id']}")
+        a.string = section['title']
+        li.append(a)
+        if section['articles']:
+            sub_ul = self.soup.new_tag('ul')
+            for article in section['articles']:
+                sub_li = self._build_article(article)
+                sub_ul.append(sub_li)
+            li.append(sub_ul)
+        return li
 
-    def as_soup(self):
-        return BeautifulSoup(self.html, self.bs4_parser)
+    def _build_article(self, article):
+        li = self.soup.new_tag('li', **{'class': 'article-link'})
+        a = self.soup.new_tag('a', href=f"#{article['id']}", **{'class': article['tag']})
+        a.string = article['title']
+        li.append(a)
+        return li
 
     def __str__(self):
         return self.html

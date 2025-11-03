@@ -3,7 +3,7 @@
 ## **GitHub Codespaces**
 
 GitHub Codespaces är en **molnbaserad utvecklingsmiljö** – du programmerar direkt i webbläsaren (eller i VS Code) och har redan **Git** och **GitHub** färdigintegrerat.  
-Det betyder att du kan börja jobba med versionhantering direkt utan att installera något.
+Du kan börja jobba med versionhantering direkt utan att installera något.
 
 ## **Kom igång med GitHub och Codespaces**
 
@@ -63,18 +63,17 @@ git push
 
 #### **Alternativ 2: Via VS Code-gränssnittet**
 
-Klicka på **Source Control-ikonen** (📁 med gren-symbol) i vänstermenyn.  
-Du ser en lista med ändrade filer.  
-Klicka på **\+** för att lägga till (stage) filerna.  
-Skriv ett **commit-meddelande** överst, t.ex. *“Lade till index.html”*.  
-Klicka på **Commit** (eller `Ctrl+Enter`).  
-Klicka på **Sync Changes** (🔁) för att pusha till GitHub.
+1. Klicka på **Source Control-ikonen** (med gren-symbol) i vänstermenyn. Du ser en lista med ändrade filer.  
+2. Klicka på **\+** för att lägga till (stage) filerna.  
+3. Skriv ett **commit-meddelande** överst, t.ex. *“Lade till index.html”*.  
+4. Klicka på **Commit** (eller `Ctrl+Enter`).  
+5. Klicka på **Sync Changes** (🔁) för att pusha till GitHub.
 
 ## **Avancerat: arbeta i grenar (branches)**
 
 Att skapa grenar är lika enkelt i Codespaces.
 
-#### **Terminal:**
+### **Skapa en ny branch med terminalen**
 
 ```shell
 git checkout -b ny-funktion
@@ -109,11 +108,12 @@ eller klicka på **Sync Changes** igen.
 ## **Vanligt arbetsflöde i Codespaces**
 
 | Steg | Vad du gör | Kommando / Knapp |
-| :---- | :---- | :---- |
-| 1\. | Gör ändringar i filer | – |
-| 2\. | Kolla status | **`git status`** |
-| 3\. | Lägg till filer | **`git add`** **`.`** eller “+” i Source Control |
-| 4\. | Skriv commit-meddelande | **`git commit -m "Beskriv ändringen"`** |
-| 5\. | Skicka till GitHub | **`git push`** eller “Sync Changes” |
-| 6\. | Hämta ny kod | **`git pull`** eller “Sync Changes” |
-| 7\. | Testa idéer i ny gren | **`git checkout -b gren-namn`** |
+| ----- | :---- | :---- |
+| **1\.** | Gör ändringar i filer | – |
+| **2\.** | Kolla status | **`git status`** |
+| **3\.** | Lägg till filer | **`git add`** **`.`** eller “+” i Source Control |
+| **4\.** | Skriv commit-meddelande | **`git commit -m "Beskriv ändringen"`** |
+| **5\.** | Skicka till GitHub | **`git push`** eller “Sync Changes” |
+| **6\.** | Hämta ny kod | **`git pull`** eller “Sync Changes” |
+| **7\.** | Testa idéer i ny gren | **`git checkout -b gren-namn`** |
+
