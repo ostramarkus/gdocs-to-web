@@ -149,6 +149,11 @@ article:has(.tag_advanced) {
     border-color: var(--advanced);
 }
 
+article .heading-nr {
+    color: var(--heading-accent);
+    margin-right: 0.3rem;
+}
+
 article li {
     margin-bottom: 0.4em;
 }
@@ -537,19 +542,19 @@ button.copy-btn:hover {
         border: none;
     }
 
-    .tag_basic::before {
-        content: '⏺ ';
-        color: var(--basic);
+    .tag_basic {
+        border-left: 5px solid var(--basic);
+        padding-left: 0.5em;
     }
 
-    .tag_intermediate::before {
-        content: '⏹ ';
-        color: var(--intermediate);
+    .tag_intermediate {
+        border-left: 5px solid var(--intermediate);
+        padding-left: 0.5em;
     }
 
-    .tag_advanced::before {
-        content: '◆ ';
-        color: var(--advanced);
+    .tag_advanced {
+        border-left: 5px solid var(--advanced);
+        padding-left: 0.5em;
     }
 
     article {

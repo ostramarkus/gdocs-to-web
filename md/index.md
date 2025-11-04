@@ -56,14 +56,15 @@ print(type(name))
 
 ### **⏺ Räkna med variabler**
 
-Variabler kan användas i beräkningar.
+Variabler kan användas i beräkningar. Parenteser **`()`** kan användas för att kringgå prioritetsregler.
 
 ```py
 x = 100
 my_sum = 100 + x
+result = (20 + 10) * x
 ```
 
-### **⏺ Vanliga operatorer för beräkningar**
+### **⏺ Aritmetiska operatorer**
 
 Operatorer som används i beräkningar kallas för **aritmetiska operatorer**.
 
@@ -73,7 +74,7 @@ Operatorer som används i beräkningar kallas för **aritmetiska operatorer**.
 | **`-`** | Subtraktion |
 | **`*`** | Multiplikation |
 | **`/`** | Division |
-| **`//`** | Division med avrundning nedåt |
+| **`//`** | Division med avrundning nedåt. (floor-division) |
 | **`**`** | Upphöjt |
 | **`%`** | Modulo / rest från division |
 | **`+=`** | Addera till |
@@ -106,7 +107,7 @@ print('Hello World!')
 
 ### **⏺ Skriv ut flera värden med kommatecknet**
 
-Man kan ange flera värden att skriva ut med hjälp av kommatecknet. Man får ett automatiskt mellanslag mellan värdena. Det spelar ingen roll vilken **datatyp** värdena är.
+Man kan ange flera värden att skriva ut med hjälp av kommatecknet. Man får ett automatiskt mellanslag mellan värdena. Här spelar det ingen roll vilken **datatyp** värdena är.
 
 ```py
 name = 'Markus'
@@ -214,7 +215,7 @@ big_name = name.upper()
 small_name = name.lower()
 # →  'markus'
 
-cap_name = small_name.cpitalize()	
+cap_name = small_name.capitalize()	
 # 'markus' → 'Markus'
 ```
 
@@ -367,6 +368,8 @@ letters = ['B', 'D', 'C', 'A']
 letters.sort()
 
 # letters → ['A', 'B', 'C', 'D']
+
+letters.sort(reverse=True)
 ```
 
 ```py

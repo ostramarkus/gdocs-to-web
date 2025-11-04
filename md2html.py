@@ -50,6 +50,7 @@ class Document:
             .span_wrap('h3', '⏺', 'tag_basic')
             .span_wrap('h3', '⏹', 'tag_intermediate')
             .span_wrap('h3', '◆', 'tag_advanced')
+            .number_headings()
             .soup
         )
 
@@ -132,10 +133,27 @@ class SoupProcessor:
                 header.decompose()    
         return self
 
+    def number_headings(self):
+        for i, section in enumerate(self.soup.find_all(['section']), start=1):
+            span = self.soup.new_tag('span')
+            span['class'] = 'heading-nr'
+            span.string = str(i) + '. '
+            h2 = section.find('h2')            
+            h2.insert(0, span)
+            
+            for j, article in enumerate(section.find_all(['article']), start=1):
+                span = self.soup.new_tag('span')
+                span['class'] = 'heading-nr'
+                span.string = str(i) + '.' + str(j) + ' '
+                h3 = article.find('h3')            
+                h3.insert(0, span)
+
+        return self
+
     def div_wrap(self, tag_name, class_name='generic-div'):
         """Wrap elements in div"""
         for tag in self.soup.find_all(tag_name):
-            div = self.soup.new_tag("div")
+            div = self.soup.new_tag('div')
             div['class'] = class_name
             tag.wrap(div)
         return self
