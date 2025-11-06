@@ -8,40 +8,41 @@
 
 ### **GitHub Codespaces**
 
-GitHub Codespaces är en **molnbaserad utvecklingsmiljö** – du programmerar direkt i webbläsaren (eller i VS Code) och har redan **Git** och **GitHub** färdigintegrerat.  
-Du kan börja jobba med versionhantering direkt utan att installera något.
+**GitHub Codespaces** är en **molnbaserad utvecklingsmiljö** – du programmerar direkt i webbläsaren (eller i VS Code) och har **Git** och **GitHub** integrerat. Du får tillgång till en virtuell maskin (med operativsystemet Linux/Ubuntu som standard) och du kan börja jobba med versionshanterad kod i webbläsaren utan att installera något.
+
+**Github** **Codespaces** ger dig **120 timmar** **kostnadsfri** användning i månaden. (Ca 4 timmar om dagen). En Codespace stänger av automatiskt efter 30 minuters inaktivitet, men för att spara tid kan man **manuellt stänga av** sin Codespace. Det gör man genom GitHubs huvudmeny uppe till höger → Codespaces (direktlänk: [https://github.com/codespaces](https://github.com/codespaces)) och sedan trycka på de tre prickarna vid sin Codespace och välja **Stop Codespace**.
 
 ### **Kom igång med GitHub och Codespaces**
 
-### **1\. Skapa ett GitHub-konto**
+##### **1\. Skapa ett GitHub-konto**
 
 Gå in på [https://github.com](https://github.com/) och skapa ett nytt konto. Använd gärna din edu-adress.
 
-### **2\. Skapa ett nytt GitHub-repo**
+##### **2\. Skapa ett nytt GitHub-repo**
 
 Ett **repo** (kort för *repository*) är i GitHub **en plats där all din kod och dess historik sparas**. Det är alltså både en mapp med filer och en logg över alla ändringar som har gjorts i dessa filer.
 
 1. Klicka på **`+`** knappen uppe till höger (Create new) och välj New Repository. (Eller gå direkt till [github.com/new](https://github.com/new))  
-2. Ge projektet ett namn (t.ex. **`python-projekt`** eller **`webbapp`**) (och eventuellt en kort beskrivning).  
+2. Ge projektet ett namn (t.ex. **`python-projekt`** eller **`test-repo`**) (och eventuellt en kort beskrivning).  
 3. Klicka på **Create repository**
 
-### **3\. Öppna i Codespaces**
+##### **3\. Öppna i Codespaces**
 
 När ditt repo är skapat:
 
-1. Klicka på den gröna knappen “\<\> Code”
+1. Klicka på den gröna knappen **`<>Code`**
 
 2. Välj fliken **Codespaces**
 
 3. Klicka på “**Create codespace on main**”
 
-Detta skapar en virtuell maskin och öppnar en **VS Code-liknande miljö i webbläsaren** – med Git och Python installerat.
+Detta startar upp en virtuell maskin och öppnar en **VS Code-liknande miljö i webbläsaren** – med Git och Python installerat.
 
-### **4\. Spara och versionshantera med Git**
+##### **4\. Spara och versionshantera med Git**
 
 När du ändrar filer i Codespaces kan du använda Git direkt i den inbyggda terminalen eller via det grafiska gränssnittet i VS Code.
 
-### **Alternativ 1: Via terminal**
+##### **Alternativ 1: Via terminal**
 
 #### **Se vilka filer som ändrats:**
 
@@ -67,17 +68,17 @@ git commit -m "Lade till min första Python-fil"
 git push
 ```
 
-### **Alternativ 2: Via VS Code-gränssnittet**
+##### **Alternativ 2: Via VS Code-gränssnittet**
 
 1. Klicka på **Source Control-ikonen** (med gren-symbol) i vänstermenyn. Du ser en lista med ändrade filer.  
 2. Klicka på **\+** för att lägga till (stage) filerna.  
-3. Skriv ett **commit-meddelande** överst, t.ex. *“Lade till index.html”*.  
+3. Skriv ett **commit-meddelande** överst, t.ex. *“Lade till main.py”*.  
 4. Klicka på **Commit** (eller `Ctrl+Enter`).  
-5. Klicka på **Sync Changes** (🔁) för att pusha till GitHub.
+5. Klicka på **Sync Changes** för att *pusha* (skicka ändringarna) till GitHub.
 
-## **Avancerat: arbeta i grenar (branches)**
+### **Avancerat: arbeta i grenar (branches)**
 
-Att skapa grenar är lika enkelt i Codespaces.
+Om man vill testa något nytt utan att påverka själva "huvudgrenen" av koden kan man skapa en sidogren \- en **branch**.
 
 #### **Skapa en ny branch med terminalen**
 
@@ -103,7 +104,7 @@ git push --set-upstream origin ny-funktion
 
 När du är klar kan du gå till **GitHub-sidan** för projektet och skapa en **Pull Request** för att slå ihop din gren med **`main`**.
 
-### **Hämta uppdateringar**
+#### **Hämta uppdateringar**
 
 Om någon annan ändrat något i projektet:
 
@@ -131,10 +132,11 @@ De flesta servrar kör operativsystemet Linux (där den populäraste varianten �
 
 ### **Vanliga kommandon**
 
-#### ***För att navigera***
+#### **För att navigera bland filer**
 
-| `ls` | Visa filer och mappar i aktuell mapp |
+| Kommando | Beskrivning |
 | :---- | :---- |
+| **`ls`** | Visa filer och mappar i aktuell mapp |
 | **`ls -l`** | Visa detaljerad lista över filer och mappar |
 | **`ls -lR`** | Visa alla filer och mappar i underliggande mappar |
 | **`cd mapp`** | Gå in i undermapp |
@@ -146,19 +148,21 @@ De flesta servrar kör operativsystemet Linux (där den populäraste varianten �
 | **`man kommando`** | Visar manualsidorna för ett kommando/program |
 | **`exit`** | Loggar ut |
 
-#### ***Git \- versionshantering***
+#### **Git \- versionshantering**
 
-| `git status` | Visar vilka filer som har ändrats |
+| Kommando | Beskrivning |
 | :---- | :---- |
+| **`git status`** | Visar vilka filer som har ändrats |
 | **`git add .`** | Lägg till alla ändrade filer till *stage-*area |
 | **`git commit -m 'Meddelande'`** | Skapar en *sparpunkt*. Meddelandet bör beskriva vad man gjort |
 | **`git push`** | Skicka ändringar till ens repository |
 | **`git pull`** | Hämta eventuella uppdateringar från ens repository |
 
-#### ***För att skapa/redigera filer/mappar***
+#### **För att skapa/redigera filer/mappar**
 
-| `mkdir mappnamn` | Skapar en mapp (kallas för *directory* i Linux) |
+| Kommando | Beskrivning |
 | :---- | :---- |
+| **`mkdir mappnamn`** | Skapar en mapp (kallas för *directory* i Linux) |
 | **`touch filnamn`** | Skapar en tom textfil (eller uppdaterar tidsstämpel för en existerande fil eller mapp) |
 | **`rm filnamn`** | Raderar en fil |
 | **`rmdir`** | Raderar en (tom) mapp |
@@ -168,24 +172,27 @@ De flesta servrar kör operativsystemet Linux (där den populäraste varianten �
 | **`cat filnamn`** | Skriver ut innehållet i en fil |
 | **`chown användarnamn filnamn`** | Ändrar ägaren till en fil |
 
-#### ***Textredigeraren nano***
+#### **Textredigeraren nano**
 
-| `nano filnamn` | Öppnar filen i textredigeraren nano |
+| Kommando | Beskrivning |
 | :---- | :---- |
+| **`nano filnamn`** | Öppnar filen i textredigeraren **nano** |
 | **`Ctrl+o`** | Sparar fil |
 | **`Ctrl+x`** | Stäng |
 
-#### ***ctrl-d, ctrl-z och ctrl-c***
+#### **ctrl-d, ctrl-z och ctrl-c**
 
-| `ctrl-d` | Avslutar input (t.ex. ett meddelande, mail, chatt etc) |
+| Kommando | Beskrivning |
 | :---- | :---- |
+| **`ctrl-d`** | Avslutar input (t.ex. ett meddelande, mail, chatt etc) |
 | **`ctrl-z`**  | Stoppar/pausar ett program/kommando tillfälligt |
 | **`ctrl-c`** | Avslutar ett program/kommando |
 
-####  ***Övriga kommandon***
+####  **Övriga kommandon**
 
-| date | Visar aktuellt datum och tid |
+| Kommando | Beskrivning |
 | :---- | :---- |
+| **date** | Visar aktuellt datum och tid |
 | **groups** | Visar vilka grupper den man tillhör |
 
 ## **Pakethantering och virtualenv**

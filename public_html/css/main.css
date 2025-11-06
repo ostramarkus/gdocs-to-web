@@ -80,6 +80,9 @@ header h1 {
     display: flex;
     gap: 0.4rem;
 }
+header a {
+    text-decoration: none;
+}
 
 #main-nav ul {
     display: flex;
@@ -132,7 +135,7 @@ h2 {
     color: var(--heading-accent);
 }
 
-h3, h4 {
+h3, h4, h5 {
     font-size: 1rem;
     margin: 1.6em 0 0.5em 0;
 }
