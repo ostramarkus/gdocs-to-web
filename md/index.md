@@ -2,7 +2,7 @@
 
 ## **Variabler och datatyper**
 
-Variabler används för att lagra information. Variabler är av olika **datatyper** beroende på vilken typ av data som lagras.
+Variabler används för att lagra information. Variabler är av olika **datatyper** beroende på vilken typ av värden som lagras.
 
 ### **⏺ De vanligaste datatyperna**
 
@@ -13,7 +13,7 @@ Variabler används för att lagra information. Variabler är av olika **datatype
 | **float** (flyttal) | `y = 3.14` | Tal med decimaler. |
 | **bool** (boolean) | `is_happy = True` | Kan bara vara `True` eller `False`.  |
 
-### **⏺ Definiera variabler**
+#### **⏺ Definiera variabler**
 
 Variabler skapas (*initialiseras*) och tilldelas ett värde med likamedstecknet: **`=`**.
 
@@ -28,7 +28,17 @@ my_int = 42
 my_float = 3.14			
 ```
 
-### **⏺ Omvandla mellan datatyper**
+### **⏹ Namngivning av variabler**
+
+Namnet på variabler väljer man själv. Det finns dock några regler man bör hålla sig till:
+
+* Ett variabelnamn bör vara **beskrivande** och ge information om vad variabeln är till för eller vad den innehåller. Undvik namn som till exempel **`variabel1`**.  
+* Ett variabelnamn kan **inte börja** på en **siffra** eller ett **specialtecken** (förutom understreck: **`_`**).   
+* Man kan **inte** ha **mellanslag** eller i **minustecken** i variabelnamn.  
+* **Undvik internationella tecken** i variabelnamn.   
+* För mer seriösa program bör variabelnamnen vara på **engelska**.
+
+#### **⏺ Omvandla mellan datatyper**
 
 Man kan omvandla värden/variabler mellan olika datatyper. (Eng: *type conversion* eller *type casting.*)
 
@@ -43,7 +53,7 @@ my_int = int(13.3)
 my_float = float('3.14')	
 ```
 
-### **⏹ Ta reda på datatyp**
+#### **⏹ Ta reda på datatyp**
 
 Med funktionen **`type()`** kan man ta reda på datatypen för en variabel.
 
@@ -54,7 +64,7 @@ print(type(name))
 # → <class 'str'>
 ```
 
-### **⏺ Räkna med variabler**
+#### **⏺ Räkna med variabler**
 
 Variabler kan användas i beräkningar. Parenteser **`()`** kan användas för att kringgå prioritetsregler.
 
@@ -64,9 +74,9 @@ my_sum = 100 + x
 result = (20 + 10) * x
 ```
 
-### **⏺ Aritmetiska operatorer**
+#### **⏺ Aritmetiska operatorer**
 
-Operatorer som används i beräkningar kallas för **aritmetiska operatorer**.
+Tecken som används i beräkningar kallas för **aritmetiska operatorer**.
 
 |  | Förklaring |
 | :---: | :---- |
@@ -74,13 +84,15 @@ Operatorer som används i beräkningar kallas för **aritmetiska operatorer**.
 | **`-`** | Subtraktion |
 | **`*`** | Multiplikation |
 | **`/`** | Division |
-| **`//`** | Division med avrundning nedåt. (floor-division) |
+| **`//`** | Division med avrundning nedåt. (*floor-division*) |
 | **`**`** | Upphöjt |
 | **`%`** | Modulo / rest från division |
 | **`+=`** | Addera till |
 | **`-=`** | Subtrahera från |
 
-### **⏺ Addera eller subtrahera variabler**
+#### **⏺ Addera eller subtrahera variabler**
+
+Teckenkombinationerna **\+=** och **\-=** kan användas för att (med mer kompaktare syntax) öka eller minska en variabels värde. (Eng. *increment* respektive *decrement*.)
 
 ```py
 x = 1
@@ -97,7 +109,7 @@ y -= 3
 
 ## **Input och output**
 
-### **⏺ Skriva ut med `print()`**
+#### **⏺ Skriva ut med `print()`**
 
 Funktionen **`print()`** skriver ut text till terminalfönstret. 
 
@@ -105,9 +117,9 @@ Funktionen **`print()`** skriver ut text till terminalfönstret.
 print('Hello World!')
 ```
 
-### **⏺ Skriv ut flera värden med kommatecknet**
+#### **⏺ Skriv ut flera värden med kommatecknet**
 
-Man kan ange flera värden att skriva ut med hjälp av kommatecknet. Man får ett automatiskt mellanslag mellan värdena. Här spelar det ingen roll vilken **datatyp** värdena är.
+Man kan ange flera värden att skriva ut med hjälp av kommatecknet. Man får då ett automatiskt mellanslag mellan värdena. (Det ingen roll vilken **datatyp** värdena är.)
 
 ```py
 name = 'Markus'
@@ -117,7 +129,7 @@ print('Hello', name, 'Your score:', score)
 # → 'Hello Markus Your score: 100'
 ```
 
-### **◆ Skriv ut utan att skapa en ny rad**
+#### **◆ Skriv ut utan att skapa en ny rad**
 
 Om man vill skriva ut fler värden på samma rad kan man ange en tom sträng för argumentet **`end`** i print-funktionen.
 
@@ -129,17 +141,17 @@ print('Three')
 # → 'One Two Three'
 ```
 
-### **⏺ Input-funktionen**
+#### **⏺ Input-funktionen**
 
 Funktionen **`input()`** pausar programmet och väntar på text-input från användaren. Den input man får lagrar man oftast i en variabel. 
 
-**OBS\!** Input-datan är alltid en textsträng/**`str`**.
+**OBS\!** Den data man får från en input-funktion är alltid en textsträng/**`str`**.
 
 ```py
 name = input('Vad heter du?')
 ```
 
-### **⏹ Typomvandla direkt från input-funktion**
+#### **⏹ Typomvandla direkt från input-funktion**
 
 Om man vill göra beräkningar eller numeriska jämförelser med datan från en input-funktion kan man konvertera den direkt till en annan datatyp.
 
@@ -149,11 +161,11 @@ age = int(input('Hur gammal är du?'))
 
 ## **Textsträngar**
 
-### **⏺ Sätta ihop textsträngar**
+#### **⏺ Sätta ihop textsträngar**
 
 Med plustecknet kan man sätta ihop flera textsträngar. Detta kallas **konkatenering**.
 
-**OBS\!** Alla värden måste vara textsträngar.
+**OBS\!** Alla värden måste då vara textsträngar \- annars får man ett **`TypeError`**.
 
 ```py
 name = 'Markus'
@@ -170,9 +182,10 @@ full_name = firstname + ' ' + lastname
 # full_name → 'Markus Pettersson'
 ```
 
-### **⏹ Sträng-formatering med f-strings**
+#### **⏹ Sträng-formatering med f-strings**
 
-Med så kallad f-sträng-formattering kan man sätta in variabler (eller andra uttryck, till exempel beräkningar) direkt i en textsträng. Man kan också ange hur variablerna ska formateras vid utskrift (t.ex. antalet decimaler.)
+F-strängar (**f-strings**) är ett relativt nytt sätt att formatera strängar i Python. Med f-strängar kan man sätta in variabler (eller andra uttryck, till exempel beräkningar) direkt i en textsträng. Man kan också ange hur variablerna ska formateras vid utskrift (t.ex. antalet decimaler eller att ett värde ska anges som procenttal.)  
+**OBS\!** F-strängar skapas genom att man sätter bokstaven **`f`** före textsträngens citattecken.
 
 ```py
 product = 'kexchoklad'
@@ -193,9 +206,32 @@ print(f'Du har köpt {product} för {price * quantity:.2f} kr.')
 | Procent | `f"{0.85:.0%}"` |  | `"85%"` |
 | Tusentalsavgränsning | `f"{1234567:,}"` |  | `"1,234,567"` |
 
-### **⏹ Ta ut delar av en sträng**
+#### **◆ Linjera text med f-string**
 
-Strängar kan på många sätt hanteras som listor. Man kan till exempel nå delar av en sträng med hakklammer **`[]`** och kolon: :. Detta kallas för **slicing**.
+Man kan även använda f-strings för att få utskrifter på flera rader att linjera snyggt. (Bra om man skriver ut tabelldata.) Man använder då tecknen **`<`** och **`>`** (för att linjera text vänster respektive höger) följt av en siffra för att ange avståndet.
+
+```py
+fav_icecreams = [
+    ['Markus', 'Daimstrut'],
+    ['Stina', 'Cornetto'],
+    ['Nils', 'Piggelin'],
+    ['Oskar', '88']
+  ]
+
+# Skriv ut på ett prydligt sätt med f-strings
+for fi in fav_icecreams:
+    print(f'{fi[0]:<8} {fi[1]:>8}')
+
+# → Markus   Daimstrut
+#    Stina    Cornetto
+#    Nils     Piggelin
+#    Oskar          88
+
+```
+
+#### **⏹ Ta ut delar av en sträng**
+
+Strängar kan på många sätt hanteras som listor. Man kan till exempel nå delar av en sträng med hakklammer **`[]`** och kolon: **`:`**. Detta kallas för **slicing**.
 
 ```py
 name = 'Markus'
@@ -204,7 +240,7 @@ first_three_letters = name[0:3]
 # first_three_letters → 'Mar'
 ```
 
-### **⏹ Ändra stora/små bokstäver**
+#### **⏹ Ändra stora/små bokstäver**
 
 ```py
 name = 'Markus'
@@ -219,7 +255,7 @@ cap_name = small_name.capitalize()
 # 'markus' → 'Markus'
 ```
 
-### **⏹ Sök och ersätt i text**
+#### **⏹ Sök och ersätt i text**
 
 ```py
 string = 'find and replace'
@@ -228,7 +264,7 @@ new_string = string.replace('find', 'replace')
 # new_string → 'replace and replace'
 ```
 
-### **⏹ Ta bort tomrum (och ny-rad-tecken) från sträng**
+#### **⏹ Ta bort tomrum (och ny-rad-tecken) från sträng**
 
 ```py
 name = '    Markus      '
@@ -237,9 +273,9 @@ new_name = name.strip()
 # new_name → 'Markus'
 ```
 
-### **◆ Kedja metoder**
+#### **◆ Kedja metoder**
 
-Metoder som returnerar ett resultat kan man kedja ihop för att göra flera operationer direkt efter varandra. (Resultatet från en metod skickas vidare till nästa.)
+Metoder som returnerar ett resultat kan man kedja ihop för att göra flera operationer direkt efter varandra. (Resultatet från en metod skickas vidare till nästa i kedjan.)
 
 ```py
 ugly_name = '  mAr_kUs   '
@@ -250,7 +286,7 @@ print(nice_name)
 # → 'Markus'
 ```
 
-### **◆ Konvertera sträng till lista**
+#### **◆ Konvertera sträng till lista**
 
 ```py
 my_string = 'ABCDEF'
@@ -267,13 +303,13 @@ Listor används för att lagra flera värden som hör samman med varandra. (En l
 
 En lista skapar man som en variabel med värden separerade med kommatecken. Listans värden ramas in i klammerparenteser **`[]`**.
 
-### **⏺ Definiera en lista**
+#### **⏺ Definiera en lista**
 
 ```py
 menu = ['kebab', 'pizza', 'sushi']
 ```
 
-### **⏺ Nå ett listvärde**
+#### **⏺ Nå ett listvärde**
 
 För att nå ett värde i listan använder man ett positionsnummer. Positionsnummer kallas även **index**. Den första positionen har **index** **`0`**. 
 
@@ -284,7 +320,7 @@ first_dish = menu[0]
 # first_dish → 'kebab'
 ```
 
-### **⏹ Räkna bakifrån**
+#### **⏹ Räkna bakifrån**
 
 Med negativa positionsnummer räknar man bakifrån från sista positionen. 
 
@@ -295,7 +331,7 @@ last_dish = menu[-1]
 # last_dish → 'sushi'
 ```
 
-### **⏹ Välj delar av en lista**
+#### **⏹ Välj delar av en lista**
 
 Med kolon **:** kan man ange ett intervall av index som man vill nå. Detta kallas för **slicing**.
 
@@ -306,19 +342,19 @@ first_three_dishes = menu[0:3]
 # first_three_dishes → ['kebab', 'pizza', 'sushi']
 ```
 
-### **⏺ Tilldela ett värde till en viss position**
+#### **⏺ Tilldela ett värde till en viss position**
 
 ```py
 menu[0] = 'meatballs'
 ```
 
-### **⏺ Lägga till ett värde till en lista**
+#### **⏺ Lägga till ett värde till en lista**
 
 ```py
 menu.append('thai-food')
 ```
 
-### **⏹ Ta reda på längden på en lista eller sträng**
+#### **⏹ Ta reda på längden på en lista eller sträng**
 
 ```py
 menu = ['kebab', 'pizza', 'sushi']
@@ -334,7 +370,7 @@ string_size = len(name)
 # string_size → 5
 ```
 
-### **⏺ Gå igenom/iterera en lista ett värde i taget**
+#### **⏺ Gå igenom/iterera en lista ett värde i taget**
 
 ```py
 menu = ['pizza', 'kebab', 'sushi']
@@ -343,7 +379,7 @@ for dish in menu:
     print(dish)
 ```
 
-### **⏹ Skapa en lista från en textsträng**
+#### **⏹ Skapa en lista från en textsträng**
 
 ```py
 menu_string = 'kebab, pizza, sushi, meatballs'
@@ -352,16 +388,50 @@ menu = menu_string.split(',')
 # food_list → ['kebab', ' pizza', ' sushi', ' meatballs']
 ```
 
-### **⏹ Konvertera en lista till en sträng**
+#### **⏹ Konvertera en lista till en sträng**
 
 ```py
 menu = ['kebab', ' pizza', ' sushi', ' meatballs']
-menu_string = ','.join(food_list)
+menu_string = ','.join(menu)
 
 # menu_string → 'kebab, pizza, sushi, meatballs'
 ```
 
-### **⏹ Sortera en lista**
+#### **⏹ Nästlade listor**
+
+Det är inte ovanligt med nästlade listor, att listor i sin tur innehåller andra listor (eng. *nested lists*). Inom matematiken kan det fenomenet kallas för *matris.* För att nå värdena från de 'inre' listorna kan man använda dubbla set av hakparanteser:
+
+```py
+lessons = [
+    ["Svenska", "Engelska", "Idrott"],  # Måndag
+    ["Matematik", "Historia"],          # Tisdag
+    ["Programmering", "Programmering"], # Onsdag
+    ["Engelska", "Matematik"],          # Torsdag
+    ["Programmering", "Idrott"]         # Fredag
+]
+
+print(lessons[3][1])
+```
+
+Man kan också använda dubbla for-loopar för att gå igenom listorna:
+
+```py
+lessons = [
+    ["Svenska", "Engelska", "Idrott"],  # Måndag
+    ["Matematik", "Historia"],          # Tisdag
+    ["Programmering", "Programmering"], # Onsdag
+    ["Engelska", "Matematik"],          # Torsdag
+    ["Programmering", "Idrott"]         # Fredag
+]
+
+for day in lessons:
+    print('Denna dags lektioner:')
+    for lesson in day:
+        print(lesson)
+
+```
+
+#### **⏹ Sortera en lista**
 
 ```py
 letters = ['B', 'D', 'C', 'A']
@@ -379,7 +449,7 @@ numbers.sort()
 # numbers → [0.3, 1, 2.4, 5, 100]
 ```
 
-### **⏹ Räkna förekomst i lista**
+#### **⏹ Räkna förekomst i lista**
 
 Med metoden **`count()`** kan man räkna förekomsten av ett värde i en lista.
 
@@ -392,7 +462,7 @@ nr_of_a = grades.count('A')
 print('Antal A:', nr_of_a)
 ```
 
-### **⏹ Summera en lista**
+#### **⏹ Summera en lista**
 
 ```py
 scores = [12, 34, 56, 12, 32, 34]
@@ -401,7 +471,7 @@ print(sum(scores))
 # → 180
 ```
 
-### **⏹ Max- och min-värden**
+#### **⏹ Max- och min-värden**
 
 ```py
 scores = [12, 34, 56, 12, 32, 34]
@@ -417,7 +487,7 @@ print(max(scores))
 # → 56
 ```
 
-### **⏹ Medelvärde**
+#### **⏹ Medelvärde**
 
 Här används **`sum()`** och **`len()`** i kombination för att räkna ut ett medelvärde.
 
@@ -447,7 +517,7 @@ If-satser används för att programmet ska utföra viss kod endast då ett visst
 | **`and`** | Och |
 | **`or`** | Eller |
 
-### **⏺ Jämförelse av textsträngar**
+#### **⏺ Jämförelse av textsträngar**
 
 ```py
 name = 'Markus'
@@ -460,7 +530,7 @@ else:
 # → 'Welcome!'
 ```
 
-### **⏺ Jämförelse av numeriska värden**
+#### **⏺ Jämförelse av numeriska värden**
 
 ```py
 age = 25
@@ -473,7 +543,7 @@ else:
 # → 'Hello!'
 ```
 
-### **⏺ Flera villkor med `and`** 
+#### **⏺ Flera villkor med `and`** 
 
 Med **`and`** kan man ange flera villkor som alla måste vara sanna.
 
@@ -487,7 +557,7 @@ else:
     print('Access denied!')
 ```
 
-### **⏺  Flera villkor med `or`**
+#### **⏺  Flera villkor med `or`**
 
 Med **`or`** kan man ange flera villkor. Det räcker med att ett av villkoren är sant.
 
@@ -498,7 +568,7 @@ else:
     print('Access denied!')
 ```
 
-### **⏹ Else-if \- flera jämförelser**
+#### **⏹ Else-if \- flera jämförelser**
 
 Med **`elif`** testas flera villkor efter varandra. När ett villkor är sant avslutas if-satsen.
 
@@ -513,7 +583,7 @@ else:
     print('Access denied!')
 ```
 
-### **⏹ If och listor**
+#### **⏹ If och listor**
 
 Med en if-sats kan man kontrollera ifall ett värde finns i en lista.
 
@@ -528,7 +598,7 @@ else:
 # → 'Yes! Pizza!'
 ```
 
-### **⏹ If och strängar**
+#### **⏹ If och strängar**
 
 Med en if-sats kan man kontrollera ifall en textsträng innehåller viss text.
 
@@ -543,7 +613,7 @@ else:
 # → 'Correct'
 ```
 
-### **◆ If och funktioner**
+#### **◆ If och funktioner**
 
 Funktioner som returnerar **`True`** eller **`False`** (booleska värden) kan användas direkt som villkor i if-satser.
 
@@ -560,7 +630,7 @@ else:
 
 Loopar används när man vill upprepa kod i sitt program. Den kod som ska utföras i loopen *indenteras* med 4 mellanslag.
 
-### **⏺ En `for`\-loop med `range()`**
+#### **⏺ En `for`\-loop med `range()`**
 
 För att ange hur många gånger en **`for`**\-loop ska köras är det vanligt att använda en räknare (variabeln **`i`**) och funktionen **`range()`** som skapar en talserie mellan två heltal.
 
@@ -569,7 +639,7 @@ for i in range(0, 10):
    print('I can count to:', i)
 ```
 
-### **⏺ En `for`\-loop för att gå igenom en lista/sträng**
+#### **⏺ En `for`\-loop för att gå igenom en lista/sträng**
 
 For-loopar används även för att gå igenom (*iterera*) listor och strängar.
 
@@ -587,7 +657,7 @@ for letter in name:
     print(letter)
 ```
 
-### **⏹ While-loop**
+#### **⏹ While-loop**
 
 En **`while`**\-loop körs så länge ett villkor är uppfyllt.
 
@@ -599,7 +669,7 @@ while i < 10:
     i += 1
 ```
 
-### **⏺ Evig `while`\-loop**
+#### **⏺ Evig `while`\-loop**
 
 Om man anger ett villkor som alltid är sant, skapas en evig loop.
 
@@ -608,7 +678,7 @@ while True:
     input('Are we there yet?')
 ```
 
-### **⏹ Avbryta en loop med `break`** 
+#### **⏹ Avbryta en loop med `break`** 
 
 Man kan använda **`break`** för att avbryta en loop.
 
@@ -620,7 +690,7 @@ while True:
         break
 ```
 
-### **◆ Skapa listor med `range()`**
+#### **◆ Skapa listor med `range()`**
 
 Funktionen **`range()`** kan även användas för att skapa en lista av talserier. Funktionen tar även ett tredje argument som anger stegstorleken (differensen) mellan talen i talserien.
 
@@ -637,7 +707,7 @@ print(my_list)
 
 En *funktion* är namngiven kod som man sedan kan anropa från sitt program. Med funktioner slipper man upprepa sig när man vill göra samma sak flera gånger. Funktioner är också ett sätt att dela upp ett större program i mindre, mer lätthanterliga delar. 
 
-### **⏺ Egen funktion**
+#### **⏺ Egen funktion**
 
 ```py
 def hello():
@@ -647,7 +717,7 @@ def hello():
 hello()
 ```
 
-### **⏺ Funktion som tar emot argument**
+#### **⏺ Funktion som tar emot argument**
 
 De värden som skickas in i en funktion kallas för **argument**.
 
@@ -658,7 +728,7 @@ def hello(name):
 hello('Markus')
 ```
 
-### **⏺ Flera argument \- returnera ett värde**
+#### **⏺ Flera argument \- returnera ett värde**
 
 Det är vanligt att en funktion bearbetar information för att sedan skicka tillbaka ett resultat till huvudprogrammet \- funktionen **returnerar** ett värde.
 
@@ -671,7 +741,7 @@ my_area = triangle_area(5, 7)
 print(my_area)
 ```
 
-### **⏹ Returnera booleska värden**
+#### **⏹ Returnera booleska värden**
 
 Det är vanligt med funktioner som returnerar **`True`** eller **`False`** (*booleska* värden).
 
@@ -690,7 +760,7 @@ def is_weekend(day):
     return day == 'saturday' or day == 'sunday'
 ```
 
-### **◆ Funktioner med keyword-arguments**
+#### **◆ Funktioner med keyword-arguments**
 
 Om man vill göra sina funktioner tydligare och flexiblare kan man använda namngivna argument (**keyword-arguments**). Då namnger man argumenten som funktionen tar emot och anger även **standardvärden (**eng. *default values*) för argumenten.
 
@@ -715,7 +785,7 @@ my_area1 = triangle_area()
 
 Datatypen **dictionary** (dict) är en *samling* precis som listor. Istället för att de olika elementen representeras av ett positionsnummer (0, 1, 2 etc.) används beskrivande namn. Namnen som identifierar positionerna kallas för **keys** (sv. nycklar).
 
-### **⏺ En enkel dictionary**
+#### **⏺ En enkel dictionary**
 
 ```py
 car = {'brand': 'Volvo', 'color': 'black', 'max_speed': 280}
@@ -723,7 +793,7 @@ car = {'brand': 'Volvo', 'color': 'black', 'max_speed': 280}
 print(car['max_speed'])
 ```
 
-### **⏺ En dictionary på flera rader**
+#### **⏺ En dictionary på flera rader**
 
 ```py
 car = {
@@ -735,7 +805,7 @@ car = {
 }
 ```
 
-### **⏺ En lista av dictionaries**
+#### **⏺ En lista av dictionaries**
 
 ```py
 products = [
@@ -754,7 +824,7 @@ products = [
 
 ### 
 
-### **⏹ Gå igenom en dictionary med en `for`\-loop**
+#### **⏹ Gå igenom en dictionary med en `for`\-loop**
 
 Med metoden **`items()`** kan man iterera över både **nyckeln** (*key*) och **värdet** (*value*).
 
@@ -782,13 +852,13 @@ De viktigaste skillnaderna mot vanliga listor:
 * **Tuplar** är inte ändringsbara (de är *immutable*). Man kan alltså inte ändra dess värden efter att tupeln är skapad.  
 * **Set** kan endast innehålla unika värden. De kan alltså inte innehålla dubbletter. (Set kan liknas vid det matematiska begreppet *mängd*).
 
-### **⏹ Definiera en tupel**
+#### **⏹ Definiera en tupel**
 
 ```py
 my_tuple = ('kebab', 'pizza', 'meatballs')
 ```
 
-### **⏹ Definiera ett set**
+#### **⏹ Definiera ett set**
 
 ```py
 my_set = {'kebab', 'pizza', 'meatballs'}
@@ -808,7 +878,7 @@ my_set = {'kebab', 'pizza', 'meatballs'}
 
 ## **Kommentera kod**
 
-För att öka tydligheten i koden (för sig själv och för andra) bör man använda kommentarer. För mer komplexa program brukar kommenterar för funktioner och klasser vara mer utförlig och kommentarerna används även för att automatiskt generera dokumentation över koden. (Dokumentation \= text som i detalj beskriver hur koden fungerar.)
+För att öka tydligheten i koden (för sig själv och för andra) bör man använda *kommentarer*. För mer komplexa program brukar kommenterar för funktioner och klasser vara mer utförlig och kommentarerna används även för att automatiskt generera dokumentation över koden. (Dokumentation \= text som i detalj beskriver hur koden fungerar.)
 
 ### **⏺ Riktlinjer för kommentarer**
 
@@ -882,7 +952,7 @@ Alla citat ovan kommer från Pythons officiella stilguide: PEP (Python Enhancmen
 
 ## **Filer: läsa och skriv**
 
-### **⏺ Öppna och läs in en hel textfil**
+#### **⏺ Öppna och läs in en hel textfil**
 
 ```py
 with open('names.txt') as file:
@@ -891,7 +961,7 @@ with open('names.txt') as file:
 print(content)
 ```
 
-### **⏺ Läs en textfil rad för rad**
+#### **⏺ Läs en textfil rad för rad**
 
 Med en **`for`**\-loop kan vi gå igenom textfilen rad-för-rad. Genom att använda metoden **`strip()`** tar vi bort tecknet för "ny rad" i slutet på varje textrad.
 
@@ -901,14 +971,14 @@ with open('names.txt') as file:
         print(line.strip())
 ```
 
-### **⏹ Läs in en textfil till en lista**
+#### **⏹ Läs in en textfil till en lista**
 
 ```py
 with open('names.txt') as name_file:
     names = name_file.readlines()
 ```
 
-### **⏹ Skriv till en textfil**
+#### **⏹ Skriv till en textfil**
 
 Detta tar bort eventuellt tidigare innehåll.
 
@@ -917,14 +987,14 @@ with open('textfile.txt', 'w') as textfile:
     textfile.write('Hello world!')
 ```
 
-### **⏹ Lägg till i befintlig fil**
+#### **⏹ Lägg till i befintlig fil**
 
 ```py
 with open('textfile.txt', 'a') as textfile:
     textfile.write('Hello world!')
 ```
 
-### **⏹ Infoga ny rad med tecknen: `\n`**
+#### **⏹ Infoga ny rad med tecknen: `\n`**
 
 Om man vill lägga till en radbrytning i texten som man skriver kan man använda teckenkombinationen: **`\n`**
 
@@ -950,7 +1020,7 @@ with open('textfile.txt', 'a') as textfile:
 
 Med modulen **`random`** kan man använda slump i sina program.
 
-### **⏺ Importera moduler**
+#### **⏺ Importera moduler**
 
 Moduler som **`random`** behöver importeras innan de används. Import av moduler görs högst upp i ens kod.
 
@@ -958,26 +1028,26 @@ Moduler som **`random`** behöver importeras innan de används. Import av module
 import random
 ```
 
-### **⏹ Slumpar ett decimaltal mellan 0 och 1**
+#### **⏹ Slumpar ett decimaltal mellan 0 och 1**
 
 ```py
 r1 = random.random()
 ```
 
-### **⏺ Slumpar ett heltal mellan vissa värden**
+#### **⏺ Slumpar ett heltal mellan vissa värden**
 
 ```py
 r2 = random.randrange(10, 20)
 ```
 
-### **⏺ Slumpar ett alternativ från en lista**
+#### **⏺ Slumpar ett alternativ från en lista**
 
 ```py
 menu = ["pizza", "kebab", "pasta"]
 food = random.choice(menu)
 ```
 
-### **◆ Slumpmässigt urval ur en lista**
+#### **◆ Slumpmässigt urval ur en lista**
 
 Om man vill slumpa fram flera värden från en lista (utan risk för dubbletter) kan man använda metoden **`sample()`** \- det man får tillbaka är en lista med ett slumpmässigt urval.
 
@@ -1000,7 +1070,7 @@ print(volunteers)
 
 Modulen **`datetime`** används för att hantera tid och datum.
 
-### **⏺ Ta fram dagens datum**
+#### **⏺ Ta fram dagens datum**
 
 ```py
 import datetime
@@ -1008,19 +1078,19 @@ import datetime
 today = datetime.date.today()
 ```
 
-### **⏺ Ta fram ett annat datum**
+#### **⏺ Ta fram ett annat datum**
 
 ```py
 christmas = datetime.date(2025, 12, 24)
 ```
 
-### **⏹ Ta fram ett datum från en sträng i iso-format**
+#### **⏹ Ta fram ett datum från en sträng i iso-format**
 
 ```py
-christmas = date.fromisoformat("2025-12-24")
+christmas = datetime.date.fromisoformat("2025-12-24")
 ```
 
-### **⏹ Ta fram veckodag för datum**
+#### **⏹ Ta fram veckodag för datum**
 
 Metoden **`weekday()`** ger veckodagens nummer. Måndag \= 0, tisdag \= 1 etc.
 
@@ -1031,7 +1101,7 @@ print(christmas.weekday())
 # → 2
 ```
 
-### **⏹ Räkna med datum**
+#### **⏹ Räkna med datum**
 
 ```py
 christmas = datetime.date(2025, 12, 24)
@@ -1051,7 +1121,7 @@ in_ten_days = today + ten_days
 print(in_ten_days)
 ```
 
-### **⏹ Datetime \- datum och tid tillsammans**
+#### **⏹ Datetime \- datum och tid tillsammans**
 
 ```py
 now = datetime.datetime.now()
@@ -1102,9 +1172,9 @@ id,name,age,department,salary
 105,Edward,29,Engineering,72000
 ```
 
-### **⏺ Läsa och tolka CSV-fil som lista**
+#### **⏺ Läsa och tolka CSV-fil som lista**
 
-Med metoden **`reader()`** från modulen **`csv`** läses varje rad i CSV-filen in som en lista. Genom funktionen **`next()`** hoppas första raden över (som innehåller kolumnrubrikerna.
+Med metoden **`reader()`** från modulen **`csv`** läses varje rad i CSV-filen in som en lista. Genom funktionen **`next()`** hoppas första raden över (som innehåller kolumnrubrikerna).
 
 ```py
 import csv
@@ -1116,7 +1186,7 @@ with open('employees.csv', newline="") as csvfile:
         print(employee[1])
 ```
 
-### **⏺ Läsa och tolka CSV-fil som dictionary**
+#### **⏺ Läsa och tolka CSV-fil som dictionary**
 
 Med klassen **`DictReader()`** från modulen **`csv`** läses varje rad in som en **dictionary**. 
 
@@ -1146,7 +1216,7 @@ En viktig del i programmering är att hantera eventuella fel som kan uppstå i e
 
 Körningsfel (**exceptions**) kan fångas upp och hanteras med **`try`**/**`except`**.
 
-### **⏹ Try och except**
+#### **⏹ Try och except**
 
 Den kod man misstänker kan utlösa ett körningsfel sätts i ett kodblock under `try`. Med **`except`** anger man vilket fel som förväntas och i ett kodblock under anger man hur felet ska hanteras.
 
@@ -1159,7 +1229,7 @@ except ValueError:
   exit()
 ```
 
-### **◆ Felaktig input \- försök igen**
+#### **◆ Felaktig input \- försök igen**
 
 Ett sätt att hantera felaktig input är att be användaren att försöka igen. Det går att göra med en evig loop som bryts (med **break**) **när inget fel** inträffar.
 

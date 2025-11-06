@@ -97,6 +97,11 @@ header h1 {
     letter-spacing: 0.1em;
 }
 
+#main-nav .active {
+    color: #fff;
+    border-bottom: 2px solid #fff;
+}
+
 #main-nav a:hover {
     color: #fff;
 }
@@ -113,7 +118,7 @@ header h1 {
     background-color: #333;
 }
 
-/* Tyography */
+/* Typography */
 
 main h1 {
     display: none;
@@ -127,8 +132,9 @@ h2 {
     color: var(--heading-accent);
 }
 
-h3 {
+h3, h4 {
     font-size: 1rem;
+    margin: 1.6em 0 0.5em 0;
 }
 
 article:has(.tag_basic),
@@ -149,11 +155,13 @@ article:has(.tag_advanced) {
     border-color: var(--advanced);
 }
 
-article .heading-nr {
+h3 .heading-nr,
+h4 .heading-nr {
     color: #fff;
-    margin-right: 0.3rem;
-    font-size: 0.8rem;
-    padding: 0.1em 0.3rem;
+    margin-right: 0.8em;
+    background-color: #ccc;
+    font-size: 0.7em;
+    padding: 0.1em 0.4em;
     text-align: center;
     display: inline-block;
     border-radius: 3px;
@@ -172,7 +180,7 @@ article .heading-nr {
 }
 
 
-article li {
+section li {
     margin-bottom: 0.4em;
 }
 
@@ -217,14 +225,10 @@ th {
     border: 1px solid var(--second-accent);
 }
 
-h3, h4 {
-    margin: 1.6em 0 0.4em 0;
-}
-
 
 /* Inline code style */
 
-h3 > code,
+h4 > code,
 p code,
 h2 code,
 td code {
@@ -261,18 +265,21 @@ section {
 
 article {
     background-color: var(--article-bg);
-    border-radius: var(--border-radius);
+    border-radius: 0;
     box-shadow: 2px 2px 3px rgba(0,0,0,0.1);
     padding: 1rem;
     margin-top: 1rem;
 }
 
 
-article > h3 {
+article > h4 {
     margin-top: -4px;
     padding-left: 0em; 
 }
 
+article h4 + p {
+    margin-top: 0;
+}
 
 section > p {
     font-size: 1rem;

@@ -5,8 +5,9 @@ from bs4 import BeautifulSoup
 
 class Document:
     """Main class for md2html. Represents a document to be converted."""
-    def __init__(self, md_path, template_path, title="Untitled", insert_tag="main"):
+    def __init__(self, md_path, template_path, title="Untitled", insert_tag="main", id=""):
         self.bs4_parser = 'html.parser'
+        self.id = id
         self.md_path = md_path
         self.template_path = template_path
         self.title = title
@@ -43,32 +44,44 @@ class Document:
         """Clean and structure Markdown soup before merging with template."""
         return (SoupProcessor(self.load_markdown(self.md_path))
             .clean_up_headings()
+            .id_headings()
             .wrap_elements('h2', 'section', ['h2'])
-            .wrap_elements('h3', 'article', ['h2', 'h3'])
+            .wrap_elements('h4', 'article', ['h2', 'h3', 'h4'])
             .div_wrap('table', class_name='table-container')
             .div_wrap('pre', class_name='code-container')
-            .span_wrap('h3', '⏺', 'tag_basic')
-            .span_wrap('h3', '⏹', 'tag_intermediate')
-            .span_wrap('h3', '◆', 'tag_advanced')
+            .span_wrap(['h3', 'h4'], '⏺', 'tag_basic')
+            .span_wrap(['h3', 'h4'], '⏹', 'tag_intermediate')
+            .span_wrap(['h3', 'h4'], '◆', 'tag_advanced')
             .number_headings()
             .soup
         )
 
     def insert_main_nav(self, nav_data, id='#main-nav'):
         """Create and insert main navigation. Return as soup"""
-        main_nav_soup = self.create_main_nav_soup(nav_data)
+        main_nav_soup = self.create_main_nav_soup(nav_data, id=self.id)
         main_nav_tag = self.soup.select(id)[0]
         main_nav_tag.append(main_nav_soup)
         return self
 
-    def create_main_nav_soup(self, nav_data):
-        """Create HTML for main navigation. Return as soup."""
-        nav_html= '<ul>'
-        for link in nav_data:
-            link_id, link_title, link_path = link
-            nav_html += f'<li id="link-{link_id}"><a href="{link_path}">{link_title}</a></li>'
-        nav_html += '</ul>'
-        return BeautifulSoup(nav_html, self.bs4_parser)
+    def create_main_nav_soup(self, nav_data, id=""):
+        """Create HTML for main navigation using BeautifulSoup. Return as soup."""
+        soup = BeautifulSoup("", self.bs4_parser)
+
+        # skapa huvud <ul>-elementet
+        ul_tag = soup.new_tag("ul")
+
+        # skapa <li> och <a> för varje länk
+        for link_id, link_title, link_path in nav_data:
+            li_tag = soup.new_tag("li", id=f"link-{link_id}")
+            a_tag = soup.new_tag("a", href=link_path)
+            a_tag.string = link_title
+            if id == link_id:
+                a_tag['class'] = 'active'
+            li_tag.append(a_tag)
+            ul_tag.append(li_tag)
+
+        soup.append(ul_tag)
+        return soup
 
     def load_markdown(self, md_path):
         """Load a Markdown file and return soup."""
@@ -110,12 +123,17 @@ class SoupProcessor:
     def __init__(self, soup):
         self.soup = soup   
 
-    def wrap_elements(self, header_tag, wrapper_tag, stop_tags):
-        for header in list(self.soup.find_all(header_tag)):
+    def id_headings(self):
+        """Clean up headings by removing <strong> tags and empty headings."""
+        for heading in self.soup.find_all(['h1', 'h2', 'h3', 'h4', 'h5', 'h6']):
+            heading['id'] = slugify(heading.text) 
+        return self
+
+    def wrap_elements(self, heading_tag, wrapper_tag, stop_tags):
+        for heading in list(self.soup.find_all(heading_tag)):
             wrapper = self.soup.new_tag(wrapper_tag)
-            wrapper['id'] = slugify(header.text)
-            header.insert_before(wrapper)
-            wrapper.append(header)
+            heading.insert_before(wrapper)
+            wrapper.append(heading)
             next_node = wrapper.next_sibling
             while next_node and next_node.name not in stop_tags:
                 sibling = next_node.next_sibling
@@ -141,12 +159,11 @@ class SoupProcessor:
             h2 = section.find('h2')            
             h2.insert(0, span)
             
-            for j, article in enumerate(section.find_all(['article']), start=1):
+            for j, heading in enumerate(section.find_all(['h3', 'h4']), start=1):
                 span = self.soup.new_tag('span')
                 span['class'] = 'heading-nr'
                 span.string = str(i) + '.' + str(j) + ' '
-                h3 = article.find('h3')            
-                h3.insert(0, span)
+                heading.insert(0, span)
 
         return self
 
@@ -205,8 +222,8 @@ class TOC:
         # Iterate all <section> save id-attribute and inner text of <h2>
         structure = []
         for section in soup.find_all('section'):
-            section_id = section['id']
             section_title_tag = section.find('h2')
+            section_id = section_title_tag['id']
             if section_title_tag:
                 section_title = section_title_tag.text
             else:
@@ -214,20 +231,27 @@ class TOC:
                 
             section_data = {'id': section_id, 'title': section_title}
 
-            # Iterate all <srticle> save id-attribute and inner text of <h3>            
-            section_articles = []
-            for article in section.find_all('article'):
-                article_id = article['id']
-                article_heading = article.find('h3')
-                article_title = article_heading.text
+            # Iterate all sub-headings and save id-attribute and inner text of headings           
+            section_headings = []
+            for heading in section.find_all(['h3', 'h4']):
+                heading_title = heading.text
                 try:
-                    article_tag = article_heading['class']
+                    heading_id = heading['id']
                 except KeyError:
-                    article_tag = 'generic'
-                article_data = {'id': article_id, 'title': article_title, 'tag': article_tag}
-                section_articles.append(article_data)
+                    print('Id not found', heading.string)
+                    heading_id = 'generic'
+
+                try:
+                    heading_tag = heading['class']
+                except KeyError:
+                    print('Class not found', heading.string)
+                    heading_tag = 'generic'
+
+
+                article_data = {'id': heading_id, 'title': heading_title, 'tag': heading_tag}
+                section_headings.append(article_data)
             
-            section_data['articles'] = section_articles
+            section_data['articles'] = section_headings
             structure.append(section_data)
         return structure
 

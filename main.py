@@ -15,7 +15,7 @@ def main():
         template_path = 'templates/main.html'
         title = page['title']
 
-        document = md2html.Document(md_path, template_path, title=title)
+        document = md2html.Document(md_path, template_path, title=title, id=page['id'])
         document.insert_main_nav(navigation)
         document.save_html('public_html/' + page['html_file'])
 
