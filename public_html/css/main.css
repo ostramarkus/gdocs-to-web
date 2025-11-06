@@ -55,9 +55,10 @@ main {
 
 header {
     background-color: #111;
-    padding: 1rem;
+    padding: 0 1rem;
     box-sizing: border-box;
     display: flex;
+    align-items: center;
     gap: 0.5em;
     color: #fff;
     justify-content: space-between;
@@ -90,19 +91,41 @@ header a {
     padding: 0;
     margin: 0;
     gap: 3rem;
+    overflow: auto;
+}
+
+#main-nav li {
+    overflow: auto;
 }
 
 #main-nav a {
     color: #ccc;
     text-decoration: none;
     font-size: 0.8rem;
+    padding: 1rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
+    display: inline-block;
 }
 
 #main-nav .active {
     color: #fff;
     border-bottom: 2px solid #fff;
+}
+
+#link-index .active {
+    border-color: var(--third-accent);
+}
+
+#link-fortsattning .active {
+    border-color: var(--heading-accent);
+}
+
+#link-tillampningar .active {
+    border-color: var(--intermediate);
+}
+#link-verktyg .active {
+    border-color: var(--code-comments);
 }
 
 #main-nav a:hover {
@@ -501,6 +524,7 @@ button.copy-btn:hover {
         position: sticky;
         top: 0;
         box-shadow: 0 4px 4px rgba(0,0,0,0.1);
+        padding: 0.8rem 1rem;
         z-index: 1000;
     }
 
