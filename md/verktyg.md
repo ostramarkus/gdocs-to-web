@@ -192,12 +192,11 @@ De flesta servrar kör operativsystemet Linux (där den populäraste varianten �
 
 | Kommando | Beskrivning |
 | :---- | :---- |
-| **date** | Visar aktuellt datum och tid |
-| **groups** | Visar vilka grupper den man tillhör |
+| **`date`** | Visar aktuellt datum och tid |
+| **`groups`** | Visar vilka grupper den man tillhör |
 
 ## **Pakethantering och virtualenv**
 
 ## **Unit testing/enhetstestning**
 
 ## **Notebooks**
-

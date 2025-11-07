@@ -75,7 +75,7 @@ const navLinks = document.querySelectorAll("#toc a");
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
-      const id = entry.target.getAttribute("id");
+      const id = entry.target.getElementsByTagName('h2')[0].getAttribute("id");
       const link = document.querySelector('#toc a[href="#' + id + '"]');
       if (entry.isIntersecting) {
         navLinks.forEach((l) => l.classList.remove("active"));

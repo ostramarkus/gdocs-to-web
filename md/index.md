@@ -299,7 +299,7 @@ my_list = list(my_string)
 
 ## **Listor**
 
-Listor används för att lagra flera värden som hör samman med varandra. (En listas värden kallas även för *element* eller *item.*)
+Listor är den mest flexibla *samlingen* i Python och används för att lagra flera värden som hör samman med varandra. (En listas värden kallas även för *element* eller *items.*)
 
 En lista skapar man som en variabel med värden separerade med kommatecken. Listans värden ramas in i klammerparenteser **`[]`**.
 
@@ -381,11 +381,21 @@ for dish in menu:
 
 #### **⏹ Skapa en lista från en textsträng**
 
+Med metoden **`split`** kan man dela upp en textsträng i en lista. Som *argument* anger man vilket tecken som ska användas för att dela upp strängen.
+
 ```py
 menu_string = 'kebab, pizza, sushi, meatballs'
 menu = menu_string.split(',')
 
 # food_list → ['kebab', ' pizza', ' sushi', ' meatballs']
+```
+
+Man kan också använda funktionen **`list`** för att dela upp en sträng bokstav för bokstav:
+
+```py
+abc_list = list('abc')
+
+# abc_list → ['a', 'b', 'c']
 ```
 
 #### **⏹ Konvertera en lista till en sträng**
@@ -395,6 +405,17 @@ menu = ['kebab', ' pizza', ' sushi', ' meatballs']
 menu_string = ','.join(menu)
 
 # menu_string → 'kebab, pizza, sushi, meatballs'
+```
+
+#### **⏹ Hitta index för ett värde**
+
+List-metoden **`index`** returnerar **index**\-numret för första förekomsten av ett värde.
+
+```py
+
+[1,2,3].index(2) # → 1 
+[1,2,3].index(4) # → ValueError
+
 ```
 
 #### **⏹ Nästlade listor**
@@ -411,6 +432,8 @@ lessons = [
 ]
 
 print(lessons[3][1])
+
+# → Matematik
 ```
 
 Man kan också använda dubbla for-loopar för att gå igenom listorna:
@@ -440,6 +463,7 @@ letters.sort()
 # letters → ['A', 'B', 'C', 'D']
 
 letters.sort(reverse=True)
+# letters → ['D', 'C', 'B', 'A']
 ```
 
 ```py
@@ -447,6 +471,24 @@ numbers = [1, 5, 2.4, 0.3, 100]
 numbers.sort()
 
 # numbers → [0.3, 1, 2.4, 5, 100]
+```
+
+#### **⏹ Kopiera lista**
+
+Metoden **`sort`** förändrar listan som man sorterar. Om man vill ha kvar orginallistan kan man kopiera listan först med metoden **`copy`**.
+
+```py
+letters = ['D', 'E', 'A', 'B', 'C']
+
+sorted_letters = letters.copy()
+sorted_letters.sort()
+
+print(letters)
+print(sorted_letters)
+
+# → ['D', 'E', 'A', 'B', 'C']
+# → ['A', 'B', 'C', 'D', 'E']
+
 ```
 
 #### **⏹ Räkna förekomst i lista**
@@ -460,6 +502,8 @@ grades = ['D', 'C', 'A', 'D', 'F', 'D', 'A', 'E',
 nr_of_a = grades.count('A')
 
 print('Antal A:', nr_of_a)
+
+# → 'Antal A: 2'
 ```
 
 #### **⏹ Summera en lista**
@@ -1062,6 +1106,22 @@ students = ['Anna', 'Bertil', 'Ceasar', 'David',
 volunteers = random.sample(students, 3)
 
 print(volunteers)
+```
+
+#### **◆ Slumpa ordningen i en lista**
+
+Om man vill blanda en lista (slumpa ordningen av dess värden) kan man använda metoden **`shuffle`**.
+
+```py
+import random 
+
+# Alla elever i klassen
+students = ['Anna', 'Bertil', 'Ceasar', 'David', 
+            'Erik', 'Frida', 'Gert', 'Henrietta']
+
+# Blanda listan med shuffle
+random.shuffle(students)
+print(students)
 ```
 
 ## 
