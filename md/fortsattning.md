@@ -101,7 +101,11 @@ print(upper_fruits)
 
 ```
 
+<<<<<<< HEAD
 ### **⏺ Filtrera med list comprehensions**
+=======
+#### **⏺ Filtrera med list comprehensions**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Med **list comprehensions** kombinerat med en **if-sats** kan man filtrera en lista. Värdet läggs bara till i den nya listan ifall villkoret är uppfyllt.
 
@@ -114,7 +118,11 @@ print(long_fruit_names)
 # → ['apple', 'banana', 'pineapple']
 ```
 
+<<<<<<< HEAD
 ### **◆ Skapa en ny lista utifrån en funktions returvärden**
+=======
+#### **◆ Skapa en ny lista utifrån en funktions returvärden**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Här används **list comprehension** för att skapa en ny lista med de betyg som ett provresultat ger.
 
@@ -142,7 +150,11 @@ grades = [get_grade(score) for score in scores]
 print(grades)
 ```
 
+<<<<<<< HEAD
 ### **◆ Sammanställning av förekomst**
+=======
+#### **◆ Sammanställning av förekomst**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Med list-metoden **`count()`** kan man räkna förekomster av ett visst värde i en lista. I exemplet räknar vi hur ofta ett visst betyg förekommer i listan grades. Med en **dict comprehesion** sammanställer vi resultatet i en dictionary.
 
@@ -158,7 +170,11 @@ print(summary)
 # {'A': 2, 'B': 2, 'C': 1, 'D': 4, 'E': 4, 'F': 3}
 ```
 
+<<<<<<< HEAD
 ### **⏹ Ta ut en kolumn från tabellstruktur (CSV)**
+=======
+#### **⏹ Ta ut en kolumn från tabellstruktur (CSV)**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Om man har en datastruktur med listor i listor (som t.ex. en CSV-fil) och vill bara ha ut värdena från en kolumn kan man göra det enkelt med list comprehensions.
 
@@ -221,7 +237,11 @@ OOP gör koden mer modulär, återanvändbar och lättare att underhålla. Att a
 * **Attribut:** Variabler kopplade till en klass/objekt som beskriver objektets egenskaper (t.ex. färg, namn, ålder). Varje objekt har sina egna värden på attributen.  
 * **Metoder:** Funktioner som definieras i en klass och kan användas på objekt. Vad objektet kan "göra".
 
+<<<<<<< HEAD
 ### **⏹ Exempel på en klass**
+=======
+#### **⏹ Exempel på en klass**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 ```py
 # Definiera en klass
@@ -250,7 +270,11 @@ print(fido.age)
 # → 5
 ```
 
+<<<<<<< HEAD
 ### **◆ Arv inom OOP**
+=======
+#### **◆ Arv inom OOP**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Arv är när en **klass (child class)** tar över **egenskaper och metoder** från en annan klass (**parent class**). Det används för att **återanvända kod** och skapa **specialiserade versioner** av en klass.
 
@@ -327,7 +351,11 @@ Den stora skillnaden mellan JSON från CSV är att du i JSON kan ha **nästlade 
 ]
 ```
 
+<<<<<<< HEAD
 ### **⏹ Läsa och tolka JSON-data från fil**
+=======
+#### **⏹ Läsa och tolka JSON-data från fil**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Här finns den JSON-fil som används i exemplet: 🔗[movies.json](https://python.ostrawebb.se/data/movies.json)
 
@@ -347,7 +375,11 @@ for movie in movies:
     print('------------------------------------')
 ```
 
+<<<<<<< HEAD
 ### **⏹ Spara Python-data som JSON**
+=======
+#### **⏹ Spara Python-data som JSON**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 ```py
 import json
@@ -370,7 +402,11 @@ print("Data sparad till save_file.json")
 
 ## **Avancerad hantering av listor**
 
+<<<<<<< HEAD
 ### **⏹ Funktionen `zip` \- para ihop värden från listor**
+=======
+#### **⏹ Funktionen `zip` \- para ihop värden från listor**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Funktionen **`zip`** kan användas för att para ihop värden från två listor eller tuplar. (Funktionen funkar även med samlingen set, men då garanteras inte ordningen av värdena.)
 
@@ -389,7 +425,11 @@ print(menu)
 #     'Torsdag': 'meatballs', 'Fredag': 'tacos'}
 ```
 
+<<<<<<< HEAD
 ### **⏹ Uppackning (unpacking) av samlingar**
+=======
+#### **⏹ Uppackning (unpacking) av samlingar**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Ibland vill man ta en lista (eller tupel) och tilldela dess värden till enskilda variabler. Det går att göra genom att ange flera variabelnamn separerade med kommatecken och tilldela dem listan:
 
@@ -403,7 +443,11 @@ print('Användarnamn:', username)
 print('Lösenord:', password)
 ```
 
+<<<<<<< HEAD
 ### **⏹ Enumerate**
+=======
+#### **⏹ Enumerate**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Ibland vill man iterera/gå igenom en lista och samtidigt ha tillgång till en räknare. (T.ex. om man vill rangordna något, som favoritfilmer eller liknande.) Ett smidigt sätt är att använda funktionen **`enumerate`**. Då kan man iterera en lista och samtidigt få tillgång till en räknare. Med argumentet **`start`** kan man ange räknarens startvärde. 
 
@@ -418,7 +462,11 @@ for number, movie in enumerate(fav_movies, start=1):
 #    4 Inside Out
 ```
 
+<<<<<<< HEAD
 ### **◆ Sortera en lista av dictionaries**
+=======
+#### **◆ Sortera en lista av dictionaries**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Här används funktionen **sorted()** i kombination med en **lambda**\-funktion (en namnlös en-rads-funktion) för att sortera en lista med dictionaries på ett av dict:ens värden (score).
 
@@ -444,7 +492,11 @@ test_result = [
 ranking = sorted(test_result, key=lambda tr: tr['score'], reverse=True)
 ```
 
+<<<<<<< HEAD
 ### **◆ Gå igenom två listor samtidigt**
+=======
+#### **◆ Gå igenom två listor samtidigt**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Med funktionen **`zip`** och **unpacking** kan vi gå igenom/iterera två listor samtidigt.
 
@@ -468,7 +520,11 @@ for score, grade in zip(scores, grades):
 
 ## **Set \- mängdteori och mängoperationer**
 
+<<<<<<< HEAD
 ### **⏺ Lägg till och ta bort från ett `set`**
+=======
+#### **⏺ Lägg till och ta bort från ett `set`**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 ```py
 a_students = {'Gert', 'Berit', 'Eivor', 'Fanny'}
@@ -482,7 +538,11 @@ a_students.discard('Gert')
 print(a_students)
 ```
 
+<<<<<<< HEAD
 ### **⏹ Set \- skillnader: `difference()`**
+=======
+#### **⏹ Set \- skillnader: `difference()`**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Med metoden **`difference`** får man ett nytt **set** med *differensen* mellan mängderna*.* I exemplet nedan får vi alltså namnen på de elever som **inte** finns i båda listorna.
 
@@ -502,7 +562,11 @@ print(absent)
 # → {'Bertil', 'Ceasar'}
 ```
 
+<<<<<<< HEAD
 ### **⏹ Set \- överlappande: `intersection()`**
+=======
+#### **⏹ Set \- överlappande: `intersection()`**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Med metoden **`intersection`** får man ett nytt **set** med de element som **finns** i båda seten. Inom matematiken kallas detta för ett *snitt.* 
 
@@ -523,7 +587,11 @@ print(friends_in_class)
 # → {'Frida', 'David', 'Erik'}
 ```
 
+<<<<<<< HEAD
 ### **◆ Förena två set: `union()`**
+=======
+#### **◆ Förena två set: `union()`**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Med metoden **`union()`** kan man förena två set. I exemplet nedan använder vi både **`union()`** och **`difference()`** för att hantera tre olika set.
 
@@ -555,7 +623,11 @@ print(other)
 # → {'Wincent', 'Ulf', 'Victor'}
 ```
 
+<<<<<<< HEAD
 ### **⏹ Delmängd \- `issubset()`**
+=======
+#### **⏹ Delmängd \- `issubset()`**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Om man vill se om alla värden i ett set finns i ett annat set kan man använda metoden **`issubset`**. (Med matematiska begrepp vill vi alltså kontrollera om en mängd är en *delmängd* av en annan mängd.)
 
@@ -685,7 +757,11 @@ exempel(1, 2, 3, a=4, b=5)
 
 *Rekursion* är när en funktion anropar sig själv, som i sin tur anropar sig själv etc. Det används inom programmering för att lösa matematiska problem eller för att gå igenom trädstrukturer som till exempel ett filsystem.
 
+<<<<<<< HEAD
 ### **◆ Beräkna fakultet**
+=======
+#### **◆ Beräkna fakultet**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Fakulteten är summan av produkten av alla positiva heltal från 1 upp till och med ett visst nummer. Fakulteten för 5 är alltså: 1 x 2 x 3 x 4 x 5 \= 120\. En funktion som räknar ut fakulteten för ett nummer med rekursion kan se ut så här:
 
@@ -705,7 +781,11 @@ print(factorial(5))
 # → 120
 ```
 
+<<<<<<< HEAD
 ### **◆ Fibonnaci-serien**
+=======
+#### **◆ Fibonnaci-serien**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Fibonaccis talföljd är en välkänd talföljd där varje tal är summan av de två föregående Fibonaccitalen. De två första talen i serien är 0 och 1\. En Fibonnaci-serie går enkelt att skapa med rekursion:
 
@@ -722,7 +802,11 @@ fib_series = [fibonacci(n) for n in range(10)]
 print(fib_series)  
 ```
 
+<<<<<<< HEAD
 ### **◆ Genomgång av filsystem**
+=======
+#### **◆ Genomgång av filsystem**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Här används modulen **`os`** tillsammans med rekursion för att lista alla filer i en mapp. När funktionen stöter på en undermapp listas den mappen också genom att anropa funktionen igen (med rekursion).
 
@@ -745,7 +829,11 @@ list_files("images")
 
 ## **Kryptering**
 
+<<<<<<< HEAD
 ### **◆ Enkel manuell kryptering**
+=======
+#### **◆ Enkel manuell kryptering**
+>>>>>>> 6b165f479bcc0ae6ec722f0cf347e81ef2cc2917
 
 Med funktionen **`ord`** för man ett teckens [Unicode](https://sv.wikipedia.org/wiki/Unicode)\-värde. (Ett heltal mellan 1 och 1114111\. ) Funktionen **`chr`** gör det motsatta \- returnerar ett tecken från ett Unicode-värde.
 
