@@ -586,6 +586,10 @@ button.copy-btn:hover {
         border-bottom: 1px solid var(--border1)
     }
 
+    section img {
+        width: 100%;
+    }
+
     #nav-container {
         position: sticky;
         max-width: max-content;

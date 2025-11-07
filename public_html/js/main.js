@@ -20,6 +20,20 @@ document.querySelectorAll('#toc a').forEach(link => {
   });
 });
 
+// Smooth scrolling functionality using JavaScript
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function (e) {
+        e.preventDefault();
+        const targetElement = 
+              document.querySelector(this.getAttribute('href'));
+              console.log(targetElement);
+        window.scrollTo({
+            top: targetElement.offsetTop - 80,
+            behavior: 'instant'
+        });
+    });
+});
+
 // Insert copy-button in code blocks
 document.querySelectorAll('pre').forEach(pre => {
   let copySymbol = '<img src="img/copy.svg" alt="Kopiera">' 
