@@ -13,7 +13,7 @@
 - id: tillampningar
   title: Tillämpningar
   link_text: Tillämpningar
-  md_file: uc.md
+  md_file: tillampningar.md
   html_file: tillampningar.html
 
 - id: verktyg
