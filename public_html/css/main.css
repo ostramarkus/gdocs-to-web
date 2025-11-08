@@ -13,6 +13,31 @@
     --bg-muted: #f6f8fa;
     --inline-code: #818b981f;
     --code-comments: #ca7cc8;
+    --code-background: #224;
+    --main-text-color: #333;
+
+    --basic: var(--third-accent);
+    --intermediate: #f0cb51;
+    --advanced: #e25050;
+}
+
+.dark-mode {
+    --primary: #1c3fb1;
+    --first-accent: #ce433d;
+    --second-accent: #374467;
+    --third-accent: #98c379;
+    --dark-background: #0c1227;
+    --heading-accent: #db7b2b;
+    --header-dark: #111;
+    --article-bg: #333;
+    --section-bg: #111;
+    --border1: #333;
+    --border-radius: 4px;
+    --bg-muted: #f6f8fa;
+    --inline-code: #818b981f;
+    --code-comments: #ca7cc8;
+    --code-background: #224;
+    --main-text-color: #fefefe;
 
     --basic: var(--third-accent);
     --intermediate: #f0cb51;
@@ -34,7 +59,7 @@ body {
     background: linear-gradient(345deg,rgba(0, 0, 0, 1) 0%, rgb(52, 67, 103) 100%);    color: #24232c;
     background-attachment: fixed;
     margin: 0;
-    color: #333;
+    color: var(--main-text-color);
 }
 
 
@@ -287,10 +312,6 @@ section {
     margin: 2rem 0;
     width: 100%;
     padding: 3rem 3rem;
-    background-color: var(--section-bg);
-    /*
-    background: linear-gradient(#fff, var(--section-bg));
-    */
     background-size: 100% 300px;
     background-color: var(--section-bg);    
     background-repeat: no-repeat;
@@ -318,7 +339,6 @@ article h4 + p {
 
 section > p {
     font-size: 1rem;
-    color: #444;
 }
 
 /* Syntax highlighting */
@@ -338,7 +358,7 @@ pre {
 .hljs {
     border-radius: var(--border-radius);
     box-sizing: border-box;
-    background-color: #202430;
+    background-color: var(--code-background);
 }
 
 .hljs-comment {
@@ -356,7 +376,7 @@ pre {
     height: 100vh;
     padding: 2.8em 2em;
     overflow: auto;
-    background-color: white;
+    background-color: var(--section-bg);
     box-shadow: 0 6px 6px rgba(0,0,0,0.1);
 }
 
@@ -383,7 +403,7 @@ pre {
 }
 
 #toc a {
-    color: #333;
+    color: var(--main-text-color);
     text-decoration: none;
     display: block;
     padding: 0.3em;
@@ -629,7 +649,8 @@ button.copy-btn:hover {
     #toc a {
         font-size: 0.8rem;
         border: none;
-        background-color: #eee;
+        background-color: var(--article-bg);
+        color: var(--main-text-color);
         padding: 0.6em 1em;
         border: none;
     }
