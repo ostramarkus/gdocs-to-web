@@ -500,6 +500,16 @@ button.copy-btn:hover {
     background-color: var(--primary);
 }
 
+
+/* Index page */
+#index h3 span {
+    display: none;
+}
+
+#index aside {
+    display: none;
+}
+
 @media (max-width: 1250px) {
     body {
         background: #fff;

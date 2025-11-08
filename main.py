@@ -11,6 +11,8 @@ def main():
 
     # Iterate each page - process and save
     for page in site_config:
+        if not page['generate']:
+            continue
         md_path = 'md/' + page['md_file']
         template_path = 'templates/main.html'
         title = page['title']
@@ -18,6 +20,7 @@ def main():
         document = md2html.Document(md_path, template_path, title=title, id=page['id'])
         document.insert_main_nav(navigation)
         document.save_html('public_html/' + page['html_file'])
+        print("Generated:", page['title'], 'as', page['html_file'])
 
 if __name__ == '__main__':
     main()

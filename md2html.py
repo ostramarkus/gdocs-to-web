@@ -36,7 +36,7 @@ class Document:
 
         template.soup.aside.append(toc_title)
         template.soup.aside.append(self.toc.soup)
-
+        template.soup.body['id'] = self.id
         # Assing merged document to 'soup' attribute
         self.soup = template.soup
 
@@ -238,13 +238,11 @@ class TOC:
                 try:
                     heading_id = heading['id']
                 except KeyError:
-                    print('Id not found', heading.string)
                     heading_id = 'generic'
 
                 try:
                     heading_tag = heading['class']
                 except KeyError:
-                    print('Class not found', heading.string)
                     heading_tag = 'generic'
 
 

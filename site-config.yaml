@@ -1,23 +1,35 @@
 - id: index
-  title: Python - grunder
-  link_text: Grunder
+  title: Programmering med Python
+  link_text: Hem
   md_file: index.md
   html_file: index.html
+  generate: no
+
+
+- id: grunder
+  title: Python - grunder
+  link_text: Grunder
+  md_file: grunder.md
+  html_file: grunder.html
+  generate: yes  
 
 - id: fortsattning
   title: Python - fortsättning
   link_text: Fortsättning
   md_file: fortsattning.md
   html_file: fortsattning.html
+  generate: yes    
 
 - id: tillampningar
   title: Tillämpningar
   link_text: Tillämpningar
   md_file: tillampningar.md
   html_file: tillampningar.html
+  generate: yes  
 
 - id: verktyg
   title: Utvecklingsmiljö och verktyg
   link_text: Utvecklingsmiljö och verktyg
   md_file: verktyg.md
   html_file: utveckling.html
+  generate: yes
