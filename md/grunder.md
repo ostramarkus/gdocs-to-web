@@ -1,5 +1,47 @@
 # Grunderna i Python
 
+## **Vad är programmering?**
+
+Programmering handlar om att ge datorn instruktioner, steg för steg,  för att lösa problem eller utföra uppgifter. Dessa instruktioner skrivs i ett **programmeringsspråk**, till exempel Python. Datorn följer instruktionerna i tur och ordning, rad för rad, vilket kallas att koden **körs sekventiellt**.
+
+### **Ett programs byggstenar: satser och uttryck**
+
+Ett program består av **satser** och **uttryck**. En **sats** (eng. *statement*) är en instruktion som gör något, till exempel att skriva ut text på skärmen med `print("Hej!")` eller att tilldela ett värde till en variabel med `x = 5`. 
+
+Ett **uttryck** (eng. *expression*) är en del av koden som beräknar ett värde, till exempel `3 + 5` eller `x * 2`. Man kan tänka sig att ett uttryck **ger** ett värde, medan en sats **gör** något. I många fall används uttryck inuti satser, till exempel `print(x + 2)` där uttrycket `x + 2` beräknas innan resultatet skrivs ut.
+
+### **Kontrollstrukturer \- styra flödet i programmet**
+
+För att styra i vilken ordning saker sker i ens program används **kontrollstrukturer** – till exempel **villkor** (`if`\-satser) för att fatta beslut, och **loopar** (`for` och `while`) för att upprepa kod flera gånger.
+
+### **Lagring av information \- variabler och datastrukturer**
+
+Information i ett program sparas i **variabler**, som är namn på platser i datorns minne där värden kan lagras. Värdena kan vara av olika **datatyper**, som heltal, decimaltal (float), text (strängar) eller booleska värden (sant/falskt). När man behöver lagra flera värden används **datastrukturer** som listor, tupler, dictionaries eller set (sv. *mängder*).
+
+### **Struktur av program \- funktioner, klasser, egna moduler**
+
+För att göra program tydligare och enklare att underhålla kan man dela in koden i **funktioner**, **klasser** och **moduler**. En **funktion** samlar kod som utför en viss uppgift, så att den kan återanvändas flera gånger. **Klasser** används för att samla data (variabler) och körbar kod (funktioner) och på så sätt strukturera sitt program enligt objektorienterade principer. **Moduler** gör det möjligt att dela upp större program i flera filer, vilket gör koden mer organiserad och lättare att samarbeta kring.
+
+### **Använda moduler för utökad funktionalitet**
+
+Python innehåller ett stort antal **inbyggda moduler** – färdiga kodbibliotek som kan användas för vanliga uppgifter utan att du behöver skriva all kod själv. Exempel är `random` för slumpmässiga tal, `math` för matematiska funktioner, och `datetime` för datum och tid. 
+
+Dessutom finns **externa moduler** som du kan installera, till exempel `Pillow` för bildhantering, `Flask` för webbappar och `NumPy` och `Pandas` för dataanalys. Genom att använda moduler kan man bygga mer avancerade program snabbare och dra nytta av redan färdiga lösningar.
+
+## **Varför Python?**
+
+**Python** är ett av världens mest använda programmeringsspråk. Det är känt för att vara **enkelt att läsa och förstå**, vilket gör det särskilt lämpligt för nybörjare, men det används också professionellt inom många olika områden.
+
+Python används bland annat till:
+
+* Dataanalys och artificiell intelligens (t.ex. med biblioteken *Pandas*, *NumPy*, *TensorFlow*).  
+* Webbutveckling (t.ex. med *Flask* eller *Django*).  
+* Automatisering och scripting (för att bearbeta filer eller hantera data).  
+* Grafik, visualisering och spelutveckling.  
+* Vetenskapliga beräkningar och forskning.
+
+## 
+
 ## **Variabler och datatyper**
 
 Variabler används för att lagra information. Variabler är av olika **datatyper** beroende på vilken typ av värden som lagras.
@@ -544,7 +586,9 @@ print(sum(scores) / len(scores))
 
 ## **Villkor \- if-satser**
 
-If-satser används för att programmet ska utföra viss kod endast då ett visst **villkor** är uppfyllt. Det kodblock som ska utföras har 4 mellanslags indrag. (*Indentering*)
+If-satser är en så kallad **kontrollstruktur** och används för att styra flödet i ett program. En if-sats testar att ett (eller flera) **villkor är uppfyllt** och utför viss kod endast om villkoren är uppfyllda. 
+
+Den kod som ska utföras i if-satsen kallas för **kodblock** och har 4 mellanslags indrag. (*Indentering*)
 
 **`else`** används för att ange vad som ska göras ifall villkoret **inte** uppfylls. **`elif`** används för att kedja flera villkorstester efter varandra.
 
@@ -1072,12 +1116,6 @@ Moduler som **`random`** behöver importeras innan de används. Import av module
 import random
 ```
 
-#### **⏹ Slumpar ett decimaltal mellan 0 och 1**
-
-```py
-r1 = random.random()
-```
-
 #### **⏺ Slumpar ett heltal mellan vissa värden**
 
 ```py
@@ -1089,6 +1127,20 @@ r2 = random.randrange(10, 20)
 ```py
 menu = ["pizza", "kebab", "pasta"]
 food = random.choice(menu)
+```
+
+#### **⏹ Slumpar ett decimaltal mellan 0 och 1**
+
+```py
+r1 = random.random()
+```
+
+#### **⏹ Deterministisk slump \- ange seed**
+
+Om man vill återupprepa en slumpning kan man ange en så kallad **seed** för slumpningen. Om man använder samma seed får man alltid samma resultat för slumpfunktionerna.
+
+```py
+random.seed(10)
 ```
 
 #### **◆ Slumpmässigt urval ur en lista**

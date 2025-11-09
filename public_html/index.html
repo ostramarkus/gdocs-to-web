@@ -7,12 +7,19 @@
 <meta content="width=device-width, initial-scale=1.0" name="viewport">
 <link href="img/python-logo-only.png" rel="shortcut icon">
 <title>Programmering med Python</title>
+<!-- Syntax highlighting theme -->
 <link href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/atom-one-dark-reasonable.css" rel="stylesheet">
+<!-- Google fonts -->
 <link href="https://fonts.googleapis.com" rel="preconnect">
 <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&amp;display=swap" rel="stylesheet">
+<!-- Main stylesheet-->
 <link href="css/main.css" rel="stylesheet">
+<!-- Syntax highlighting code -->
 <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
+<!-- Background graphics code -->
+<script src="js/processing/p5bg.js"></script>
 </head>
 <body id="index">
 <header>
@@ -25,53 +32,29 @@
 </div>
 </a>
 <nav id="main-nav"><ul><li id="link-index"><a class="active" href="index.html">Hem</a></li><li id="link-grunder"><a href="grunder.html">Grunder</a></li><li id="link-fortsattning"><a href="fortsattning.html">Forts&auml;ttning</a></li><li id="link-tillampningar"><a href="tillampningar.html">Till&auml;mpningar</a></li><li id="link-verktyg"><a href="utveckling.html">Utvecklingsmilj&ouml; och verktyg</a></li></ul></nav>
-<nav>
+<div id="header-icons">
+<div id="mode-toggle"><img alt="Light/dark-mode" id="light-dark-mode" src="img/dark-theme.svg"></div>
 <div id="menu-toggle">☰</div>
-</nav>
+</div>
 </header>
 <div id="wrap">
 <aside id="nav-container">
-<h4>Programmering med Python</h4><ul id="toc"><li class="section-link"><a href="#programmering-med-python">1. Programmering med Python</a><ul><li class="article-link"><a class="generic" href="#vad-ar-programmering">1.1 Vad &auml;r programmering?</a></li><li class="article-link"><a class="generic" href="#ett-programs-byggstenar-satser-och-uttryck">1.2 Ett programs byggstenar: satser och uttryck</a></li><li class="article-link"><a class="generic" href="#kontrollstrukturer-styra-flodet-i-programmet">1.3 Kontrollstrukturer - styra fl&ouml;det i programmet</a></li><li class="article-link"><a class="generic" href="#lagring-av-information-variabler-och-datastrukturer">1.4 Lagring av information - variabler och datastrukturer</a></li><li class="article-link"><a class="generic" href="#struktur-av-program-funktioner-klasser-egna-moduler">1.5 Struktur av program - funktioner, klasser, egna moduler</a></li><li class="article-link"><a class="generic" href="#anvanda-moduler-for-utokad-funktionalitet">1.6 Anv&auml;nda moduler f&ouml;r ut&ouml;kad funktionalitet</a></li></ul></li><li class="section-link"><a href="#varfor-python">2. Varf&ouml;r Python?</a></li><li class="section-link"><a href="#om-denna-guide">3. Om denna guide</a><ul><li class="article-link"><a class="generic" href="#guidens-fyra-delar">3.1 Guidens fyra delar</a></li><li class="article-link"><a class="generic" href="#fargkoder-for-att-visa-nivan">3.2 F&auml;rgkoder f&ouml;r att visa niv&aring;n</a></li></ul></li></ul></aside>
+<h4>Programmering med Python</h4><ul id="toc"><li class="section-link"><a href="#om-denna-guide">1. Om denna guide</a><ul><li class="article-link"><a class="generic" href="#guidens-fyra-delar">1.1 Guidens fyra delar</a></li><li class="article-link"><a class="generic" href="#fargkoder-for-att-visa-nivan">1.2 F&auml;rgkoder f&ouml;r att visa niv&aring;n</a></li></ul></li></ul></aside>
 <main>
-<section><h2 id="programmering-med-python"><span class="heading-nr">1. </span>Programmering med Python</h2>
-<h3 id="vad-ar-programmering"><span class="heading-nr">1.1 </span>Vad &auml;r programmering?</h3>
-<p>Programmering handlar om att ge datorn instruktioner, steg f&ouml;r steg,  f&ouml;r att l&ouml;sa problem eller utf&ouml;ra uppgifter. Dessa instruktioner skrivs i ett <strong>programmeringsspr&aring;k</strong>, till exempel Python. Datorn f&ouml;ljer instruktionerna i tur och ordning, rad f&ouml;r rad, vilket kallas att koden <strong>k&ouml;rs sekventiellt</strong>.</p>
-<h3 id="ett-programs-byggstenar-satser-och-uttryck"><span class="heading-nr">1.2 </span>Ett programs byggstenar: satser och uttryck</h3>
-<p>Ett program best&aring;r av <strong>satser</strong> och <strong>uttryck</strong>. En <strong>sats</strong> (eng. <em>statement</em>) &auml;r en instruktion som g&ouml;r n&aring;got, till exempel att skriva ut text p&aring; sk&auml;rmen med <code>print("Hej!")</code> eller att tilldela ett v&auml;rde till en variabel med <code>x = 5</code>. </p>
-<p>Ett <strong>uttryck</strong> (eng. <em>expression</em>) &auml;r en del av koden som ber&auml;knar ett v&auml;rde, till exempel <code>3 + 5</code> eller <code>x * 2</code>. Man kan t&auml;nka sig att ett uttryck <strong>ger</strong> ett v&auml;rde, medan en sats <strong>g&ouml;r</strong> n&aring;got. I m&aring;nga fall anv&auml;nds uttryck inuti satser, till exempel <code>print(x + 2)</code> d&auml;r uttrycket <code>x + 2</code> ber&auml;knas innan resultatet skrivs ut.</p>
-<h3 id="kontrollstrukturer-styra-flodet-i-programmet"><span class="heading-nr">1.3 </span>Kontrollstrukturer - styra fl&ouml;det i programmet</h3>
-<p>F&ouml;r att styra i vilken ordning saker sker i ens program anv&auml;nds <strong>kontrollstrukturer</strong> &ndash; till exempel <strong>villkor</strong> (<code>if</code>-satser) f&ouml;r att fatta beslut, och <strong>loopar</strong> (<code>for</code> och <code>while</code>) f&ouml;r att upprepa kod flera g&aring;nger.</p>
-<h3 id="lagring-av-information-variabler-och-datastrukturer"><span class="heading-nr">1.4 </span>Lagring av information - variabler och datastrukturer</h3>
-<p>Information i ett program sparas i <strong>variabler</strong>, som &auml;r namn p&aring; platser i datorns minne d&auml;r v&auml;rden kan lagras. V&auml;rdena kan vara av olika <strong>datatyper</strong>, som heltal, decimaltal (float), text (str&auml;ngar) eller booleska v&auml;rden (sant/falskt). N&auml;r man beh&ouml;ver lagra flera v&auml;rden anv&auml;nds <strong>datastrukturer</strong> som listor, tupler, dictionaries eller set (sv. <em>m&auml;ngder</em>).</p>
-<h3 id="struktur-av-program-funktioner-klasser-egna-moduler"><span class="heading-nr">1.5 </span>Struktur av program - funktioner, klasser, egna moduler</h3>
-<p>F&ouml;r att g&ouml;ra program tydligare och enklare att underh&aring;lla kan man dela in koden i <strong>funktioner</strong>, <strong>klasser</strong> och <strong>moduler</strong>. En <strong>funktion</strong> samlar kod som utf&ouml;r en viss uppgift, s&aring; att den kan &aring;teranv&auml;ndas flera g&aring;nger. <strong>Klasser</strong> anv&auml;nds f&ouml;r att samla data (variabler) och k&ouml;rbar kod (funktioner) och p&aring; s&aring; s&auml;tt strukturera sitt program enligt objektorienterade principer. <strong>Moduler</strong> g&ouml;r det m&ouml;jligt att dela upp st&ouml;rre program i flera filer, vilket g&ouml;r koden mer organiserad och l&auml;ttare att samarbeta kring.</p>
-<h3 id="anvanda-moduler-for-utokad-funktionalitet"><span class="heading-nr">1.6 </span>Anv&auml;nda moduler f&ouml;r ut&ouml;kad funktionalitet</h3>
-<p>Python inneh&aring;ller ocks&aring; ett stort antal <strong>inbyggda moduler</strong> &ndash; f&auml;rdiga kodbibliotek som kan anv&auml;ndas f&ouml;r vanliga uppgifter utan att du beh&ouml;ver skriva all kod sj&auml;lv. Exempel &auml;r <code>random</code> f&ouml;r slumpm&auml;ssiga tal, <code>math</code> f&ouml;r matematiska funktioner, och <code>datetime</code> f&ouml;r datum och tid. </p>
-<p>Dessutom finns <strong>externa moduler</strong> som du kan installera, till exempel <code>Pillow</code> f&ouml;r bildhantering, <code>Flask</code> f&ouml;r webbappar och <code>NumPy</code> och <code>Pandas</code> f&ouml;r dataanalys. Genom att anv&auml;nda moduler kan man bygga kraftfulla program snabbare och dra nytta av andras f&auml;rdiga l&ouml;sningar.</p>
-<p>Genom att kombinera dessa byggstenar kan man skapa allt fr&aring;n enkla ber&auml;kningar till avancerade program och system.</p>
-</section><section><h2 id="varfor-python"><span class="heading-nr">2. </span>Varf&ouml;r Python?</h2>
-<p><strong>Python</strong> &auml;r ett av v&auml;rldens mest anv&auml;nda programmeringsspr&aring;k. Det &auml;r k&auml;nt f&ouml;r att vara <strong>enkelt att l&auml;sa och f&ouml;rst&aring;</strong>, vilket g&ouml;r det s&auml;rskilt l&auml;mpligt f&ouml;r nyb&ouml;rjare, men det anv&auml;nds ocks&aring; professionellt inom m&aring;nga olika omr&aring;den.</p>
-<p>Python anv&auml;nds bland annat till:</p>
-<ul>
-<li>Dataanalys och artificiell intelligens (t.ex. med biblioteken <em>Pandas</em>, <em>NumPy</em>, <em>TensorFlow</em>).  </li>
-<li>Webbutveckling (t.ex. med <em>Flask</em> eller <em>Django</em>).  </li>
-<li>Automatisering och scripting (f&ouml;r att bearbeta filer eller hantera data).  </li>
-<li>Grafik, visualisering och spelutveckling.  </li>
-<li>Vetenskapliga ber&auml;kningar och forskning.</li>
-</ul>
-</section><section><h2 id="om-denna-guide"><span class="heading-nr">3. </span>Om denna guide</h2>
-<p>I denna guide ligger fokus p&aring; tydliga kodexempel - f&ouml;rklarande texter h&aring;lls korta. Syftet &auml;r att guiden ska kunna anv&auml;ndas praktiskt som en referens eller "kokbok" n&auml;r det g&auml;ller programmering med Python.</p>
-<h3 id="guidens-fyra-delar"><span class="heading-nr">3.1 </span>Guidens fyra delar</h3>
+<h1 id="programmering-med-python">Programmering med Python</h1>
+<section><h2 id="om-denna-guide"><span class="heading-nr">1. </span>Om denna guide</h2>
+<p>I denna guide ligger fokus p&aring; tydliga kodexempel - f&ouml;rklarande texter h&aring;lls korta. Syftet &auml;r att guiden ska kunna anv&auml;ndas praktiskt som en referens eller "kokbok" n&auml;r man programmerar med Python.</p>
+<h3 id="guidens-fyra-delar"><span class="heading-nr">1.1 </span>Guidens fyra delar</h3>
 <ul>
 <li><strong>Grunder</strong> - h&auml;r tas grunderna i Python upp: variabler, datatyper, if-satser, loopar, funktioner etc. H&auml;r finns ocks&aring; exempel fr&aring;n modulerna datetime, csv och random.  </li>
 <li><strong>Forts&auml;ttning</strong> - denna del bygger vidare med exempel p&aring; hur man skapar egna moduler, hanterar JSON-data, objektorienterad programmering, list comprehensions och mer avancerad list-bearbetning. H&auml;r tas ocks&aring; datatypen set upp och hur man arbetar med m&auml;ngder.  </li>
 <li><strong>Till&auml;mpning</strong> - denna del visar hur man kan anv&auml;nda programmeringen i praktiska till&auml;mpningar: bildbearbetning, skapa webbappar, dataanalys, visualisering, web scraping etc.  </li>
 <li><strong>Verktyg</strong> - denna del tar upp de verktyg som anv&auml;nds inom programmering, versionshantering med Git och GitHub, virtuella maskiner i Github Codespaces, vanliga kommandon i Linux-terminalen etc.</li>
 </ul>
-<h3 id="fargkoder-for-att-visa-nivan"><span class="heading-nr">3.2 </span>F&auml;rgkoder f&ouml;r att visa niv&aring;n</h3>
-<p>De flesta delar av guiden &auml;r f&auml;rgkodade f&ouml;r att visa sv&aring;righetsniv&aring;n p&aring; inneh&aring;llet:  </p>
-<p>⏺ <strong>Gr&ouml;nt</strong> st&aring;r f&ouml;r att det &auml;r grundl&auml;ggande kunskap som man b&ouml;r vara v&auml;l f&ouml;rtrogen med. Det h&auml;r &auml;r s&aring;dant som man troligtvis vill l&auml;ra sig utantill f&ouml;r att kunna arbeta effektivt med programmering.</p>
-<p><strong>⏹ Gult</strong> betyder att exemplet &auml;r lite mer avancerat, eller att det som exemplet tar upp inte &auml;r lika grundl&auml;ggande. Man b&ouml;r f&ouml;rst&aring; dessa exempel, men det &auml;r inget som man beh&ouml;ver kunna utantill.</p>
+<h3 id="fargkoder-for-att-visa-nivan"><span class="heading-nr">1.2 </span>F&auml;rgkoder f&ouml;r att visa niv&aring;n</h3>
+<p>M&aring;nga delar av guiden &auml;r f&auml;rgkodade f&ouml;r att visa sv&aring;righetsniv&aring;n p&aring; inneh&aring;llet:</p>
+<p>⏺ <strong>Gr&ouml;nt</strong> anger grundl&auml;ggande kunskap som man b&ouml;r vara v&auml;l f&ouml;rtrogen med. Det h&auml;r &auml;r s&aring;dant som &auml;r bra att l&auml;ra sig utantill f&ouml;r att kunna programmera effektivt med Python.</p>
+<p>⏹ <strong>Gult</strong> betyder att exemplet &auml;r lite mer avancerat, eller att det som exemplet tar upp inte &auml;r lika centralt. Man b&ouml;r f&ouml;rst&aring; dessa exempel, men det &auml;r inget som man beh&ouml;ver kunna utantill.</p>
 <p><strong>◆ R&ouml;tt</strong> betyder att det som tas upp &auml;r &auml;nnu mer avancerat, eller &auml;r n&aring;got som inte &auml;r s&aring; vanligt f&ouml;rekommande inom Python p&aring; nyb&ouml;rjarniv&aring;.</p></section></main>
 </div>
 <script src="js/main.js"></script>

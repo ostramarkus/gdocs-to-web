@@ -3,8 +3,7 @@
   link_text: Hem
   md_file: index.md
   html_file: index.html
-  generate: no
-
+  generate: yes
 
 - id: grunder
   title: Python - grunder

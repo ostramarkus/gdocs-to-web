@@ -1,8 +1,37 @@
+// Set theme
+function setTheme() {
+  if (localStorage.getItem("theme") == "dark") {
+    document.documentElement.setAttribute("data-theme", "dark");
+  } else {
+    document.documentElement.setAttribute("data-theme", "light");
+  }
+}
+
+setTheme();
+
+// Theme-toggle
+document.getElementById('mode-toggle').addEventListener('click', async () => {
+  if (localStorage.getItem("theme") == "light") {
+    localStorage.setItem("theme", "dark");
+  } else {
+    localStorage.setItem("theme", "light");
+  }
+  setTheme();
+});
+
 // Nav-toggle
 document.getElementById('menu-toggle').addEventListener('click', async () => {
   const navAside = document.getElementById('nav-container');
   navAside.classList.toggle('nav-open');
 });
+
+function onlyShowBasic() {
+  // Show only basic content
+  document.querySelectorAll('.tag_intermediate, .tag_advanced').forEach(heading => {
+    let article = heading.parentNode
+    article.classList.toggle('hidden');
+  });
+}
 
 // Make big tables great again
 document.querySelectorAll('table').forEach(table => {

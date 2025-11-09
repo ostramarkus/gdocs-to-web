@@ -7,14 +7,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="img/python-logo-only.png">
     <title>Grunderna i Python</title>
+
+    <!-- Syntax highlighting theme -->
     <link rel="stylesheet"
         href="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/styles/atom-one-dark-reasonable.css">
+
+    <!-- Google fonts -->    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap" rel="stylesheet">
+
+    <!-- Main stylesheet-->
     <link rel="stylesheet" href="css/main.css">
+
+    <!-- Syntax highlighting code -->
     <script src="https://cdn.jsdelivr.net/gh/highlightjs/cdn-release@11.11.1/build/highlight.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/p5@1.11.11/lib/p5.min.js"></script>
+
+    <!-- Background graphics code -->
+    <script src="js/processing/p5bg.js"></script>
 </head>
 
 <body>
@@ -28,9 +39,10 @@
             </div>
         </a>
         <nav id="main-nav"></nav>
-        <nav>
+        <div id="header-icons">
+            <div id="mode-toggle"><img src="img/dark-theme.svg" alt="Light/dark-mode" id="light-dark-mode"></div>
             <div id="menu-toggle">☰</div>
-        </nav>
+        </div>
     </header>
     <div id="wrap">
         <aside id="nav-container">
