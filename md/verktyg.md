@@ -1,5 +1,40 @@
 # Utvecklingsmiljö och verktyg
 
+## **Utvecklingsmiljöer**
+
+Det finns tre huvudsakliga sätt att programmera Python:
+
+1. Online med enklare webbtjänster  
+2. Offline på traditionell PC  
+3. Online med mer avancerade tjänster
+
+### **Online med enklare webbtjänster**
+
+Det här är det enklaste sättet att komma igång med Python. Det finns många olika webbtjänster där man kan koda Python utan att behöva skapa ett konto eller installera något. Några exempel:
+
+* [Trinket.io](https://trinket.io/python3)  
+* [Programiz \- Online Python Compiler (Interpreter)](https://www.programiz.com/python-programming/online-compiler/)  
+* [Python Online Compiler & Interpreter](https://onecompiler.com/python)
+
+### **Offline på traditionell PC (Windows, Mac och Linux)**
+
+Det traditionella sättet att programmera Python är att installera Python på sin dator och sedan skriva koden i en kodredigerare (eng. *editor*). 
+
+På Linux och Mac finns redan en version av Python installerad. För Windows-användare kan man installera Python från [https://www.python.org/downloads/](https://www.python.org/downloads/)
+
+**Visual Studio Code** är en kraftfull och popular kodredigerare från Microsoft. Den kan laddas ner på [https://code.visualstudio.com/download](https://code.visualstudio.com/download). Python-filerna sparas lokalt på datorn. (Se till att de har filändelsen **.py**)
+
+För att köra sitt program skriver man: **`python filnamn.py`*** *(eller **`python3 filnamn.py`**) i terminalen (antingen den inbyggda i VSCode eller operativsystemets terminal).
+
+### **Online med mer avancerade tjänster**
+
+Om man vill arbeta online med en mer professionell utvecklingsmiljö finns det flera lösningar. I de flesta lösningar får man en virtuell maskin där man kan installera valfri programvara. Dessa tjänster är i regel kommersiella men har ofta en begränsad gratisnivå. Exempel på tjänster är:
+
+* [Paiza Cloud](https://paiza.cloud/en/)  
+* [Replit](https://replit.com/)  
+* [Codeanywhere](https://codeanywhere.com/)  
+* [GitHub Codespaces](https://github.com/features/codespaces)
+
 ## **Git, GitHub och GitHub Codespaces**
 
 ### **Vad är git?**
@@ -14,11 +49,11 @@
 
 ### **Kom igång med GitHub och Codespaces**
 
-##### **1\. Skapa ett GitHub-konto**
+### **1\. Skapa ett GitHub-konto**
 
 Gå in på [https://github.com](https://github.com/) och skapa ett nytt konto. Använd gärna din edu-adress.
 
-##### **2\. Skapa ett nytt GitHub-repo**
+### **2\. Skapa ett nytt GitHub-repo**
 
 Ett **repo** (kort för *repository*) är i GitHub **en plats där all din kod och dess historik sparas**. Det är alltså både en mapp med filer och en logg över alla ändringar som har gjorts i dessa filer.
 
@@ -26,7 +61,7 @@ Ett **repo** (kort för *repository*) är i GitHub **en plats där all din kod o
 2. Ge projektet ett namn (t.ex. **`python-projekt`** eller **`test-repo`**) (och eventuellt en kort beskrivning).  
 3. Klicka på **Create repository**
 
-##### **3\. Öppna i Codespaces**
+### **3\. Öppna i Codespaces**
 
 När ditt repo är skapat:
 
@@ -38,11 +73,11 @@ När ditt repo är skapat:
 
 Detta startar upp en virtuell maskin och öppnar en **VS Code-liknande miljö i webbläsaren** – med Git och Python installerat.
 
-##### **4\. Spara och versionshantera med Git**
+### **4\. Spara och versionshantera med Git**
 
 När du ändrar filer i Codespaces kan du använda Git direkt i den inbyggda terminalen eller via det grafiska gränssnittet i VS Code.
 
-##### **Alternativ 1: Via terminal**
+### **Alternativ 1: Via terminal**
 
 #### **Se vilka filer som ändrats:**
 
@@ -68,7 +103,7 @@ git commit -m "Lade till min första Python-fil"
 git push
 ```
 
-##### **Alternativ 2: Via VS Code-gränssnittet**
+### **Alternativ 2: Via VS Code-gränssnittet**
 
 1. Klicka på **Source Control-ikonen** (med gren-symbol) i vänstermenyn. Du ser en lista med ändrade filer.  
 2. Klicka på **\+** för att lägga till (stage) filerna.  
@@ -177,8 +212,8 @@ De flesta servrar kör operativsystemet Linux (där den populäraste varianten �
 | Kommando | Beskrivning |
 | :---- | :---- |
 | **`nano filnamn`** | Öppnar filen i textredigeraren **nano** |
-| **`Ctrl+o`** | Sparar fil |
-| **`Ctrl+x`** | Stäng |
+| **`ctrl+o`** | Sparar fil |
+| **`ctrl+x`** | Stäng |
 
 #### **ctrl-d, ctrl-z och ctrl-c**
 
@@ -197,6 +232,9 @@ De flesta servrar kör operativsystemet Linux (där den populäraste varianten �
 
 ## **Pakethantering och virtualenv**
 
-## **Unit testing/enhetstestning**
+## **IPython**
+
+## **Unit testing (enhetstestning)**
 
 ## **Notebooks**
+

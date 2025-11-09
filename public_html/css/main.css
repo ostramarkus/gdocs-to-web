@@ -20,6 +20,12 @@
     --basic: var(--third-accent);
     --intermediate: #f0cb51;
     --advanced: #e25050;
+
+    /* Chrome scrollbar */
+    --scrollbar-color-thumb: rgb(196, 194, 194);
+    --scrollbar-color-track: rgb(255, 255, 255);
+    --scrollbar-width: thin;
+    --scrollbar-width-legacy: 10px;     
 }
 
 [data-theme="dark"] {
@@ -43,6 +49,9 @@
     --basic: var(--third-accent);
     --intermediate: #f0cb51;
     --advanced: #e25050;
+
+    --scrollbar-color-thumb: rgb(74, 74, 74);
+    --scrollbar-color-track: rgb(20, 20, 20);
 }
 
 /* Debug
@@ -219,7 +228,7 @@ h2 {
 }
 
 h3, h4, h5 {
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     margin: 1.6em 0 0.5em 0;
 }
@@ -252,7 +261,7 @@ h4 .heading-nr {
     color: var(--heading-nr);
     margin-right: 0.8em;
     background-color: #ccc;
-    font-size: 0.65em;
+    font-size: 0.7em;
     padding: 0.1em 0.4em;
     text-align: center;
     display: inline-block;
@@ -274,6 +283,8 @@ h4 .heading-nr {
 
 section li {
     margin-bottom: 0.4em;
+    font-size: 1rem;
+    line-height: 1.3;
 }
 
 h3 + p {
@@ -411,6 +422,15 @@ pre {
     overflow: auto;
     background-color: var(--main-background);
     box-shadow: 0 6px 6px rgba(0,0,0,0.1);
+
+}
+
+/* Modern browsers with `scrollbar-*` support */
+@supports (scrollbar-width: auto) {
+    #nav-container, html {
+        scrollbar-color: var(--scrollbar-color-thumb) var(--scrollbar-color-track);
+        scrollbar-width: var(--scrollbar-width);
+    }
 }
 
 #nav-container.nav-open {
