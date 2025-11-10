@@ -1,6 +1,7 @@
 import md2html
 import yaml
 
+
 def main():
     # Open and parse site config file
     with open('site-config.yaml', encoding="utf-8") as config_file:

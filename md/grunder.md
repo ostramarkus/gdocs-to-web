@@ -1,6 +1,6 @@
 # Grunderna i Python
 
-## **Vad är programmering?**
+### **Introduktion till programmering**
 
 Programmering handlar om att ge datorn instruktioner, steg för steg,  för att lösa problem eller utföra uppgifter. Dessa instruktioner skrivs i ett **programmeringsspråk**, till exempel Python. Datorn följer instruktionerna i tur och ordning, rad för rad, vilket kallas att koden **körs sekventiellt**.
 
@@ -10,17 +10,21 @@ Ett program består av **satser** och **uttryck**. En **sats** (eng. *statement*
 
 Ett **uttryck** (eng. *expression*) är en del av koden som beräknar ett värde, till exempel `3 + 5` eller `x * 2`. Man kan tänka sig att ett uttryck **ger** ett värde, medan en sats **gör** något. I många fall används uttryck inuti satser, till exempel `print(x + 2)` där uttrycket `x + 2` beräknas innan resultatet skrivs ut.
 
-### **Kontrollstrukturer \- styra flödet i programmet**
+### **Kontrollstrukturer \- styr flödet i programmet**
 
 För att styra i vilken ordning saker sker i ens program används **kontrollstrukturer** – till exempel **villkor** (`if`\-satser) för att fatta beslut, och **loopar** (`for` och `while`) för att upprepa kod flera gånger.
 
-### **Lagring av information \- variabler och datastrukturer**
+### **Variabler och datastrukturer \- lagring av information**
 
 Information i ett program sparas i **variabler**, som är namn på platser i datorns minne där värden kan lagras. Värdena kan vara av olika **datatyper**, som heltal, decimaltal (float), text (strängar) eller booleska värden (sant/falskt). När man behöver lagra flera värden används **datastrukturer** som listor, tupler, dictionaries eller set (sv. *mängder*).
 
-### **Struktur av program \- funktioner, klasser, egna moduler**
+### **Strukturering av program \- funktioner, klasser, egna moduler**
 
-För att göra program tydligare och enklare att underhålla kan man dela in koden i **funktioner**, **klasser** och **moduler**. En **funktion** samlar kod som utför en viss uppgift, så att den kan återanvändas flera gånger. **Klasser** används för att samla data (variabler) och körbar kod (funktioner) och på så sätt strukturera sitt program enligt objektorienterade principer. **Moduler** gör det möjligt att dela upp större program i flera filer, vilket gör koden mer organiserad och lättare att samarbeta kring.
+För att göra program tydligare och enklare att underhålla kan man dela in koden i **funktioner**, **klasser** och **moduler**. 
+
+* En **funktion** samlar kod som utför en viss uppgift, så att den kan återanvändas flera gånger.   
+* **Klasser** används för att samla data (variabler) och körbar kod (funktioner) och på så sätt strukturera sitt program enligt **objektorienterade** principer (OOP).   
+* **Moduler** gör det möjligt att dela upp större program i flera filer, vilket gör koden mer organiserad och lättare att samarbeta kring.
 
 ### **Använda moduler för utökad funktionalitet**
 
@@ -28,7 +32,7 @@ Python innehåller ett stort antal **inbyggda moduler** – färdiga kodbibliote
 
 Dessutom finns **externa moduler** som du kan installera, till exempel `Pillow` för bildhantering, `Flask` för webbappar och `NumPy` och `Pandas` för dataanalys. Genom att använda moduler kan man bygga mer avancerade program snabbare och dra nytta av redan färdiga lösningar.
 
-## **Varför Python?**
+### **Om programmeringsspråket Python**
 
 **Python** är ett av världens mest använda programmeringsspråk. Det är känt för att vara **enkelt att läsa och förstå**, vilket gör det särskilt lämpligt för nybörjare, men det används också professionellt inom många olika områden.
 
@@ -44,7 +48,7 @@ Python används bland annat till:
 
 ## **Variabler och datatyper**
 
-Variabler används för att lagra information. Variabler är av olika **datatyper** beroende på vilken typ av värden som lagras.
+I programmering används **variabler** för att lagra information. Variabler är av olika **datatyper** beroende på vilken typ av värden som lagras.
 
 ### **⏺ De vanligaste datatyperna**
 
@@ -57,7 +61,7 @@ Variabler används för att lagra information. Variabler är av olika **datatype
 
 #### **⏺ Definiera variabler**
 
-Variabler skapas (*initialiseras*) och tilldelas ett värde med likamedstecknet: **`=`**.
+Variabler skapas (*initialiseras*) och **tilldelas** ett värde med likamedstecknet: **`=`**.
 
 ```py
 # Sträng / str
@@ -76,6 +80,8 @@ Namnet på variabler väljer man själv. Det finns dock några regler man bör h
 
 * Ett variabelnamn bör vara **beskrivande** och ge information om vad variabeln är till för eller vad den innehåller. Undvik namn som till exempel **`variabel1`**.  
 * Ett variabelnamn kan **inte börja** på en **siffra** eller ett **specialtecken** (förutom understreck: **`_`**).   
+* Ett variabelnamn kan inte heller ha samma namn som ett **nyckelord** i Python. (Ett nyckelord är ett ord med speciell betydelse i Python, till exempel: **`if`**, **`else`**, **`False`**, **`True`**, **`for`**, **`while`** etc.)  
+* Man bör inte heller döpa variabler till de inbyggda funktioner som finns i Python \- t.ex. str, int, sorted etc.  
 * Man kan **inte** ha **mellanslag** eller i **minustecken** i variabelnamn.  
 * **Undvik internationella tecken** i variabelnamn.   
 * För mer seriösa program bör variabelnamnen vara på **engelska**.
@@ -132,7 +138,7 @@ Tecken som används i beräkningar kallas för **aritmetiska operatorer**.
 | **`+=`** | Addera till |
 | **`-=`** | Subtrahera från |
 
-#### **⏺ Addera eller subtrahera variabler**
+#### **⏺ Öka eller minska variabler**
 
 Teckenkombinationerna **\+=** och **\-=** kan användas för att (med mer kompaktare syntax) öka eller minska en variabels värde. (Eng. *increment* respektive *decrement*.)
 
@@ -205,7 +211,7 @@ age = int(input('Hur gammal är du?'))
 
 #### **⏺ Sätta ihop textsträngar**
 
-Med plustecknet kan man sätta ihop flera textsträngar. Detta kallas **konkatenering**.
+Med plustecknet kan man sätta ihop flera textsträngar med varandra. Detta kallas **konkatenering**.
 
 **OBS\!** Alla värden måste då vara textsträngar \- annars får man ett **`TypeError`**.
 
@@ -353,7 +359,7 @@ menu = ['kebab', 'pizza', 'sushi']
 
 #### **⏺ Nå ett listvärde**
 
-För att nå ett värde i listan använder man ett positionsnummer. Positionsnummer kallas även **index**. Den första positionen har **index** **`0`**. 
+För att nå ett värde i listan använder man ett positionsnummer. Positionsnummer kallas för **index**. Den första positionen har **index** **`0`**. 
 
 ```py
 menu = ['kebab', 'pizza', 'sushi']
@@ -848,6 +854,47 @@ def is_weekend(day):
     return day == 'saturday' or day == 'sunday'
 ```
 
+#### **⏹ Variabler inne i funktioner \- variable scope**
+
+En variabel som skapas inne i en funktion är *lokal,* den kan bara nås inifrån själva funktionen. Variabler som definieras på modulnivå (i själva huvudprogrammet) är *globala* och kan nås inne i funktionen. Var en variabel (eller annat objekt) är tillgänglig kallas inom programmering för **variable scope**.
+
+```py
+# x definieras i huvudprogrammet och är då en global variabel
+x = 1
+
+def my_function():
+  # x här i funktionen är inte samma som den globala variabeln
+  x = 10
+  print(x)
+
+
+my_function()
+print(x)
+
+# → 10
+# → 1
+```
+
+Globala variabler kan inte utan vidare ändras inifrån en funktion. Om man måste ändra en global variabel i en funktion får man markera det med nyckelordet *global* först i funktionen*.*
+
+```py
+# x definieras i huvudprogrammet och är då en global variabel
+x = 1
+
+def my_function():
+    # Vi definierar att x syftar på den globala variabeln
+    global x	
+    x = 10
+    print(x)
+
+
+my_function()
+print(x)
+
+# → 10
+# → 10
+```
+
 #### **◆ Funktioner med keyword-arguments**
 
 Om man vill göra sina funktioner tydligare och flexiblare kan man använda namngivna argument (**keyword-arguments**). Då namnger man argumenten som funktionen tar emot och anger även **standardvärden (**eng. *default values*) för argumenten.
@@ -982,7 +1029,7 @@ Använd helst **engelska** i dina kommentarer:
 
 "Python coders from non-English speaking countries: please write your comments in English, unless you are 120% sure that the code will never be read by people who don’t speak your language."
 
-### **⏺ Enrads-kommentarer**
+#### **⏺ Enrads-kommentarer**
 
 "Comments should be complete sentences. If a comment is a phrase or sentence, its first word should be capitalized, unless it is an identifier or acronym."
 
@@ -993,7 +1040,7 @@ total = sum(numbers)
 
 Enrads-kommentarer bör placeras **på en egen rad** eller **på samma rad som koden**. Eftersom Pythonkod (i jämförelse med andra språk) är lätt att läsa och förstå bör man bara kommentera kod som verkligen behöver förklaras.
 
-### **⏹ Blockkommentarer**
+#### **⏹ Blockkommentarer**
 
 "Block comments generally apply to some (or all) code that follows them, and are indented to the same level as that code. Each line of a block comment starts with a `#` and a single space."  — [PEP 8, Comments](https://peps.python.org/pep-0008/)
 
@@ -1004,7 +1051,7 @@ for user in users:
     print(user.name, user.age)
 ```
 
-### **⏹ Docstrings (dokumentationssträngar)**
+#### **⏹ Docstrings (dokumentationssträngar)**
 
 Docstrings är mer utförliga kommentarer som förklarar en funktion, modul eller 
 
@@ -1330,7 +1377,7 @@ Körningsfel (**exceptions**) kan fångas upp och hanteras med **`try`**/**`exce
 
 #### **⏹ Try och except**
 
-Den kod man misstänker kan utlösa ett körningsfel sätts i ett kodblock under `try`. Med **`except`** anger man vilket fel som förväntas och i ett kodblock under anger man hur felet ska hanteras.
+Den kod man misstänker kan utlösa ett körningsfel sätts i ett kodblock under `try`. Med **`except`** anger man vilket fel som förväntas och i ett kodblock under anger man hur felet ska hanteras. I exemplet nedan skriver vi ut ett felmeddelande och avbryter programmet med funktionen **`exit`**.
 
 ```py
 try:
@@ -1370,4 +1417,3 @@ print(f"Du är {age} år gammal!")
 | `NameError` | När en variabel inte är definierad | `print(x)` utan att `x` finns |
 | `AttributeError` | När ett objekt saknar ett visst attribut | `"hej".append("då")` |
 | `ImportError` | När ett importerat paket inte hittas | `import felpaket` |
-
