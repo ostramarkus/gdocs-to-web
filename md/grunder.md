@@ -1,6 +1,6 @@
 # Grunderna i Python
 
-### **Introduktion till programmering**
+## **Introduktion till programmering**
 
 Programmering handlar om att ge datorn instruktioner, steg för steg,  för att lösa problem eller utföra uppgifter. Dessa instruktioner skrivs i ett **programmeringsspråk**, till exempel Python. Datorn följer instruktionerna i tur och ordning, rad för rad, vilket kallas att koden **körs sekventiellt**.
 
