@@ -26,6 +26,7 @@
     --scrollbar-color-track: rgb(255, 255, 255);
     --scrollbar-width: thin;
     --scrollbar-width-legacy: 10px;     
+    font-size: 16px;        
 }
 
 [data-theme="dark"] {
@@ -65,7 +66,7 @@ html {
 
 body {
     font-family: "Open Sans", sans-serif;
-    font-size: 15px;
+    font-size: 16px;
     background: linear-gradient(345deg,rgba(0, 0, 0, 1) 0%, var(--second-accent) 100%);    color: #24232c;
     background-attachment: fixed;
     margin: 0;
@@ -284,7 +285,6 @@ h4 .heading-nr {
 section li {
     margin-bottom: 0.5em;
     font-size: 1rem;
-    line-height: 1.5;
 }
 
 h3 + p {
@@ -293,7 +293,10 @@ h3 + p {
 
 p {
     margin: 1em 0;
-    line-height: 1.5;
+}
+
+p, li {
+    line-height: 1.6;
 }
 
 blockquote {
