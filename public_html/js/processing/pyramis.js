@@ -6,8 +6,7 @@ class Particle {
 	}
 
 	display() {
-		let distLimit = 140; 
-		noStroke()
+		let distLimit = 100; 
 		circle(this.pos.x, this.pos.y, 2);
 
 		for (particle of particles) {
@@ -15,7 +14,7 @@ class Particle {
 				let dist = this.pos.dist(particle.pos);
 				if (dist < distLimit) {
 					let lineAlpha = (distLimit - dist) / distLimit;
-					stroke(255, 20 * lineAlpha);
+					stroke(255, 80 * lineAlpha);
 					line(this.pos.x, this.pos.y, particle.pos.x, particle.pos.y);
 				}
 			}
@@ -35,8 +34,8 @@ class Particle {
 particles = []
 
 function setup() {
-	noStroke();
-	fill(255, 20);
+	fill(255)
+	stroke(100)
 	createCanvas(windowWidth, windowHeight);
 	background(0);
 
@@ -47,6 +46,7 @@ function setup() {
 
 function draw() {
 	clear();
+	stroke(255);
 	for (particle of particles) {
 		particle.update();
 		particle.display();
