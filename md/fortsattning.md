@@ -4,7 +4,7 @@
 
 Ett sätt att strukturera större programmeringsprojekt är att **flytta kod till egna moduler**. På så sätt gömmer man undan onödiga detaljer som inte är relevanta för huvudflödet i programmet. Detta är en princip som i mjukvaruutveckling kallas för **abstraktion** (eng. *abstraction*).
 
-**För att skapa en egen modul** skapar man bara en ny python-fil bland projektfilerna \- i samma mapp som ens *huvudfil*. Se till att filen har filändelsen **`.py`**. I den nya filen lägger man den kod man vill flytta från huvudprogrammet \- grupperat i **funktioner**. Namnet på filen (om man bortser från filändelsen) blir modulens namn.
+**För att skapa en egen modul** skapar man en ny python-fil i samma mapp som ens *huvudfil*. Se till att filen har filändelsen **`.py`**. I den nya filen lägger man den kod man vill flytta från huvudprogrammet \- grupperat i **funktioner**. Namnet på filen (om man bortser från filändelsen) blir modulens namn.
 
 Modulen importerar man sedan med **`import`** högst upp i ens *huvudprogram*. 
 
@@ -80,6 +80,40 @@ print('Användarnamn:', username)
 ```
 
  
+
+## **Använda en main-funktion**
+
+För mer avancerade program (där man till exempel använder flera egna funktioner) är det klokt att skapa en **main-funktion** som innehåller den kod som ska köras när man startar programmet. Inom mjukvaruutveckling kallar man det programmets *entry point*.
+
+För att ange att det är den funktionen som ska köras vid start lägger man till en if-sats längst ner i programmet.
+
+#### **⏹ Program med main-funktion**
+
+```py
+def do_stuff():
+  """Do important stuff"""
+  print('Doing stuff.')
+
+
+def do_more_stuff():
+  """Doing more important stuff"""
+  print('Doing more stuff.')
+
+
+def main():
+  """Main function. Will run at start"""
+  print('Running program.')
+  do_stuff()
+  do_more_stuff()
+  
+# If-satsen kollar ifall vi är i huvudprogrammet.
+# Om den här python-filen är importerad som en modul i ett annat
+# program kommer inte main-funktionen att köras. 
+if __name__ == '__main__':
+  main()
+```
+
+Det if-satsen i slutet av programmet gör är att kontrollera ifall koden som körs befinner sig i *huvudprogrammet* och inte i en importerad modul. På så sätt kan programmet användas som en modul av andra program utan att koden körs automatiskt vid import.
 
 ## **List comprehension**
 
@@ -289,11 +323,57 @@ elmo.eat('korv')
 sigge.eat('fisk')
 ```
 
-## 
+#### **◆ Exempel på en klass för ett blogginlägg**
+
+```py
+class Post:
+    """ A class representing a blog post"""
+    def __init__(self, title, content, author):
+        self.title = title
+        self.content = content
+        self.author = author
+
+    def save(self):
+        """Saves the post to the database"""
+        # TODO: Implement database saving
+        pass
+
+    def delete(self):
+        """Delete the blog post"""
+        # TODO: Implement database deletion
+        pass
+
+    def display(self):
+        """Shows the post"""
+        print(self.title)
+        print(self.author)
+        print(self.content)
+
+  
+post = Post(
+        "A blogpost", 
+        "This is my first post!", 
+        "marpet"
+      )
+
+post.display()
+```
+
+### **När passar objektorienterad programmering ?**
+
+I Python är det inte lika vanligt att jobba objektorienterat jämfört med andra populära programmeringsspråk (till exempel Java och C\#). I Python är det istället vanligare att använda funktioner och moduler för att dela upp sina program.
+
+Några situationer där det passar bra med objektorienterad programmering är:
+
+* Simuleringar och spel. Här behöver man ofta många liknande objekt som alla har olika egenskaper. (Karaktärer, partiklar, föremål etc.)  
+* Webbutveckling. Här kan man använda klasser för att representera sidor, inlägg, kommentarer, användare, produkter i en webbshop etc.  
+* I ekonomirelaterade applikationer. Här kan klasser representera konton, transaktioner, beställningar.
+
+I många applikationer använder man databaser i kombination med klasser och objekt. Objektens olika värden lagras i en databas och när ett objekt skapas laddas dess egenskaper från databasen.
 
 ## **Dataformatet JSON**
 
-**JSON** står för JavaScript Object Notation och är (precis som CSV) ett **textbaserat format för att lagra och utbyta data**. Det används ofta när data ska skickas mellan en server och en webbläsare eller sparas i filer. (Till exempel konfigurationsfiler för program eller sparfiler för spel.)
+**JSON** står för JavaScript Object Notation och är (precis som CSV) ett **textbaserat format för att lagra och utbyta data**. Det används ofta när data skickas mellan en server och en webbläsare eller sparas i filer. (Till exempel konfigurationsfiler för program eller sparfiler för spel.)
 
 Den stora skillnaden mellan JSON från CSV är att du i JSON kan ha **nästlade datastrukturer.** Du kan alltså kombinera dictionaries med listor på flera olika sätt. I exemplet nedan har vi en lista som innehåller dictionaries över filmer, varje film har i sin tur en lista för skådespelarna.
 
@@ -354,6 +434,7 @@ import json
 
 game_data = {
   'xp': 12,
+  'levels': 5,
   'play_time': 512,
   'inventory': ['diamond pickaxe', 'ender eye'],
   "location": {'x': 123, 'y': 234, 'z': 65}
@@ -461,8 +542,6 @@ for score, grade in zip(scores, grades):
 # Score: 12 → Grade: F
 # ...
 ```
-
-## 
 
 ## 
 
@@ -691,7 +770,7 @@ Fakulteten är summan av produkten av alla positiva heltal från 1 upp till och 
 
 ```py
 def factorial(n):
-    """Räkna ut fakulteten för ett visst nummer"""
+    """Calculate factorial for number n"""
     
     # Ifall numret är 0 eller 1 avsluta med att returnera 1
     if n == 0 or n == 1:
@@ -730,7 +809,7 @@ Här används modulen **`os`** tillsammans med rekursion för att lista alla fil
 import os
 
 def list_files(folder):
-    """Skriver ut alla filer i mappen och dess undermappar."""
+    """Prints all files and folder, including subfolders."""
     for item in os.listdir(folder):
         path = os.path.join(folder, item)
         if os.path.isfile(path):
@@ -774,3 +853,40 @@ print(decode(coded_message))
 \* Permutationer
 
 \* Produkt
+
+## **Pythons standardbibliotek**
+
+Det finns omkring 300 moduler i Pythons inbyggda standardbibliotek. Här kommer en lista av de mest använda med en beskrivning vad de används till:
+
+| Modul | Beskrivning |
+| :---- | :---- |
+| [**math**](https://docs.python.org/3.14/library/math.html) | Ger matematiska funktioner (t.ex. sinus, logaritmer, π, e). |
+| [**random**](https://docs.python.org/3.14/library/random.html) | Slumptalsgenerering och val av slumpmässiga element. |
+| [**statistics**](https://docs.python.org/3.14/library/statistics.html) | Grundläggande statistiska beräkningar som medelvärde och standardavvikelse. |
+| [**decimal**](https://docs.python.org/3.14/library/decimal.html) | Exakta beräkningar med decimaltal (användbart för pengar). |
+| [**fractions**](https://docs.python.org/3.14/library/fractions.html) | Hantering av rationella tal (bråk). |
+| [**os**](https://docs.python.org/3.14/library/os.html) | Interaktion med operativsystemet, t.ex. filer och kataloger. |
+| [**sys**](https://docs.python.org/3.14/library/sys.html) | Systeminformation, programargument och tolkens inställningar. |
+| [**pathlib**](https://docs.python.org/3.14/library/pathlib.html) | Objektorienterat sätt att hantera filer och sökvägar. |
+| [**shutil**](https://docs.python.org/3.14/library/shutil.html) | Kopiering, flyttning och radering av filer och mappar. |
+| [**io**](https://docs.python.org/3.14/library/io.html) | Avancerad filhantering och dataflöden (streams). |
+| [**datetime**](https://docs.python.org/3.14/library/datetime.html) | Hantering av datum, tider och tidsintervall. |
+| [**time**](https://docs.python.org/3.14/library/time.html) | Tidtagning och pauser (sleep). |
+| [**calendar**](https://docs.python.org/3.14/library/calendar.html) | Arbeta med kalendrar, veckodagar och datum. |
+| [**urllib**](https://docs.python.org/3.14/library/urllib.html) | Hämta data från webben och hantera webbadresser. |
+| [**http**](https://docs.python.org/3.14/library/http.html) | Skapa HTTP-klienter och \-servrar. |
+| [**socket**](https://docs.python.org/3.14/library/socket.html) | Låg nivå-nätverkskommunikation (TCP/UDP). |
+| [**re**](https://docs.python.org/3.14/library/re.html) | Reguljära uttryck för avancerad textmatchning. |
+| [**argparse**](https://docs.python.org/3.14/library/argparse.html) | Hantering av kommandoradsargument. |
+| [**logging**](https://docs.python.org/3.14/library/logging.html) | System för loggning och felsökning. |
+| [**json**](https://docs.python.org/3.14/library/json.html) | Läsning och skrivning av JSON-data (vanligt i webbtjänster). |
+| [**csv**](https://docs.python.org/3.14/library/csv.html) | Läsning och skrivning av CSV-filer (tabellformade data). |
+| [**pickle**](https://docs.python.org/3.14/library/pickle.html) | Spara och läsa Python-objekt i binärt format. |
+| [**collections**](https://docs.python.org/3.14/library/collections.html) | Extra datastrukturer som `Counter`, `deque` och `defaultdict`. |
+| [**itertools**](https://docs.python.org/3.14/library/itertools.html) | Effektiva verktyg för iterationer och kombinationer. |
+| [**functools**](https://docs.python.org/3.14/library/functools.html) | Funktioner som `reduce`, `lru_cache` och `partial`. |
+| [**heapq**](https://docs.python.org/3.14/library/heapq.html) | Prioritetsköer och heap-baserade algoritmer. |
+| [**unittest**](https://docs.python.org/3.14/library/unittest.html) | Ramverk för att skriva och köra tester. |
+| [**doctest**](https://docs.python.org/3.14/library/doctest.html) | Testar kodexempel direkt i dokumentationen. |
+| [**pdb**](https://docs.python.org/3.14/library/pdb.html) | Felsökning av program steg för steg. |
+| [**zipfile**](https://docs.python.org/3.14/library/zipfile.html) / [**tarfile**](https://docs.python.org/3.14/library/tarfile.html) / [**gzip**](https://docs.python.org/3.14/library/gzip.html) | Hantering av komprimerade arkivfiler. |

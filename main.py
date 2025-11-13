@@ -1,8 +1,11 @@
 import md2html
 import yaml
-
+import logging
 
 def main():
+    logging.basicConfig(level=logging.INFO, format="%(levelname)s: %(message)s")
+    logger = logging.getLogger(__name__)
+
     # Open and parse site config file
     with open('site-config.yaml', encoding="utf-8") as config_file:
         site_config = yaml.safe_load(config_file.read())
@@ -21,7 +24,8 @@ def main():
         document = md2html.Document(md_path, template_path, title=title, id=page['id'])
         document.insert_main_nav(navigation)
         document.save_html('public_html/' + page['html_file'])
-        print("Generated:", page['title'], 'as', page['html_file'])
+
+        logger.info(f"Generated {page['title']} as {page['html_file']}")
 
 if __name__ == '__main__':
     main()
